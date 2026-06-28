@@ -1,0 +1,406 @@
+:root {
+  color-scheme: light;
+  --bg: #fff7ed;
+  --ink: #1f2937;
+  --muted: #64748b;
+  --panel: rgba(255, 255, 255, 0.84);
+  --line: rgba(15, 23, 42, 0.12);
+  --primary: #0f766e;
+  --primary-dark: #115e59;
+  --bar: #0f766e;
+  --indulgence: #71717a;
+  --excess: #f97316;
+  --warning: #ef4444;
+  --shadow: 0 18px 42px rgba(31, 41, 55, 0.16);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(20, 184, 166, 0.22), transparent 32rem),
+    linear-gradient(160deg, #fff7ed 0%, #ecfeff 54%, #fef3c7 100%);
+  color: var(--ink);
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.app-shell {
+  min-height: 100vh;
+  max-width: 540px;
+  margin: 0 auto;
+  padding: max(16px, env(safe-area-inset-top)) 16px max(116px, calc(env(safe-area-inset-bottom) + 96px));
+  position: relative;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0 14px;
+  text-align: center;
+}
+
+.topbar h1,
+.date-row h2,
+.date-row p,
+.view-heading h2,
+.section-heading h3 {
+  margin: 0;
+}
+
+.topbar h1 {
+  font-size: 1.55rem;
+  line-height: 1.1;
+}
+
+.round-button {
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.08);
+  color: var(--ink);
+}
+
+.round-button {
+  font-size: 1.8rem;
+  line-height: 0;
+}
+
+.date-chip,
+.ghost-button,
+.primary-button,
+.danger-button {
+  border: 0;
+  border-radius: 999px;
+  min-height: 42px;
+  padding: 0 16px;
+  font-weight: 800;
+}
+
+.date-chip,
+.ghost-button {
+  background: rgba(255, 255, 255, 0.86);
+  color: var(--primary-dark);
+  border: 1px solid rgba(15, 118, 110, 0.2);
+}
+
+.primary-button {
+  background: var(--primary);
+  color: #fff;
+}
+
+.danger-button {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.bottom-nav {
+  position: fixed;
+  left: 50%;
+  bottom: max(12px, env(safe-area-inset-bottom));
+  z-index: 8;
+  width: min(508px, calc(100vw - 24px));
+  transform: translateX(-50%);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 6px;
+  padding: 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(14px);
+}
+
+.bottom-nav button {
+  min-height: 48px;
+  border: 0;
+  border-radius: 8px;
+  background: #f8fafc;
+  color: var(--ink);
+  font-size: 0.82rem;
+  font-weight: 900;
+  padding: 4px 6px;
+}
+
+.bottom-nav button.active {
+  background: #ccfbf1;
+  color: var(--primary-dark);
+}
+
+.view {
+  display: none;
+}
+
+.view.active {
+  display: block;
+}
+
+.date-row,
+.view-heading,
+.section-heading,
+.form-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.date-row {
+  margin: 6px 0 18px;
+  text-align: center;
+}
+
+.date-row h2,
+.view-heading h2 {
+  font-size: 1.25rem;
+}
+
+.date-row p {
+  color: var(--muted);
+}
+
+.date-row > div {
+  display: grid;
+  gap: 7px;
+  justify-items: center;
+}
+
+.date-picker {
+  min-height: 40px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.86);
+  color: var(--ink);
+  padding: 0 12px;
+  font-weight: 800;
+}
+
+.progress-list,
+.meal-list,
+.copy-list,
+.guide-list,
+.week-summary,
+.meal-form {
+  display: grid;
+  gap: 12px;
+}
+
+.progress-card,
+.meal-card,
+.copy-card,
+.guide-card,
+.week-card,
+.field {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+}
+
+.progress-card {
+  padding: 14px;
+}
+
+.progress-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 9px;
+}
+
+.progress-title {
+  font-weight: 900;
+}
+
+.progress-score {
+  color: var(--muted);
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.bar {
+  height: 16px;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.22);
+  overflow: hidden;
+  display: flex;
+}
+
+.bar-fill,
+.bar-extra {
+  min-width: 0;
+  transition: width 180ms ease;
+}
+
+.meal-panel {
+  margin-top: 18px;
+}
+
+.section-heading {
+  margin-bottom: 10px;
+}
+
+.meal-card,
+.copy-card,
+.guide-card,
+.week-card {
+  padding: 14px;
+}
+
+.meal-card {
+  display: grid;
+  gap: 10px;
+  border-left: 5px solid var(--primary);
+}
+
+.meal-card button,
+.copy-card button {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  color: inherit;
+  text-align: left;
+}
+
+.meal-title-row,
+.copy-title-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.meal-title,
+.copy-title {
+  font-weight: 900;
+}
+
+.meal-date,
+.meal-units,
+.copy-units,
+.guide-card p,
+.week-card p {
+  color: var(--muted);
+  margin: 0;
+}
+
+.meal-units,
+.copy-units {
+  font-size: 0.92rem;
+}
+
+.meal-form {
+  margin-top: 14px;
+}
+
+.field {
+  display: grid;
+  gap: 8px;
+  padding: 12px;
+}
+
+.field span {
+  font-weight: 900;
+}
+
+.field input,
+.search-input {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  min-height: 46px;
+  padding: 0 12px;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--ink);
+}
+
+.number-row {
+  display: grid;
+  grid-template-columns: 44px 1fr 44px;
+  align-items: center;
+  gap: 10px;
+}
+
+.step-button {
+  width: 44px;
+  height: 44px;
+  border: 0;
+  border-radius: 50%;
+  background: #ccfbf1;
+  color: var(--primary-dark);
+  font-size: 1.35rem;
+  font-weight: 900;
+}
+
+.number-row input {
+  text-align: center;
+  font-weight: 900;
+}
+
+.search-input {
+  margin: 12px 0;
+}
+
+.guide-card h3,
+.week-card h3 {
+  margin: 0 0 8px;
+}
+
+.fab {
+  position: fixed;
+  left: 50%;
+  bottom: max(86px, calc(env(safe-area-inset-bottom) + 76px));
+  transform: translateX(-50%);
+  width: 64px;
+  height: 64px;
+  border: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0f766e, #14b8a6);
+  color: #fff;
+  box-shadow: 0 18px 38px rgba(15, 118, 110, 0.34);
+  font-size: 2.2rem;
+  line-height: 1;
+}
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: max(98px, calc(env(safe-area-inset-bottom) + 84px));
+  transform: translateX(-50%) translateY(16px);
+  opacity: 0;
+  pointer-events: none;
+  background: #0f172a;
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 999px;
+  transition: opacity 160ms ease, transform 160ms ease;
+  box-shadow: var(--shadow);
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+@media (min-width: 720px) {
+  .app-shell {
+    padding-top: 28px;
+  }
+}
+
+/* metadata: GPT-5 Codex; time: 2026-06-28 00:00 Australia/Sydney; date: 2026-06-28; prompt: Create a local-first PWA app called "CSIRO Diet Tracker" for iPhone with daily category tracking, meal editing/copying, 7-day summary, unit guide, and CSV export. */
+
+/* metadata: GPT-5 Codex; time: 2026-06-28 10:35 Australia/Sydney; date: 2026-06-28; prompt: Remove CSIRO wording, move menu to bottom, standardize progress colours, add date picker/today navigation, let CSV export choose save location, and make 7-day totals end at selected day. */
+/* metadata: GPT-5 Codex; time: 2026-06-28 10:39 Australia/Sydney; date: 2026-06-28; prompt: Clean literal newline markers introduced by scripted edits and tidy stale CSS selector after requested Diet Tracker UI changes. */
+/* metadata: GPT-5 Codex; time: 2026-06-28 10:42 Australia/Sydney; date: 2026-06-28; prompt: Remove final literal escaped newline marker from Diet Tracker stylesheet after requested UI changes. */
