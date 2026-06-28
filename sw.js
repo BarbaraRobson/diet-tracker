@@ -1,4 +1,4 @@
-const CACHE_NAME = "diet-tracker-v2";
+const CACHE_NAME = "diet-tracker-v3";
 const ASSETS = [
   "./",
   "./index.html",
@@ -30,3 +30,6 @@ self.addEventListener("fetch", (event) => {
 
 /* metadata: GPT-5 Codex; time: 2026-06-28 10:35 Australia/Sydney; date: 2026-06-28; prompt: Remove CSIRO wording, move menu to bottom, standardize progress colours, add date picker/today navigation, let CSV export choose save location, and make 7-day totals end at selected day. */
 /* metadata: GPT-5 Codex; time: 2026-06-28 10:39 Australia/Sydney; date: 2026-06-28; prompt: Clean literal newline markers introduced by scripted edits and tidy stale CSS selector after requested Diet Tracker UI changes. */
+
+/* metadata: GPT-5 Codex; time: 2026-06-29 09:20 Australia/Sydney; date: 2026-06-29; prompt: Add a version number and change Export CSV to Import/Export with CSV export plus versioned JSON save/load. */
+/* metadata: GPT-5 Codex; time: 2026-06-29 09:24 Australia/Sydney; date: 2026-06-29; prompt: Clean literal escaped newline markers after adding versioned JSON import/export. */

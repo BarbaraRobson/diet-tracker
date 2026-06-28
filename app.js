@@ -8,6 +8,8 @@ const CATEGORIES = [
   { id: "indulgence", name: "Indulgences", target: 0, color: "var(--indulgence)", guide: "4 small squares of chocolate, 150mL wine, 1 scoop ice cream, 1 fun size packet of chips, 1 biscuit, 285ml beer, or 30ml spirits" }
 ];
 
+const APP_VERSION = "1.1.0";
+const DATA_SCHEMA_VERSION = 1;
 const STORE_KEY = "diet-tracker-v1";
 const LEGACY_STORE_KEY = "csiro-diet-tracker-v1";
 const state = {
@@ -19,6 +21,7 @@ const state = {
 
 const el = {
   bottomNav: document.getElementById("bottomNav"),
+  versionLabel: document.getElementById("versionLabel"),
   datePicker: document.getElementById("datePicker"),
   prevDay: document.getElementById("prevDay"),
   nextDay: document.getElementById("nextDay"),
@@ -37,7 +40,11 @@ const el = {
   copyList: document.getElementById("copyList"),
   weekSummary: document.getElementById("weekSummary"),
   guideList: document.getElementById("guideList"),
-  toast: document.getElementById("toast")
+  toast: document.getElementById("toast"),
+  exportCsvButton: document.getElementById("exportCsvButton"),
+  exportJsonButton: document.getElementById("exportJsonButton"),
+  importJsonButton: document.getElementById("importJsonButton"),
+  importJsonInput: document.getElementById("importJsonInput")
 };
 
 function todayKey() {
@@ -64,6 +71,16 @@ function loadData() {
 
 function saveData() {
   localStorage.setItem(STORE_KEY, JSON.stringify(state.data));
+}
+
+function createExportPayload() {
+  return {
+    app: "Diet Tracker",
+    version: APP_VERSION,
+    schemaVersion: DATA_SCHEMA_VERSION,
+    exportedAt: new Date().toISOString(),
+    data: state.data
+  };
 }
 
 function ensureDay(key = state.selectedDate) {
@@ -327,32 +344,114 @@ async function exportCsv() {
   });
   const csv = rows.map((row) => row.map(csvCell).join(",")).join("\n");
   const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
+  await saveBlob(
+    blob,
+    `diet-tracker-${todayKey()}.csv`,
+    { description: "CSV file", accept: { "text/csv": [".csv"] } },
+    "CSV saved"
+  );
+}
+
+async function saveBlob(blob, suggestedName, pickerType, successMessage) {
   const link = document.createElement("a");
   link.href = URL.createObjectURL(blob);
-  link.download = `diet-tracker-${todayKey()}.csv`;
+  link.download = suggestedName;
   if ("showSaveFilePicker" in window) {
     try {
-      const handle = await window.showSaveFilePicker({
-        suggestedName: link.download,
-        types: [{ description: "CSV file", accept: { "text/csv": [".csv"] } }]
-      });
+      const handle = await window.showSaveFilePicker({ suggestedName, types: [pickerType] });
       const writable = await handle.createWritable();
       await writable.write(blob);
       await writable.close();
-      showToast("CSV saved");
-      return;
+      URL.revokeObjectURL(link.href);
+      showToast(successMessage);
+      return true;
     } catch (error) {
       if (error.name === "AbortError") {
+        URL.revokeObjectURL(link.href);
         showToast("Export cancelled");
-        return;
+        return true;
       }
     }
   }
   link.click();
   URL.revokeObjectURL(link.href);
-  showToast("CSV exported");
+  showToast(successMessage);
+  return true;
 }
 
+async function exportJson() {
+  const json = JSON.stringify(createExportPayload(), null, 2);
+  const blob = new Blob([json], { type: "application/json;charset=utf-8" });
+  await saveBlob(
+    blob,
+    `diet-tracker-${todayKey()}.json`,
+    { description: "JSON file", accept: { "application/json": [".json"] } },
+    "JSON saved"
+  );
+}
+
+function readImportFile(file) {
+  if (!file) return;
+  const reader = new FileReader();
+  reader.addEventListener("load", () => importJsonText(String(reader.result || "")));
+  reader.addEventListener("error", () => showToast("Could not read JSON"));
+  reader.readAsText(file);
+}
+
+function importJsonText(text) {
+  try {
+    const parsed = JSON.parse(text);
+    const importedData = normalizeImportedData(parsed);
+    const mealCount = Object.values(importedData).reduce((sum, day) => sum + day.meals.length, 0);
+    const ok = window.confirm(`Replace current local records with ${mealCount} imported meal${mealCount === 1 ? "" : "s"}?`);
+    if (!ok) {
+      showToast("Import cancelled");
+      return;
+    }
+    state.data = importedData;
+    saveData();
+    renderToday();
+    showToast("JSON loaded");
+  } catch (error) {
+    showToast("Invalid JSON file");
+  } finally {
+    el.importJsonInput.value = "";
+  }
+}
+
+function normalizeImportedData(payload) {
+  const source = payload && typeof payload === "object" && payload.data ? payload.data : payload;
+  if (!source || typeof source !== "object" || Array.isArray(source)) {
+    throw new Error("Missing data object");
+  }
+  const normalized = {};
+  Object.entries(source).forEach(([date, day]) => {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(date) || !day || typeof day !== "object" || !Array.isArray(day.meals)) {
+      return;
+    }
+    normalized[date] = {
+      meals: day.meals.map(normalizeMeal).filter(Boolean)
+    };
+  });
+  if (!Object.keys(normalized).length) {
+    throw new Error("No valid dated records");
+  }
+  return normalized;
+}
+
+function normalizeMeal(meal) {
+  if (!meal || typeof meal !== "object") return null;
+  const units = {};
+  CATEGORIES.forEach((cat) => {
+    units[cat.id] = Math.max(0, Number(meal.units?.[cat.id] || 0));
+  });
+  return {
+    id: typeof meal.id === "string" && meal.id ? meal.id : uid(),
+    name: typeof meal.name === "string" && meal.name.trim() ? meal.name.trim().slice(0, 120) : "Imported meal",
+    time: typeof meal.time === "string" ? meal.time.slice(0, 40) : "",
+    units
+  };
+}
 function csvCell(value) {
   const text = String(value ?? "");
   return /[",\n]/.test(text) ? `"${text.replace(/"/g, '""')}"` : text;
@@ -385,13 +484,18 @@ function escapeHtml(text) {
 }
 
 function bindEvents() {
+  el.versionLabel.textContent = `Version ${APP_VERSION}`;
   el.bottomNav.addEventListener("click", (event) => {
     const view = event.target.dataset.view;
     if (view === "today") renderToday();
     if (view === "week") renderWeek();
     if (view === "guide") renderGuide();
-    if (view === "export") exportCsv();
+    if (view === "transfer") setView("transfer");
   });
+  el.exportCsvButton.addEventListener("click", exportCsv);
+  el.exportJsonButton.addEventListener("click", exportJson);
+  el.importJsonButton.addEventListener("click", () => el.importJsonInput.click());
+  el.importJsonInput.addEventListener("change", () => readImportFile(el.importJsonInput.files[0]));
   el.datePicker.addEventListener("change", () => {
     if (!el.datePicker.value) return;
     state.selectedDate = el.datePicker.value;
@@ -450,3 +554,6 @@ renderToday();
 /* metadata: GPT-5 Codex; time: 2026-06-28 10:53 Australia/Sydney; date: 2026-06-28; prompt: Remove the Today/day heading between the date picker and the food unit list. */
 /* metadata: GPT-5 Codex; time: 2026-06-28 10:58 Australia/Sydney; date: 2026-06-28; prompt: Remove the duplicate formatted date beneath Diet Tracker so only the date picker displays the selected date. */
 /* metadata: GPT-5 Codex; time: 2026-06-28 11:02 Australia/Sydney; date: 2026-06-28; prompt: Extend meal-copy search window from 5 recent days to 21 recent days. */
+/* metadata: GPT-5 Codex; time: 2026-06-29 09:20 Australia/Sydney; date: 2026-06-29; prompt: Add a version number and change Export CSV to Import/Export with CSV export plus versioned JSON save/load. */
+/* metadata: GPT-5 Codex; time: 2026-06-29 09:24 Australia/Sydney; date: 2026-06-29; prompt: Clean literal escaped newline markers after adding versioned JSON import/export. */
+/* metadata: GPT-5 Codex; time: 2026-06-29 09:27 Australia/Sydney; date: 2026-06-29; prompt: Harden JSON import so files with no valid dated records are rejected instead of replacing data with an empty object. */

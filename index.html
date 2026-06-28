@@ -16,13 +16,14 @@
     <div id="app" class="app-shell">
       <header class="topbar">
         <h1>Diet Tracker</h1>
+        <p class="version-label" id="versionLabel"></p>
       </header>
 
       <nav class="bottom-nav" id="bottomNav" aria-label="Main menu">
         <button data-view="today" type="button">Today</button>
         <button data-view="week" type="button">7 day totals</button>
         <button data-view="guide" type="button">Unit guide</button>
-        <button data-view="export" type="button">Export CSV</button>
+        <button data-view="transfer" type="button">Import/export</button>
       </nav>
 
       <main>
@@ -86,6 +87,19 @@
           </div>
           <div id="guideList" class="guide-list"></div>
         </section>
+        <section class="view" id="transferView" aria-labelledby="transferTitle">
+          <div class="view-heading">
+            <button class="round-button backToToday" type="button" aria-label="Back">&#8249;</button>
+            <h2 id="transferTitle">Import/export</h2>
+          </div>
+          <div class="transfer-panel">
+            <button class="primary-button" id="exportCsvButton" type="button">Save CSV</button>
+            <button class="ghost-button" id="exportJsonButton" type="button">Save JSON</button>
+            <button class="ghost-button" id="importJsonButton" type="button">Load JSON</button>
+            <input id="importJsonInput" type="file" accept="application/json,.json" hidden>
+            <p class="transfer-note">JSON exports include the app version and restore the full local record.</p>
+          </div>
+        </section>
       </main>
 
       <button class="fab" id="addMeal" type="button" aria-label="Add meal">+</button>
@@ -100,3 +114,5 @@
 <!-- metadata: GPT-5 Codex; time: 2026-06-28 10:48 Australia/Sydney; date: 2026-06-28; prompt: Remove the Today button beside the date picker because date navigation already covers today. -->
 <!-- metadata: GPT-5 Codex; time: 2026-06-28 10:53 Australia/Sydney; date: 2026-06-28; prompt: Remove the Today/day heading between the date picker and the food unit list. -->
 <!-- metadata: GPT-5 Codex; time: 2026-06-28 10:58 Australia/Sydney; date: 2026-06-28; prompt: Remove the duplicate formatted date beneath Diet Tracker so only the date picker displays the selected date. -->
+<!-- metadata: GPT-5 Codex; time: 2026-06-29 09:20 Australia/Sydney; date: 2026-06-29; prompt: Add a version number and change Export CSV to Import/Export with CSV export plus versioned JSON save/load. -->
+<!-- metadata: GPT-5 Codex; time: 2026-06-29 09:24 Australia/Sydney; date: 2026-06-29; prompt: Clean literal escaped newline markers after adding versioned JSON import/export. -->

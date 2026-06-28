@@ -33,6 +33,10 @@ input {
   font: inherit;
 }
 
+button {
+  cursor: pointer;
+}
+
 .app-shell {
   min-height: 100vh;
   max-width: 540px;
@@ -42,9 +46,9 @@ input {
 }
 
 .topbar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  gap: 3px;
+  justify-items: center;
   padding: 10px 0 14px;
   text-align: center;
 }
@@ -60,6 +64,13 @@ input {
 .topbar h1 {
   font-size: 1.55rem;
   line-height: 1.1;
+}
+
+.version-label {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 800;
 }
 
 .round-button {
@@ -129,9 +140,9 @@ input {
   border-radius: 8px;
   background: #f8fafc;
   color: var(--ink);
-  font-size: 0.82rem;
+  font-size: 0.76rem;
   font-weight: 900;
-  padding: 4px 6px;
+  padding: 4px 4px;
 }
 
 .bottom-nav button.active {
@@ -357,6 +368,27 @@ input {
   margin: 0 0 8px;
 }
 
+.transfer-panel {
+  display: grid;
+  gap: 12px;
+  margin-top: 14px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+}
+
+.transfer-panel button {
+  width: 100%;
+}
+
+.transfer-note {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
 .fab {
   position: fixed;
   left: 50%;
@@ -404,3 +436,6 @@ input {
 /* metadata: GPT-5 Codex; time: 2026-06-28 10:35 Australia/Sydney; date: 2026-06-28; prompt: Remove CSIRO wording, move menu to bottom, standardize progress colours, add date picker/today navigation, let CSV export choose save location, and make 7-day totals end at selected day. */
 /* metadata: GPT-5 Codex; time: 2026-06-28 10:39 Australia/Sydney; date: 2026-06-28; prompt: Clean literal newline markers introduced by scripted edits and tidy stale CSS selector after requested Diet Tracker UI changes. */
 /* metadata: GPT-5 Codex; time: 2026-06-28 10:42 Australia/Sydney; date: 2026-06-28; prompt: Remove final literal escaped newline marker from Diet Tracker stylesheet after requested UI changes. */
+
+/* metadata: GPT-5 Codex; time: 2026-06-29 09:20 Australia/Sydney; date: 2026-06-29; prompt: Add a version number and change Export CSV to Import/Export with CSV export plus versioned JSON save/load. */
+/* metadata: GPT-5 Codex; time: 2026-06-29 09:24 Australia/Sydney; date: 2026-06-29; prompt: Clean literal escaped newline markers after adding versioned JSON import/export. */
