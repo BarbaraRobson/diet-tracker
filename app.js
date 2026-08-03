@@ -1,17 +1,19 @@
-const CATEGORIES = [
-  { id: "protein", name: "Meat & Protein", target: 2.5, color: "var(--bar)", guide: "100g red meat, lamb, pork, chicken, fish or tofu, 2 eggs, or 150g of legumes" },
-  { id: "grain", name: "Bread & Cereals", target: 3, color: "var(--bar)", guide: "1 slice of bread (40g), 1/2 cup cooked rice or pasta, 25g oats or 1 potato (150g)" },
-  { id: "veg", name: "Vegetables", target: 2.5, color: "var(--bar)", guide: "150g raw vegetables, 1 cup cooked or salad vegetables, or 2 small tomatoes" },
-  { id: "fruit", name: "Fruit", target: 2, color: "var(--bar)", guide: "150g fruit, 1 orange or apple, 2 apricots, kiwi fruits or plums, or 30g dried fruit" },
-  { id: "dairy", name: "Dairy", target: 3, color: "var(--bar)", guide: "1 cup milk, 50g cheese, 200g greek yoghurt or 1/2 cup cottage cheese (165g)" },
-  { id: "fat", name: "Healthy Fats & Oils", target: 3, color: "var(--bar)", guide: "1 teaspoon oil, 20g avocado or 7g nuts" },
-  { id: "indulgence", name: "Indulgences", target: 0, color: "var(--indulgence)", guide: "4 small squares of chocolate, 150mL wine, 1 scoop ice cream, 1 fun size packet of chips, 1 biscuit, 285ml beer, or 30ml spirits" }
+const DEFAULT_CATEGORIES = [
+  { id: "protein", name: "Meat & Protein", target: 2.5, color: "var(--bar)", guide: "100g red meat, lamb, pork, chicken, fish or tofu, 2 eggs, or 150g of legumes", locked: true },
+  { id: "grain", name: "Bread & Cereals", target: 3, color: "var(--bar)", guide: "1 slice of bread (40g), 1/2 cup cooked rice or pasta, 25g oats or 1 potato (150g)", locked: true },
+  { id: "veg", name: "Vegetables", target: 2.5, color: "var(--bar)", guide: "150g raw vegetables, 1 cup cooked or salad vegetables, or 2 small tomatoes", locked: true },
+  { id: "fruit", name: "Fruit", target: 2, color: "var(--bar)", guide: "150g fruit, 1 orange or apple, 2 apricots, kiwi fruits or plums, or 30g dried fruit", locked: true },
+  { id: "dairy", name: "Dairy", target: 3, color: "var(--bar)", guide: "1 cup milk, 50g cheese, 200g greek yoghurt or 1/2 cup cottage cheese (165g)", locked: true },
+  { id: "fat", name: "Healthy Fats & Oils", target: 3, color: "var(--bar)", guide: "1 teaspoon oil, 20g avocado or 7g nuts", locked: true },
+  { id: "indulgence", name: "Indulgences", target: 0, color: "var(--indulgence)", guide: "4 small squares of chocolate, 150mL wine, 1 scoop ice cream, 1 fun size packet of chips, 1 biscuit, 285ml beer, or 30ml spirits", locked: true }
 ];
 
-const APP_VERSION = "1.1.0";
-const DATA_SCHEMA_VERSION = 1;
+const APP_VERSION = "1.2.0";
+const DATA_SCHEMA_VERSION = 2;
 const STORE_KEY = "diet-tracker-v1";
+const CATEGORY_STORE_KEY = "diet-tracker-categories-v1";
 const LEGACY_STORE_KEY = "csiro-diet-tracker-v1";
+let CATEGORIES = loadCategories();
 const state = {
   selectedDate: todayKey(),
   activeView: "today",
@@ -44,7 +46,11 @@ const el = {
   exportCsvButton: document.getElementById("exportCsvButton"),
   exportJsonButton: document.getElementById("exportJsonButton"),
   importJsonButton: document.getElementById("importJsonButton"),
-  importJsonInput: document.getElementById("importJsonInput")
+  importJsonInput: document.getElementById("importJsonInput"),
+  settingsForm: document.getElementById("settingsForm"),
+  settingsCategoryList: document.getElementById("settingsCategoryList"),
+  addCategoryButton: document.getElementById("addCategoryButton"),
+  resetCategoriesButton: document.getElementById("resetCategoriesButton")
 };
 
 function todayKey() {
@@ -63,14 +69,27 @@ function keyToDate(key) {
 function loadData() {
   try {
     const stored = JSON.parse(localStorage.getItem(STORE_KEY) || localStorage.getItem(LEGACY_STORE_KEY) || "{}");
-    return stored && typeof stored === "object" ? stored : {};
+    return stored && typeof stored === "object" && !Array.isArray(stored) ? stored : {};
   } catch {
     return {};
   }
 }
 
+function loadCategories() {
+  try {
+    const stored = JSON.parse(localStorage.getItem(CATEGORY_STORE_KEY) || "null");
+    return normalizeCategories(stored, true);
+  } catch {
+    return normalizeCategories(DEFAULT_CATEGORIES, true);
+  }
+}
+
 function saveData() {
   localStorage.setItem(STORE_KEY, JSON.stringify(state.data));
+}
+
+function saveCategories() {
+  localStorage.setItem(CATEGORY_STORE_KEY, JSON.stringify(CATEGORIES));
 }
 
 function createExportPayload() {
@@ -79,6 +98,7 @@ function createExportPayload() {
     version: APP_VERSION,
     schemaVersion: DATA_SCHEMA_VERSION,
     exportedAt: new Date().toISOString(),
+    categories: CATEGORIES,
     data: state.data
   };
 }
@@ -92,6 +112,47 @@ function ensureDay(key = state.selectedDate) {
 
 function uid() {
   return `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`;
+}
+
+function categoryId(name) {
+  const base = String(name || "category")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 32) || "category";
+  let id = base;
+  let suffix = 2;
+  const existing = new Set(CATEGORIES.map((cat) => cat.id));
+  while (existing.has(id)) {
+    id = `${base}-${suffix}`;
+    suffix += 1;
+  }
+  return id;
+}
+
+function normalizeCategories(input, fallbackToDefaults = false) {
+  const source = Array.isArray(input) && input.length ? input : (fallbackToDefaults ? DEFAULT_CATEGORIES : []);
+  const seen = new Set();
+  const normalized = source.map((cat) => {
+    if (!cat || typeof cat !== "object") return null;
+    const generatedId = String(cat.name || "category").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 32) || "category";
+    const id = String(cat.id || generatedId).replace(/[^a-zA-Z0-9_-]+/g, "").slice(0, 40);
+    if (!id || seen.has(id)) return null;
+    seen.add(id);
+    const defaultCat = DEFAULT_CATEGORIES.find((item) => item.id === id);
+    const name = String(cat.name || defaultCat?.name || "Food unit").trim().slice(0, 80) || "Food unit";
+    const target = Math.max(0, Number.isFinite(Number(cat.target)) ? Number(cat.target) : Number(defaultCat?.target || 0));
+    const isIndulgence = id === "indulgence";
+    return {
+      id,
+      name,
+      target,
+      color: isIndulgence ? "var(--indulgence)" : "var(--bar)",
+      guide: String(cat.guide || defaultCat?.guide || "").trim().slice(0, 280),
+      locked: Boolean(defaultCat?.locked)
+    };
+  }).filter(Boolean);
+  return normalized.length ? normalized : DEFAULT_CATEGORIES.map((cat) => ({ ...cat }));
 }
 
 function formatDate(key, weekday = true) {
@@ -135,10 +196,10 @@ function renderProgressCard(cat, value) {
   return `
     <article class="progress-card">
       <div class="progress-top">
-        <span class="progress-title">${cat.name}</span>
+        <span class="progress-title">${escapeHtml(cat.name)}</span>
         <span class="progress-score">${formatNumber(value)}/${targetLabel}</span>
       </div>
-      <div class="bar" aria-label="${cat.name} ${formatNumber(value)} of ${targetLabel}">
+      <div class="bar" aria-label="${escapeHtml(cat.name)} ${formatNumber(value)} of ${targetLabel}">
         <div class="bar-fill" style="width:${baseWidth}%; background:${cat.color}"></div>
         <div class="bar-extra" style="width:${extraWidth}%; background:${extraColor}"></div>
       </div>
@@ -186,10 +247,10 @@ function openMealForm(mealId = null, template = null) {
     const value = Number(meal?.units?.[cat.id] || 0);
     return `
       <label class="field">
-        <span>${cat.name}</span>
+        <span>${escapeHtml(cat.name)}</span>
         <div class="number-row">
           <button class="step-button" type="button" data-step="${cat.id}" data-dir="-0.5">-</button>
-          <input inputmode="decimal" pattern="[0-9]*[.]?[0-9]*" id="field-${cat.id}" value="${formatNumber(value)}" aria-label="${cat.name} units">
+          <input inputmode="decimal" pattern="[0-9]*[.]?[0-9]*" id="field-${cat.id}" value="${formatNumber(value)}" aria-label="${escapeHtml(cat.name)} units">
           <button class="step-button" type="button" data-step="${cat.id}" data-dir="0.5">+</button>
         </div>
       </label>
@@ -319,7 +380,7 @@ function renderWeek() {
     ? CATEGORIES.map((cat) => {
       const targetTotal = cat.target * dayCount;
       const targetLabel = cat.id === "indulgence" ? "0" : formatNumber(targetTotal);
-      return `<article class="week-card"><h3>${cat.name}</h3><p>${formatNumber(totals[cat.id])}/${targetLabel} over ${dayCount} day${dayCount === 1 ? "" : "s"}</p></article>`;
+      return `<article class="week-card"><h3>${escapeHtml(cat.name)}</h3><p>${formatNumber(totals[cat.id])}/${targetLabel} over ${dayCount} day${dayCount === 1 ? "" : "s"}</p></article>`;
     }).join("")
     : `<article class="week-card"><p>No meal data entered yet.</p></article>`;
 }
@@ -328,10 +389,79 @@ function renderGuide() {
   setView("guide");
   el.guideList.innerHTML = CATEGORIES.map((cat) => `
     <article class="guide-card">
-      <h3>${cat.name}</h3>
-      <p>1 unit = ${cat.guide}</p>
+      <h3>${escapeHtml(cat.name)}</h3>
+      <p>1 unit = ${escapeHtml(cat.guide || "Add a unit description in Settings.")}</p>
     </article>
   `).join("");
+}
+
+function renderSettings() {
+  setView("settings");
+  el.settingsCategoryList.innerHTML = CATEGORIES.map((cat, index) => `
+    <article class="settings-card" data-category-id="${cat.id}">
+      <div class="settings-grid">
+        <label>Name
+          <input name="name-${cat.id}" value="${escapeHtml(cat.name)}" maxlength="80" required>
+        </label>
+        <label>Target
+          <input name="target-${cat.id}" type="number" min="0" step="0.5" value="${formatNumber(cat.target)}" required>
+        </label>
+      </div>
+      <label>1 unit guide
+        <textarea name="guide-${cat.id}" maxlength="280">${escapeHtml(cat.guide || "")}</textarea>
+      </label>
+      <div class="settings-card-actions">
+        <button class="danger-button" type="button" data-remove-category="${cat.id}" ${CATEGORIES.length <= 1 ? "disabled" : ""}>Remove</button>
+      </div>
+    </article>
+  `).join("");
+}
+
+function addCategory() {
+  const name = `New category ${CATEGORIES.length + 1}`;
+  CATEGORIES.push({
+    id: categoryId(name),
+    name,
+    target: 1,
+    color: "var(--bar)",
+    guide: "",
+    locked: false
+  });
+  renderSettings();
+}
+
+function saveCategorySettings(event) {
+  event.preventDefault();
+  const updated = CATEGORIES.map((cat) => {
+    const name = el.settingsForm.elements[`name-${cat.id}`]?.value.trim().slice(0, 80) || cat.name;
+    const target = Math.max(0, Number.parseFloat(el.settingsForm.elements[`target-${cat.id}`]?.value) || 0);
+    const guide = el.settingsForm.elements[`guide-${cat.id}`]?.value.trim().slice(0, 280) || "";
+    return { ...cat, name, target, guide, color: cat.id === "indulgence" ? "var(--indulgence)" : "var(--bar)" };
+  });
+  CATEGORIES = normalizeCategories(updated, true);
+  saveCategories();
+  renderSettings();
+  showToast("Settings saved");
+}
+
+function removeCategory(id) {
+  const cat = CATEGORIES.find((item) => item.id === id);
+  if (!cat || CATEGORIES.length <= 1) return;
+  const ok = window.confirm(`Remove ${cat.name}? Existing meal entries for this category will be hidden but kept in exports.`);
+  if (!ok) return;
+  CATEGORIES = CATEGORIES.filter((item) => item.id !== id);
+  saveCategories();
+  renderSettings();
+  showToast("Category removed");
+}
+
+function resetCategories() {
+  const ok = window.confirm("Restore the default food units and targets? Existing meal records will stay saved.");
+  if (!ok) return;
+  CATEGORIES = DEFAULT_CATEGORIES.map((cat) => ({ ...cat }));
+  saveCategories();
+  renderSettings();
+  showToast("Defaults restored");
 }
 
 async function exportCsv() {
@@ -402,13 +532,16 @@ function importJsonText(text) {
   try {
     const parsed = JSON.parse(text);
     const importedData = normalizeImportedData(parsed);
+    const importedCategories = normalizeCategories(parsed?.categories, true);
     const mealCount = Object.values(importedData).reduce((sum, day) => sum + day.meals.length, 0);
-    const ok = window.confirm(`Replace current local records with ${mealCount} imported meal${mealCount === 1 ? "" : "s"}?`);
+    const ok = window.confirm(`Replace current local records and food unit settings with ${mealCount} imported meal${mealCount === 1 ? "" : "s"}?`);
     if (!ok) {
       showToast("Import cancelled");
       return;
     }
+    CATEGORIES = importedCategories;
     state.data = importedData;
+    saveCategories();
     saveData();
     renderToday();
     showToast("JSON loaded");
@@ -433,7 +566,7 @@ function normalizeImportedData(payload) {
       meals: day.meals.map(normalizeMeal).filter(Boolean)
     };
   });
-  if (!Object.keys(normalized).length) {
+  if (!Object.keys(normalized).length && !(payload?.app === "Diet Tracker" || Array.isArray(payload?.categories))) {
     throw new Error("No valid dated records");
   }
   return normalized;
@@ -441,9 +574,12 @@ function normalizeImportedData(payload) {
 
 function normalizeMeal(meal) {
   if (!meal || typeof meal !== "object") return null;
+  const unitIds = new Set([...DEFAULT_CATEGORIES, ...CATEGORIES].map((cat) => cat.id));
+  const payloadUnitIds = meal.units && typeof meal.units === "object" ? Object.keys(meal.units) : [];
+  payloadUnitIds.forEach((id) => unitIds.add(id));
   const units = {};
-  CATEGORIES.forEach((cat) => {
-    units[cat.id] = Math.max(0, Number(meal.units?.[cat.id] || 0));
+  unitIds.forEach((id) => {
+    units[id] = Math.max(0, Number(meal.units?.[id] || 0));
   });
   return {
     id: typeof meal.id === "string" && meal.id ? meal.id : uid(),
@@ -452,6 +588,7 @@ function normalizeMeal(meal) {
     units
   };
 }
+
 function csvCell(value) {
   const text = String(value ?? "");
   return /[",\n]/.test(text) ? `"${text.replace(/"/g, '""')}"` : text;
@@ -491,11 +628,19 @@ function bindEvents() {
     if (view === "week") renderWeek();
     if (view === "guide") renderGuide();
     if (view === "transfer") setView("transfer");
+    if (view === "settings") renderSettings();
   });
   el.exportCsvButton.addEventListener("click", exportCsv);
   el.exportJsonButton.addEventListener("click", exportJson);
   el.importJsonButton.addEventListener("click", () => el.importJsonInput.click());
   el.importJsonInput.addEventListener("change", () => readImportFile(el.importJsonInput.files[0]));
+  el.settingsForm.addEventListener("submit", saveCategorySettings);
+  el.addCategoryButton.addEventListener("click", addCategory);
+  el.resetCategoriesButton.addEventListener("click", resetCategories);
+  el.settingsCategoryList.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-remove-category]");
+    if (button) removeCategory(button.dataset.removeCategory);
+  });
   el.datePicker.addEventListener("change", () => {
     if (!el.datePicker.value) return;
     state.selectedDate = el.datePicker.value;
@@ -557,3 +702,8 @@ renderToday();
 /* metadata: GPT-5 Codex; time: 2026-06-29 09:20 Australia/Sydney; date: 2026-06-29; prompt: Add a version number and change Export CSV to Import/Export with CSV export plus versioned JSON save/load. */
 /* metadata: GPT-5 Codex; time: 2026-06-29 09:24 Australia/Sydney; date: 2026-06-29; prompt: Clean literal escaped newline markers after adding versioned JSON import/export. */
 /* metadata: GPT-5 Codex; time: 2026-06-29 09:27 Australia/Sydney; date: 2026-06-29; prompt: Harden JSON import so files with no valid dated records are rejected instead of replacing data with an empty object. */
+/* metadata: GPT-5 Codex; time: 2026-08-04 09:30 Australia/Sydney; date: 2026-08-04; prompt: Add settings tab to edit food unit names and targets and add custom categories. */
+/* metadata: GPT-5 Codex; time: 2026-08-04 09:38 Australia/Sydney; date: 2026-08-04; prompt: Allow empty Diet Tracker JSON exports to import while still rejecting unrelated JSON and avoid category ID generation depending on initialized settings. */
+/* metadata: GPT-5 Codex; time: 2026-08-04 09:42 Australia/Sydney; date: 2026-08-04; prompt: Fix malformed settings-save JavaScript after category settings edit. */
+/* metadata: GPT-5 Codex; time: 2026-08-04 09:47 Australia/Sydney; date: 2026-08-04; prompt: Clean escaped newline marker and make category normalization independent of initialized category settings. */
+/* metadata: GPT-5 Codex; time: 2026-08-04 09:52 Australia/Sydney; date: 2026-08-04; prompt: Repair settings name field template literal after newline cleanup corrupted it. */

@@ -24,6 +24,7 @@
         <button data-view="week" type="button">7 day totals</button>
         <button data-view="guide" type="button">Unit guide</button>
         <button data-view="transfer" type="button">Import/export</button>
+        <button data-view="settings" type="button">Settings</button>
       </nav>
 
       <main>
@@ -100,6 +101,25 @@
             <p class="transfer-note">JSON exports include the app version and restore the full local record.</p>
           </div>
         </section>
+        <section class="view" id="settingsView" aria-labelledby="settingsTitle">
+          <div class="view-heading">
+            <button class="round-button backToToday" type="button" aria-label="Back">&#8249;</button>
+            <h2 id="settingsTitle">Settings</h2>
+          </div>
+          <div class="settings-panel">
+            <div class="section-heading">
+              <h3>Food units</h3>
+              <button class="ghost-button" id="addCategoryButton" type="button">Add</button>
+            </div>
+            <form id="settingsForm" class="settings-form">
+              <div id="settingsCategoryList" class="settings-category-list"></div>
+              <div class="form-actions">
+                <button class="ghost-button" id="resetCategoriesButton" type="button">Defaults</button>
+                <button class="primary-button" type="submit">Save</button>
+              </div>
+            </form>
+          </div>
+        </section>
       </main>
 
       <button class="fab" id="addMeal" type="button" aria-label="Add meal">+</button>
@@ -116,3 +136,5 @@
 <!-- metadata: GPT-5 Codex; time: 2026-06-28 10:58 Australia/Sydney; date: 2026-06-28; prompt: Remove the duplicate formatted date beneath Diet Tracker so only the date picker displays the selected date. -->
 <!-- metadata: GPT-5 Codex; time: 2026-06-29 09:20 Australia/Sydney; date: 2026-06-29; prompt: Add a version number and change Export CSV to Import/Export with CSV export plus versioned JSON save/load. -->
 <!-- metadata: GPT-5 Codex; time: 2026-06-29 09:24 Australia/Sydney; date: 2026-06-29; prompt: Clean literal escaped newline markers after adding versioned JSON import/export. -->
+<!-- metadata: GPT-5 Codex; time: 2026-08-04 09:30 Australia/Sydney; date: 2026-08-04; prompt: Add settings tab to edit food unit names and targets and add custom categories. -->
+<!-- metadata: GPT-5 Codex; time: 2026-08-04 09:47 Australia/Sydney; date: 2026-08-04; prompt: Clean escaped newline marker and make category normalization independent of initialized category settings. -->

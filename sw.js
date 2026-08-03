@@ -1,4 +1,4 @@
-const CACHE_NAME = "diet-tracker-v3";
+const CACHE_NAME = "diet-tracker-v4";
 const ASSETS = [
   "./",
   "./index.html",
@@ -33,3 +33,6 @@ self.addEventListener("fetch", (event) => {
 
 /* metadata: GPT-5 Codex; time: 2026-06-29 09:20 Australia/Sydney; date: 2026-06-29; prompt: Add a version number and change Export CSV to Import/Export with CSV export plus versioned JSON save/load. */
 /* metadata: GPT-5 Codex; time: 2026-06-29 09:24 Australia/Sydney; date: 2026-06-29; prompt: Clean literal escaped newline markers after adding versioned JSON import/export. */
+
+/* metadata: GPT-5 Codex; time: 2026-08-04 09:30 Australia/Sydney; date: 2026-08-04; prompt: Add settings tab to edit food unit names and targets and add custom categories. */
+/* metadata: GPT-5 Codex; time: 2026-08-04 09:47 Australia/Sydney; date: 2026-08-04; prompt: Clean escaped newline marker and make category normalization independent of initialized category settings. */
