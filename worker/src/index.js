@@ -110,9 +110,15 @@ export default {
     });
     if (!response.ok) return json({ error: "OpenAI request failed (" + response.status + ")" }, 502, origin);
 
+    const openAiResponse = await response.json();
+    const diagnostic = {
+      status: typeof openAiResponse.status === "string" ? openAiResponse.status : "unknown",
+      outputTypes: (openAiResponse.output || []).flatMap((item) => (item.content || []).map((content) => content.type)).filter(Boolean).slice(0, 8),
+      incompleteReason: typeof openAiResponse.incomplete_details?.reason === "string" ? openAiResponse.incomplete_details.reason : null
+    };
     let estimate;
-    try { estimate = validateEstimate(JSON.parse(extractOutputText(await response.json())), new Set(payload.categories.map((category) => category.id))); } catch { estimate = null; }
-    if (!estimate) return json({ error: "The estimate could not be validated" }, 502, origin);
+    try { estimate = validateEstimate(JSON.parse(extractOutputText(openAiResponse)), new Set(payload.categories.map((category) => category.id))); } catch { estimate = null; }
+    if (!estimate) return json({ error: "The estimate could not be validated", diagnostic }, 502, origin);
     return json({ ...estimate, notice: "Review and adjust these estimates before saving the meal." }, 200, origin);
   }
 };
@@ -124,3 +130,5 @@ export default {
 /* metadata: GPT-5 Codex; time: 2026-08-11 Australia/Sydney; date: 2026-08-11; prompt: Add a safe Worker diagnostic that returns only the OpenAI HTTP status code when an estimate request fails. */
 
 /* metadata: GPT-5 Codex; time: 2026-08-11 Australia/Sydney; date: 2026-08-11; prompt: Add a safe Worker diagnostic that distinguishes a missing OpenAI key binding from an empty key value. */
+
+/* metadata: GPT-5 Codex; time: 2026-08-11 Australia/Sydney; date: 2026-08-11; prompt: Add safe diagnostic metadata for a completed OpenAI response that cannot be validated, without exposing model output, food descriptions, or secrets. */
