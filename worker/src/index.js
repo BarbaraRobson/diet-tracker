@@ -85,9 +85,13 @@ export default {
     if (request.method !== "POST" || new URL(request.url).pathname !== "/estimate") return json({ error: "Not found" }, 404, origin);
 
     const token = request.headers.get("Authorization")?.replace(/^Bearer\s+/i, "") || "";
+    if (!env.APP_ACCESS_TOKEN) return json({ error: "Worker access token is not configured" }, 503, origin);
     if (!equalToken(token, env.APP_ACCESS_TOKEN || "")) return json({ error: "Unauthorized" }, 401, origin);
     if (isRateLimited(token)) return json({ error: "Try again in a few minutes" }, 429, origin);
-    if (!env.OPENAI_API_KEY) return json({ error: "Worker configuration is incomplete" }, 503, origin);
+    if (!env.OPENAI_API_KEY) {
+      const keyState = typeof env.OPENAI_API_KEY === "undefined" ? "missing" : "empty";
+      return json({ error: "OpenAI key binding is " + keyState }, 503, origin);
+    }
 
     let payload;
     try { payload = validateRequest(await request.json()); } catch { payload = null; }
@@ -104,7 +108,7 @@ export default {
         text: { format: { type: "json_schema", name: "diet_unit_estimate", strict: true, schema: ESTIMATE_SCHEMA } }
       })
     });
-    if (!response.ok) return json({ error: "The estimate service is unavailable" }, 502, origin);
+    if (!response.ok) return json({ error: "OpenAI request failed (" + response.status + ")" }, 502, origin);
 
     let estimate;
     try { estimate = validateEstimate(JSON.parse(extractOutputText(await response.json())), new Set(payload.categories.map((category) => category.id))); } catch { estimate = null; }
@@ -114,3 +118,9 @@ export default {
 };
 
 /* metadata: GPT-5 Codex; time: 2026-08-11 Australia/Sydney; date: 2026-08-11; prompt: Start a personal branch and set up a secure Cloudflare Worker backed unit estimator without exposing the OpenAI API key. */
+
+/* metadata: GPT-5 Codex; time: 2026-08-11 Australia/Sydney; date: 2026-08-11; prompt: Add a safe Worker diagnostic that distinguishes a missing APP_ACCESS_TOKEN secret from an incorrect access token. */
+
+/* metadata: GPT-5 Codex; time: 2026-08-11 Australia/Sydney; date: 2026-08-11; prompt: Add a safe Worker diagnostic that returns only the OpenAI HTTP status code when an estimate request fails. */
+
+/* metadata: GPT-5 Codex; time: 2026-08-11 Australia/Sydney; date: 2026-08-11; prompt: Add a safe Worker diagnostic that distinguishes a missing OpenAI key binding from an empty key value. */
