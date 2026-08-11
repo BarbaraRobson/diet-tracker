@@ -310,7 +310,15 @@ async function estimateMealUnits() {
       })
     });
     const result = await response.json();
-    if (!response.ok) throw new Error(result.error || "The estimate could not be completed.");
+    if (!response.ok) {
+      const diagnostic = result.diagnostic;
+      const detail = diagnostic ? [
+        diagnostic.status ? "status: " + diagnostic.status : "",
+        Array.isArray(diagnostic.outputTypes) && diagnostic.outputTypes.length ? "output: " + diagnostic.outputTypes.join(", ") : "",
+        diagnostic.incompleteReason ? "reason: " + diagnostic.incompleteReason : ""
+      ].filter(Boolean).join("; ") : "";
+      throw new Error((result.error || "The estimate could not be completed.") + (detail ? " (" + detail + ")" : ""));
+    }
     result.estimates.forEach((estimate) => {
       const input = document.getElementById("field-" + estimate.categoryId);
       if (input) input.value = formatNumber(estimate.units);
@@ -778,3 +786,5 @@ renderToday();
 /* metadata: GPT-5 Codex; time: 2026-08-04 09:52 Australia/Sydney; date: 2026-08-04; prompt: Repair settings name field template literal after newline cleanup corrupted it. */
 
 /* metadata: GPT-5 Codex; time: 2026-08-11 Australia/Sydney; date: 2026-08-11; prompt: Start a personal branch and set up a secure Cloudflare Worker backed unit estimator without exposing the OpenAI API key. */
+
+/* metadata: GPT-5 Codex; time: 2026-08-11 Australia/Sydney; date: 2026-08-11; prompt: Show only safe Worker diagnostic metadata in the estimator error message so an iPhone user can report it without exposing food descriptions or secrets. */
