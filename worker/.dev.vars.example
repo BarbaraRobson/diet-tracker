@@ -1,0 +1,4 @@
+# Copy this to .dev.vars only for local Worker testing. Never commit the real file.
+OPENAI_API_KEY=""
+APP_ACCESS_TOKEN=""
+# metadata: GPT-5 Codex; time: 2026-08-11 Australia/Sydney; date: 2026-08-11; prompt: Start a personal branch and set up a secure Cloudflare Worker backed unit estimator without exposing the OpenAI API key.

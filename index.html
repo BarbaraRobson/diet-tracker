@@ -56,6 +56,14 @@
               <span>Meal name</span>
               <input id="mealName" type="text" autocomplete="off" placeholder="Time of day">
             </label>
+            <section class="estimator-panel">
+              <label class="field">
+                <span>Estimate from food</span>
+                <textarea id="estimateFood" maxlength="500" placeholder="e.g. chicken salad with avocado"></textarea>
+              </label>
+              <button class="ghost-button" id="estimateUnitsButton" type="button">Estimate units</button>
+              <p class="estimate-result" id="estimateResult" aria-live="polite"></p>
+            </section>
             <div id="mealFields" class="meal-fields"></div>
             <div class="form-actions">
               <button class="danger-button" id="deleteMeal" type="button" hidden>Remove</button>
@@ -113,6 +121,15 @@
             </div>
             <form id="settingsForm" class="settings-form">
               <div id="settingsCategoryList" class="settings-category-list"></div>
+              <section class="settings-card estimator-settings">
+                <h3>Personal estimator</h3>
+                <label>Worker address
+                  <input id="estimatorEndpoint" type="url" inputmode="url" autocomplete="url" placeholder="https://...workers.dev/estimate">
+                </label>
+                <label>Access token
+                  <input id="estimatorAccessToken" type="password" autocomplete="off" placeholder="Personal Worker token">
+                </label>
+              </section>
               <div class="form-actions">
                 <button class="ghost-button" id="resetCategoriesButton" type="button">Defaults</button>
                 <button class="primary-button" type="submit">Save</button>
@@ -138,3 +155,7 @@
 <!-- metadata: GPT-5 Codex; time: 2026-06-29 09:24 Australia/Sydney; date: 2026-06-29; prompt: Clean literal escaped newline markers after adding versioned JSON import/export. -->
 <!-- metadata: GPT-5 Codex; time: 2026-08-04 09:30 Australia/Sydney; date: 2026-08-04; prompt: Add settings tab to edit food unit names and targets and add custom categories. -->
 <!-- metadata: GPT-5 Codex; time: 2026-08-04 09:47 Australia/Sydney; date: 2026-08-04; prompt: Clean escaped newline marker and make category normalization independent of initialized category settings. -->
+
+<!-- metadata: GPT-5 Codex; time: 2026-08-11 Australia/Sydney; date: 2026-08-11; prompt: Start a personal branch and set up a secure Cloudflare Worker backed unit estimator without exposing the OpenAI API key. -->
+
+<!-- metadata: GPT-5 Codex; time: 2026-08-11 Australia/Sydney; date: 2026-08-11; prompt: Fix estimator markup spacing after adding a secure Cloudflare Worker backed unit estimator. -->

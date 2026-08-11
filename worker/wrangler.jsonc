@@ -1,0 +1,14 @@
+{
+  "name": "diet-tracker-estimator",
+  "main": "src/index.js",
+  "compatibility_date": "2026-08-11",
+  "workers_dev": true,
+  "limits": {
+    "cpu_ms": 30000,
+    "subrequests": 2
+  },
+  "secrets": {
+    "required": ["OPENAI_API_KEY", "APP_ACCESS_TOKEN"]
+  }
+}
+// metadata: GPT-5 Codex; time: 2026-08-11 Australia/Sydney; date: 2026-08-11; prompt: Start a personal branch and set up a secure Cloudflare Worker backed unit estimator without exposing the OpenAI API key.

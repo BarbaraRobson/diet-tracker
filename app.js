@@ -8,10 +8,11 @@ const DEFAULT_CATEGORIES = [
   { id: "indulgence", name: "Indulgences", target: 0, color: "var(--indulgence)", guide: "4 small squares of chocolate, 150mL wine, 1 scoop ice cream, 1 fun size packet of chips, 1 biscuit, 285ml beer, or 30ml spirits", locked: true }
 ];
 
-const APP_VERSION = "1.2.0";
+const APP_VERSION = "1.3.0";
 const DATA_SCHEMA_VERSION = 2;
 const STORE_KEY = "diet-tracker-v1";
 const CATEGORY_STORE_KEY = "diet-tracker-categories-v1";
+const ESTIMATOR_SETTINGS_KEY = "diet-tracker-estimator-v1";
 const LEGACY_STORE_KEY = "csiro-diet-tracker-v1";
 let CATEGORIES = loadCategories();
 const state = {
@@ -50,7 +51,12 @@ const el = {
   settingsForm: document.getElementById("settingsForm"),
   settingsCategoryList: document.getElementById("settingsCategoryList"),
   addCategoryButton: document.getElementById("addCategoryButton"),
-  resetCategoriesButton: document.getElementById("resetCategoriesButton")
+  resetCategoriesButton: document.getElementById("resetCategoriesButton"),
+  estimateFood: document.getElementById("estimateFood"),
+  estimateUnitsButton: document.getElementById("estimateUnitsButton"),
+  estimateResult: document.getElementById("estimateResult"),
+  estimatorEndpoint: document.getElementById("estimatorEndpoint"),
+  estimatorAccessToken: document.getElementById("estimatorAccessToken")
 };
 
 function todayKey() {
@@ -92,6 +98,25 @@ function saveCategories() {
   localStorage.setItem(CATEGORY_STORE_KEY, JSON.stringify(CATEGORIES));
 }
 
+
+function loadEstimatorSettings() {
+  try {
+    const stored = JSON.parse(localStorage.getItem(ESTIMATOR_SETTINGS_KEY) || "{}");
+    return {
+      endpoint: typeof stored.endpoint === "string" ? stored.endpoint : "",
+      accessToken: typeof stored.accessToken === "string" ? stored.accessToken : ""
+    };
+  } catch {
+    return { endpoint: "", accessToken: "" };
+  }
+}
+
+function saveEstimatorSettings() {
+  localStorage.setItem(ESTIMATOR_SETTINGS_KEY, JSON.stringify({
+    endpoint: el.estimatorEndpoint.value.trim(),
+    accessToken: el.estimatorAccessToken.value
+  }));
+}
 function createExportPayload() {
   return {
     app: "Diet Tracker",
@@ -259,6 +284,45 @@ function openMealForm(mealId = null, template = null) {
   setView("meal");
 }
 
+async function estimateMealUnits() {
+  const settings = loadEstimatorSettings();
+  const foodText = el.estimateFood.value.trim();
+  if (!foodText) {
+    el.estimateResult.textContent = "Enter a food description first.";
+    return;
+  }
+  if (!settings.endpoint || !settings.accessToken) {
+    el.estimateResult.textContent = "Add the Worker address and access token in Settings.";
+    return;
+  }
+  el.estimateUnitsButton.disabled = true;
+  el.estimateResult.textContent = "Estimating...";
+  try {
+    const response = await fetch(settings.endpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + settings.accessToken
+      },
+      body: JSON.stringify({
+        foodText,
+        categories: CATEGORIES.map((category) => ({ id: category.id, name: category.name, target: category.target, guide: category.guide }))
+      })
+    });
+    const result = await response.json();
+    if (!response.ok) throw new Error(result.error || "The estimate could not be completed.");
+    result.estimates.forEach((estimate) => {
+      const input = document.getElementById("field-" + estimate.categoryId);
+      if (input) input.value = formatNumber(estimate.units);
+    });
+    const notes = result.assumptions || [];
+    el.estimateResult.textContent = (result.notice || "Review the estimates before saving.") + (notes.length ? " " + notes.join(" ") : "");
+  } catch (error) {
+    el.estimateResult.textContent = error.message || "The estimate could not be completed.";
+  } finally {
+    el.estimateUnitsButton.disabled = false;
+  }
+}
 function saveMeal(event) {
   event.preventDefault();
   const day = ensureDay();
@@ -397,6 +461,9 @@ function renderGuide() {
 
 function renderSettings() {
   setView("settings");
+  const estimator = loadEstimatorSettings();
+  el.estimatorEndpoint.value = estimator.endpoint;
+  el.estimatorAccessToken.value = estimator.accessToken;
   el.settingsCategoryList.innerHTML = CATEGORIES.map((cat, index) => `
     <article class="settings-card" data-category-id="${cat.id}">
       <div class="settings-grid">
@@ -438,6 +505,7 @@ function saveCategorySettings(event) {
     const guide = el.settingsForm.elements[`guide-${cat.id}`]?.value.trim().slice(0, 280) || "";
     return { ...cat, name, target, guide, color: cat.id === "indulgence" ? "var(--indulgence)" : "var(--bar)" };
   });
+  saveEstimatorSettings();
   CATEGORIES = normalizeCategories(updated, true);
   saveCategories();
   renderSettings();
@@ -637,6 +705,7 @@ function bindEvents() {
   el.settingsForm.addEventListener("submit", saveCategorySettings);
   el.addCategoryButton.addEventListener("click", addCategory);
   el.resetCategoriesButton.addEventListener("click", resetCategories);
+  el.estimateUnitsButton.addEventListener("click", estimateMealUnits);
   el.settingsCategoryList.addEventListener("click", (event) => {
     const button = event.target.closest("[data-remove-category]");
     if (button) removeCategory(button.dataset.removeCategory);
@@ -707,3 +776,5 @@ renderToday();
 /* metadata: GPT-5 Codex; time: 2026-08-04 09:42 Australia/Sydney; date: 2026-08-04; prompt: Fix malformed settings-save JavaScript after category settings edit. */
 /* metadata: GPT-5 Codex; time: 2026-08-04 09:47 Australia/Sydney; date: 2026-08-04; prompt: Clean escaped newline marker and make category normalization independent of initialized category settings. */
 /* metadata: GPT-5 Codex; time: 2026-08-04 09:52 Australia/Sydney; date: 2026-08-04; prompt: Repair settings name field template literal after newline cleanup corrupted it. */
+
+/* metadata: GPT-5 Codex; time: 2026-08-11 Australia/Sydney; date: 2026-08-11; prompt: Start a personal branch and set up a secure Cloudflare Worker backed unit estimator without exposing the OpenAI API key. */
