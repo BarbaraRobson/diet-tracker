@@ -1,4 +1,4 @@
-const CACHE_NAME = "diet-tracker-v5";
+const CACHE_NAME = "diet-tracker-v6";
 const ASSETS = [
   "./",
   "./index.html",
@@ -38,3 +38,5 @@ self.addEventListener("fetch", (event) => {
 /* metadata: GPT-5 Codex; time: 2026-08-04 09:47 Australia/Sydney; date: 2026-08-04; prompt: Clean escaped newline marker and make category normalization independent of initialized category settings. */
 
 /* metadata: GPT-5 Codex; time: 2026-08-11 Australia/Sydney; date: 2026-08-11; prompt: Start a personal branch and set up a secure Cloudflare Worker backed unit estimator without exposing the OpenAI API key. */
+
+/* metadata: GPT-5 Codex; time: 2026-08-11 Australia/Sydney; date: 2026-08-11; prompt: Bump the PWA cache version so iPhone installations fetch the app update that displays safe estimator diagnostics. */

@@ -8,7 +8,7 @@ const DEFAULT_CATEGORIES = [
   { id: "indulgence", name: "Indulgences", target: 0, color: "var(--indulgence)", guide: "4 small squares of chocolate, 150mL wine, 1 scoop ice cream, 1 fun size packet of chips, 1 biscuit, 285ml beer, or 30ml spirits", locked: true }
 ];
 
-const APP_VERSION = "1.3.0";
+const APP_VERSION = "1.3.1";
 const DATA_SCHEMA_VERSION = 2;
 const STORE_KEY = "diet-tracker-v1";
 const CATEGORY_STORE_KEY = "diet-tracker-categories-v1";
@@ -788,3 +788,5 @@ renderToday();
 /* metadata: GPT-5 Codex; time: 2026-08-11 Australia/Sydney; date: 2026-08-11; prompt: Start a personal branch and set up a secure Cloudflare Worker backed unit estimator without exposing the OpenAI API key. */
 
 /* metadata: GPT-5 Codex; time: 2026-08-11 Australia/Sydney; date: 2026-08-11; prompt: Show only safe Worker diagnostic metadata in the estimator error message so an iPhone user can report it without exposing food descriptions or secrets. */
+
+/* metadata: GPT-5 Codex; time: 2026-08-11 Australia/Sydney; date: 2026-08-11; prompt: Bump the PWA release version so iPhone installations can identify the update that displays safe estimator diagnostics. */
