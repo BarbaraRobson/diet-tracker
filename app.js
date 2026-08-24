@@ -1,14 +1,24 @@
 const DEFAULT_CATEGORIES = [
-  { id: "protein", name: "Meat & Protein", target: 2.5, color: "var(--bar)", guide: "100g red meat, lamb, pork, chicken, fish or tofu, 2 eggs, or 150g of legumes", locked: true },
-  { id: "grain", name: "Bread & Cereals", target: 3, color: "var(--bar)", guide: "1 slice of bread (40g), 1/2 cup cooked rice or pasta, 25g oats or 1 potato (150g)", locked: true },
-  { id: "veg", name: "Vegetables", target: 2.5, color: "var(--bar)", guide: "150g raw vegetables, 1 cup cooked or salad vegetables, or 2 small tomatoes", locked: true },
-  { id: "fruit", name: "Fruit", target: 2, color: "var(--bar)", guide: "150g fruit, 1 orange or apple, 2 apricots, kiwi fruits or plums, or 30g dried fruit", locked: true },
-  { id: "dairy", name: "Dairy", target: 3, color: "var(--bar)", guide: "1 cup milk, 50g cheese, 200g greek yoghurt or 1/2 cup cottage cheese (165g)", locked: true },
-  { id: "fat", name: "Healthy Fats & Oils", target: 3, color: "var(--bar)", guide: "1 teaspoon oil, 20g avocado or 7g nuts", locked: true },
-  { id: "indulgence", name: "Indulgences", target: 0, color: "var(--indulgence)", guide: "4 small squares of chocolate, 150mL wine, 1 scoop ice cream, 1 fun size packet of chips, 1 biscuit, 285ml beer, or 30ml spirits", locked: true }
+  { id: "protein", name: "Meat & Protein", target: 2.5, color: "var(--bar)", guide: "Beef fillet, pork fillet, lean minced chicken or beef, trimmed lamb steak, salmon or white fish: 100g raw; canned tuna: 185g drained; tempeh or firm tofu: 100g; kidney beans: 3/4 cup; edamame or canned lentils: 1 cup; eggs: 2.", locked: true },
+  { id: "grain", name: "Bread & Cereals", target: 3, color: "var(--bar)", guide: "Bread: 1 slice; bread roll: 1/2 roll; wrap/tortilla: 1 mini; crispbread: 4 crackers; wheat biscuits: 2 biscuits; sweet potato: 3/4 cup; potato: 1 medium; untoasted muesli: 1/4 cup; wheat bran cereal: 1/2 cup; rolled oats (raw): 1/4 cup; cooked pasta, quinoa, brown rice or pearl barley: 1/2 cup.", locked: true },
+  { id: "veg", name: "Vegetables", target: 2.5, color: "var(--bar)", guide: "Mixed salad greens: 150g; coleslaw mix: 1 cup; cauliflower rice, raw broccoli florets, zucchini noodles or raw mushrooms: 2 cups; cubed pumpkin: 3/4 cup; canned tomatoes or mixed salad vegetables: 1 cup; corn on the cob: 1/2 cob; frozen mixed vegetables: 1 cup.\n\nFree foods: vegetables; condiments; herbs, spices and seasonings; clear soups and vegetable soup.", locked: true },
+  { id: "fruit", name: "Fruit", target: 2, color: "var(--bar)", guide: "Apple, banana or orange: 1 medium; watermelon: 1 cup; kiwi fruit: 2 fruits; fresh mixed berries: 1 cup; canned peaches in juice: 3/4 cup; frozen fruit: 1 cup; dried fruit: 2 tablespoons; 100% fresh fruit juice: 1 cup.", locked: true },
+  { id: "dairy", name: "Dairy", target: 3, color: "var(--bar)", guide: "Reduced-fat cheddar: 50g; reduced-fat ricotta: 1/2 cup; low-fat cottage cheese: 3/4 cup; soy milk or low-fat milk: 1 cup; low-fat yoghurt: 2/3 cup; low-fat latte: 1 large cup.", locked: true },
+  { id: "fat", name: "Healthy Fats & Oils", target: 3, color: "var(--bar)", guide: "Extra virgin olive oil: 1 teaspoon; margarine: 2 teaspoons; peanut butter: 1 heaped teaspoon; reduced-fat mayonnaise: 1.5 tablespoons; mashed avocado: 1 tablespoon; almonds: 6 nuts; walnuts: 5 nuts; pistachios: 12 nuts; sesame seeds: 2 teaspoons; chia seeds: 1 tablespoon.", locked: true },
+  { id: "indulgence", name: "Indulgences", target: 0, color: "var(--indulgence)", guide: "Chocolate: 4 squares; soft jelly lollies: 30g; M&Ms: 20g; cookie: 1 small; muffin: 1 mini or 1/2 medium; custard: 3/4 cup; donut: 1/3; reduced-fat ice-cream: 1/2 cup; croissant: about 1/2; Danish pastry: 30g; chips: 20g; pretzels: 13; flavoured popcorn: 20g; bacon: 50g; ham: 3 slices; sausage: 1 thin sausage; soft drink: 250ml; cordial: 2.5 tablespoons; energy drink: 200-250ml; wine: 150ml; beer: 275ml; spirits: 30ml.", locked: true }
 ];
 
-const APP_VERSION = "1.2.0";
+const LEGACY_DEFAULT_GUIDES = {
+  protein: "100g red meat, lamb, pork, chicken, fish or tofu, 2 eggs, or 150g of legumes",
+  grain: "1 slice of bread (40g), 1/2 cup cooked rice or pasta, 25g oats or 1 potato (150g)",
+  veg: "150g raw vegetables, 1 cup cooked or salad vegetables, or 2 small tomatoes",
+  fruit: "150g fruit, 1 orange or apple, 2 apricots, kiwi fruits or plums, or 30g dried fruit",
+  dairy: "1 cup milk, 50g cheese, 200g greek yoghurt or 1/2 cup cottage cheese (165g)",
+  fat: "1 teaspoon oil, 20g avocado or 7g nuts",
+  indulgence: "4 small squares of chocolate, 150mL wine, 1 scoop ice cream, 1 fun size packet of chips, 1 biscuit, 285ml beer, or 30ml spirits"
+};
+
+const APP_VERSION = "1.2.1";
 const DATA_SCHEMA_VERSION = 2;
 const STORE_KEY = "diet-tracker-v1";
 const CATEGORY_STORE_KEY = "diet-tracker-categories-v1";
@@ -78,7 +88,9 @@ function loadData() {
 function loadCategories() {
   try {
     const stored = JSON.parse(localStorage.getItem(CATEGORY_STORE_KEY) || "null");
-    return normalizeCategories(stored, true);
+    const categories = migrateDefaultGuides(normalizeCategories(stored, true));
+    localStorage.setItem(CATEGORY_STORE_KEY, JSON.stringify(categories));
+    return categories;
   } catch {
     return normalizeCategories(DEFAULT_CATEGORIES, true);
   }
@@ -148,13 +160,20 @@ function normalizeCategories(input, fallbackToDefaults = false) {
       name,
       target,
       color: isIndulgence ? "var(--indulgence)" : "var(--bar)",
-      guide: String(cat.guide || defaultCat?.guide || "").trim().slice(0, 280),
+      guide: String(cat.guide || defaultCat?.guide || "").trim().slice(0, 2000),
       locked: Boolean(defaultCat?.locked)
     };
   }).filter(Boolean);
   return normalized.length ? normalized : DEFAULT_CATEGORIES.map((cat) => ({ ...cat }));
 }
 
+function migrateDefaultGuides(categories) {
+  return categories.map((category) => {
+    const defaultCategory = DEFAULT_CATEGORIES.find((item) => item.id === category.id);
+    if (!defaultCategory || category.guide !== LEGACY_DEFAULT_GUIDES[category.id]) return category;
+    return { ...category, guide: defaultCategory.guide };
+  });
+}
 function formatDate(key, weekday = true) {
   return keyToDate(key).toLocaleDateString("en-AU", {
     weekday: weekday ? "long" : undefined,
@@ -390,7 +409,7 @@ function renderGuide() {
   el.guideList.innerHTML = CATEGORIES.map((cat) => `
     <article class="guide-card">
       <h3>${escapeHtml(cat.name)}</h3>
-      <p>1 unit = ${escapeHtml(cat.guide || "Add a unit description in Settings.")}</p>
+      <p class="guide-description">1 unit = ${escapeHtml(cat.guide || "Add a unit description in Settings.")}</p>
     </article>
   `).join("");
 }
@@ -408,7 +427,7 @@ function renderSettings() {
         </label>
       </div>
       <label>1 unit guide
-        <textarea name="guide-${cat.id}" maxlength="280">${escapeHtml(cat.guide || "")}</textarea>
+        <textarea name="guide-${cat.id}" maxlength="2000">${escapeHtml(cat.guide || "")}</textarea>
       </label>
       <div class="settings-card-actions">
         <button class="danger-button" type="button" data-remove-category="${cat.id}" ${CATEGORIES.length <= 1 ? "disabled" : ""}>Remove</button>
@@ -435,7 +454,7 @@ function saveCategorySettings(event) {
   const updated = CATEGORIES.map((cat) => {
     const name = el.settingsForm.elements[`name-${cat.id}`]?.value.trim().slice(0, 80) || cat.name;
     const target = Math.max(0, Number.parseFloat(el.settingsForm.elements[`target-${cat.id}`]?.value) || 0);
-    const guide = el.settingsForm.elements[`guide-${cat.id}`]?.value.trim().slice(0, 280) || "";
+    const guide = el.settingsForm.elements[`guide-${cat.id}`]?.value.trim().slice(0, 2000) || "";
     return { ...cat, name, target, guide, color: cat.id === "indulgence" ? "var(--indulgence)" : "var(--bar)" };
   });
   CATEGORIES = normalizeCategories(updated, true);
@@ -707,3 +726,5 @@ renderToday();
 /* metadata: GPT-5 Codex; time: 2026-08-04 09:42 Australia/Sydney; date: 2026-08-04; prompt: Fix malformed settings-save JavaScript after category settings edit. */
 /* metadata: GPT-5 Codex; time: 2026-08-04 09:47 Australia/Sydney; date: 2026-08-04; prompt: Clean escaped newline marker and make category normalization independent of initialized category settings. */
 /* metadata: GPT-5 Codex; time: 2026-08-04 09:52 Australia/Sydney; date: 2026-08-04; prompt: Repair settings name field template literal after newline cleanup corrupted it. */
+
+/* metadata: GPT-5 Codex; time: 2026-08-24 Australia/Sydney; date: 2026-08-24; prompt: Read the supplied official food-groups PDF, skip its first non-unit page, and expand the Diet Tracker food-unit guide to include every listed food and serving size. */

@@ -369,6 +369,10 @@ button {
   margin: 0 0 8px;
 }
 
+.guide-description {
+  white-space: pre-line;
+}
+
 .transfer-panel {
   display: grid;
   gap: 12px;
@@ -503,3 +507,5 @@ button {
 
 /* metadata: GPT-5 Codex; time: 2026-08-04 09:30 Australia/Sydney; date: 2026-08-04; prompt: Add settings tab to edit food unit names and targets and add custom categories. */
 /* metadata: GPT-5 Codex; time: 2026-08-04 09:47 Australia/Sydney; date: 2026-08-04; prompt: Clean escaped newline marker and make category normalization independent of initialized category settings. */
+
+/* metadata: GPT-5 Codex; time: 2026-08-24 Australia/Sydney; date: 2026-08-24; prompt: Preserve the free-foods line break in the expanded official food-unit guide. */
