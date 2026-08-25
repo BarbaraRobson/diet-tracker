@@ -18,7 +18,7 @@ const LEGACY_DEFAULT_GUIDES = {
   indulgence: "4 small squares of chocolate, 150mL wine, 1 scoop ice cream, 1 fun size packet of chips, 1 biscuit, 285ml beer, or 30ml spirits"
 };
 
-const APP_VERSION = "1.2.1";
+const APP_VERSION = "1.2.2";
 const DATA_SCHEMA_VERSION = 2;
 const STORE_KEY = "diet-tracker-v1";
 const CATEGORY_STORE_KEY = "diet-tracker-categories-v1";
@@ -728,3 +728,5 @@ renderToday();
 /* metadata: GPT-5 Codex; time: 2026-08-04 09:52 Australia/Sydney; date: 2026-08-04; prompt: Repair settings name field template literal after newline cleanup corrupted it. */
 
 /* metadata: GPT-5 Codex; time: 2026-08-24 Australia/Sydney; date: 2026-08-24; prompt: Read the supplied official food-groups PDF, skip its first non-unit page, and expand the Diet Tracker food-unit guide to include every listed food and serving size. */
+
+/* metadata: GPT-5 Codex; time: 2026-08-25 Australia/Sydney; date: 2026-08-25; prompt: Refresh the Diet Tracker PWA app icon backgrounds with a soft pink and teal palette. */
