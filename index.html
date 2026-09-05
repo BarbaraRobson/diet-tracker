@@ -78,6 +78,7 @@
             <button class="round-button backToToday" type="button" aria-label="Back">&#8249;</button>
             <h2 id="weekTitle">7 day totals</h2>
           </div>
+          <p id="weekRange" class="week-range"></p>
           <div id="weekSummary" class="week-summary"></div>
         </section>
 
@@ -113,7 +114,7 @@
             </div>
             <form id="settingsForm" class="settings-form">
               <div id="settingsCategoryList" class="settings-category-list"></div>
-              <div class="form-actions">
+              <div class="form-actions settings-save-actions">
                 <button class="ghost-button" id="resetCategoriesButton" type="button">Defaults</button>
                 <button class="primary-button" type="submit">Save</button>
               </div>
@@ -124,6 +125,10 @@
 
       <button class="fab" id="addMeal" type="button" aria-label="Add meal">+</button>
       <div class="toast" id="toast" role="status" aria-live="polite"></div>
+      <div class="update-banner" id="updateBanner" role="status" hidden>
+        <span>An app update is ready.</span>
+        <button class="primary-button" id="reloadAppButton" type="button">Reload</button>
+      </div>
     </div>
     <script src="app.js"></script>
   </body>
@@ -138,3 +143,4 @@
 <!-- metadata: GPT-5 Codex; time: 2026-06-29 09:24 Australia/Sydney; date: 2026-06-29; prompt: Clean literal escaped newline markers after adding versioned JSON import/export. -->
 <!-- metadata: GPT-5 Codex; time: 2026-08-04 09:30 Australia/Sydney; date: 2026-08-04; prompt: Add settings tab to edit food unit names and targets and add custom categories. -->
 <!-- metadata: GPT-5 Codex; time: 2026-08-04 09:47 Australia/Sydney; date: 2026-08-04; prompt: Clean escaped newline marker and make category normalization independent of initialized category settings. -->
+<!-- metadata: GPT-5 Codex; time: 2026-09-05 17:17 Australia/Sydney; date: 2026-09-05; prompt: Implement the first four recommended UX improvements while leaving the navigation labels and icons unchanged. -->

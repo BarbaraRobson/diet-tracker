@@ -1,4 +1,4 @@
-const CACHE_NAME = "diet-tracker-v6";
+const CACHE_NAME = "diet-tracker-v8";
 const ASSETS = [
   "./",
   "./index.html",
@@ -40,3 +40,5 @@ self.addEventListener("fetch", (event) => {
 /* metadata: GPT-5 Codex; time: 2026-08-24 Australia/Sydney; date: 2026-08-24; prompt: Refresh the PWA cache after expanding the official food-unit guide. */
 
 /* metadata: GPT-5 Codex; time: 2026-08-25 Australia/Sydney; date: 2026-08-25; prompt: Refresh the PWA cache after updating the app icon backgrounds. */
+/* metadata: GPT-5 Codex; time: 2026-09-05 17:00 Australia/Sydney; date: 2026-09-05; prompt: Fix settings changes not appearing on Today or 7 day totals, add weekly progress bars, reorder unit guide phrases quantity-first, and retain the expanded guide coverage. */
+/* metadata: GPT-5 Codex; time: 2026-09-05 17:17 Australia/Sydney; date: 2026-09-05; prompt: Implement the first four recommended UX improvements while leaving the navigation labels and icons unchanged. */

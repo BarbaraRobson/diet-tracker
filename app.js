@@ -1,12 +1,22 @@
 const DEFAULT_CATEGORIES = [
-  { id: "protein", name: "Meat & Protein", target: 2.5, color: "var(--bar)", guide: "Beef fillet, pork fillet, lean minced chicken or beef, trimmed lamb steak, salmon or white fish: 100g raw; canned tuna: 185g drained; tempeh or firm tofu: 100g; kidney beans: 3/4 cup; edamame or canned lentils: 1 cup; eggs: 2.", locked: true },
-  { id: "grain", name: "Bread & Cereals", target: 3, color: "var(--bar)", guide: "Bread: 1 slice; bread roll: 1/2 roll; wrap/tortilla: 1 mini; crispbread: 4 crackers; wheat biscuits: 2 biscuits; sweet potato: 3/4 cup; potato: 1 medium; untoasted muesli: 1/4 cup; wheat bran cereal: 1/2 cup; rolled oats (raw): 1/4 cup; cooked pasta, quinoa, brown rice or pearl barley: 1/2 cup.", locked: true },
-  { id: "veg", name: "Vegetables", target: 2.5, color: "var(--bar)", guide: "Mixed salad greens: 150g; coleslaw mix: 1 cup; cauliflower rice, raw broccoli florets, zucchini noodles or raw mushrooms: 2 cups; cubed pumpkin: 3/4 cup; canned tomatoes or mixed salad vegetables: 1 cup; corn on the cob: 1/2 cob; frozen mixed vegetables: 1 cup.\n\nFree foods: vegetables; condiments; herbs, spices and seasonings; clear soups and vegetable soup.", locked: true },
-  { id: "fruit", name: "Fruit", target: 2, color: "var(--bar)", guide: "Apple, banana or orange: 1 medium; watermelon: 1 cup; kiwi fruit: 2 fruits; fresh mixed berries: 1 cup; canned peaches in juice: 3/4 cup; frozen fruit: 1 cup; dried fruit: 2 tablespoons; 100% fresh fruit juice: 1 cup.", locked: true },
-  { id: "dairy", name: "Dairy", target: 3, color: "var(--bar)", guide: "Reduced-fat cheddar: 50g; reduced-fat ricotta: 1/2 cup; low-fat cottage cheese: 3/4 cup; soy milk or low-fat milk: 1 cup; low-fat yoghurt: 2/3 cup; low-fat latte: 1 large cup.", locked: true },
-  { id: "fat", name: "Healthy Fats & Oils", target: 3, color: "var(--bar)", guide: "Extra virgin olive oil: 1 teaspoon; margarine: 2 teaspoons; peanut butter: 1 heaped teaspoon; reduced-fat mayonnaise: 1.5 tablespoons; mashed avocado: 1 tablespoon; almonds: 6 nuts; walnuts: 5 nuts; pistachios: 12 nuts; sesame seeds: 2 teaspoons; chia seeds: 1 tablespoon.", locked: true },
-  { id: "indulgence", name: "Indulgences", target: 0, color: "var(--indulgence)", guide: "Chocolate: 4 squares; soft jelly lollies: 30g; M&Ms: 20g; cookie: 1 small; muffin: 1 mini or 1/2 medium; custard: 3/4 cup; donut: 1/3; reduced-fat ice-cream: 1/2 cup; croissant: about 1/2; Danish pastry: 30g; chips: 20g; pretzels: 13; flavoured popcorn: 20g; bacon: 50g; ham: 3 slices; sausage: 1 thin sausage; soft drink: 250ml; cordial: 2.5 tablespoons; energy drink: 200-250ml; wine: 150ml; beer: 275ml; spirits: 30ml.", locked: true }
+  { id: "protein", name: "Meat & Protein", target: 2.5, color: "var(--bar)", guide: "100g raw beef fillet, pork fillet, lean minced chicken or beef, trimmed lamb steak, salmon or white fish; 185g drained canned tuna; 100g tempeh or firm tofu; 3/4 cup kidney beans; 1 cup edamame or canned lentils; 2 eggs.", locked: true },
+  { id: "grain", name: "Bread & Cereals", target: 3, color: "var(--bar)", guide: "1 slice bread; 1/2 bread roll; 1 mini wrap or tortilla; 4 crispbread crackers; 2 wheat biscuits; 3/4 cup sweet potato; 1 medium potato; 1/4 cup untoasted muesli; 1/2 cup wheat bran cereal; 1/4 cup raw rolled oats; 1/2 cup cooked pasta, quinoa, brown rice or pearl barley.", locked: true },
+  { id: "veg", name: "Vegetables", target: 2.5, color: "var(--bar)", guide: "150g mixed salad greens; 1 cup coleslaw mix; 2 cups cauliflower rice, raw broccoli florets, zucchini noodles or raw mushrooms; 3/4 cup cubed pumpkin; 1 cup canned tomatoes or mixed salad vegetables; 1/2 corn cob; 1 cup frozen mixed vegetables.\n\nFree foods: vegetables; condiments; herbs, spices and seasonings; clear soups and vegetable soup.", locked: true },
+  { id: "fruit", name: "Fruit", target: 2, color: "var(--bar)", guide: "1 medium apple, banana or orange; 1 cup watermelon; 2 kiwi fruits; 1 cup fresh mixed berries; 3/4 cup canned peaches in juice; 1 cup frozen fruit; 2 tablespoons dried fruit; 1 cup 100% fresh fruit juice.", locked: true },
+  { id: "dairy", name: "Dairy", target: 3, color: "var(--bar)", guide: "50g reduced-fat cheddar; 1/2 cup reduced-fat ricotta; 3/4 cup low-fat cottage cheese; 1 cup soy milk or low-fat milk; 2/3 cup low-fat yoghurt; 1 large cup low-fat latte.", locked: true },
+  { id: "fat", name: "Healthy Fats & Oils", target: 3, color: "var(--bar)", guide: "1 teaspoon extra virgin olive oil; 2 teaspoons margarine; 1 heaped teaspoon peanut butter; 1.5 tablespoons reduced-fat mayonnaise; 1 tablespoon mashed avocado; 6 almonds; 5 walnuts; 12 pistachios; 2 teaspoons sesame seeds; 1 tablespoon chia seeds.", locked: true },
+  { id: "indulgence", name: "Indulgences", target: 0, color: "var(--indulgence)", guide: "4 squares chocolate; 30g soft jelly lollies; 20g M&Ms; 1 small cookie; 1 mini muffin or 1/2 medium muffin; 3/4 cup custard; 1/3 donut; 1/2 cup reduced-fat ice-cream; about 1/2 croissant; 30g Danish pastry; 20g chips; 13 pretzels; 20g flavoured popcorn; 50g bacon; 3 slices ham; 1 thin sausage; 250ml soft drink; 2.5 tablespoons cordial; 200-250ml energy drink; 150ml wine; 275ml beer; 30ml spirits.", locked: true }
 ];
+
+const PREVIOUS_DEFAULT_GUIDES = {
+  protein: "Beef fillet, pork fillet, lean minced chicken or beef, trimmed lamb steak, salmon or white fish: 100g raw; canned tuna: 185g drained; tempeh or firm tofu: 100g; kidney beans: 3/4 cup; edamame or canned lentils: 1 cup; eggs: 2.",
+  grain: "Bread: 1 slice; bread roll: 1/2 roll; wrap/tortilla: 1 mini; crispbread: 4 crackers; wheat biscuits: 2 biscuits; sweet potato: 3/4 cup; potato: 1 medium; untoasted muesli: 1/4 cup; wheat bran cereal: 1/2 cup; rolled oats (raw): 1/4 cup; cooked pasta, quinoa, brown rice or pearl barley: 1/2 cup.",
+  veg: "Mixed salad greens: 150g; coleslaw mix: 1 cup; cauliflower rice, raw broccoli florets, zucchini noodles or raw mushrooms: 2 cups; cubed pumpkin: 3/4 cup; canned tomatoes or mixed salad vegetables: 1 cup; corn on the cob: 1/2 cob; frozen mixed vegetables: 1 cup.\n\nFree foods: vegetables; condiments; herbs, spices and seasonings; clear soups and vegetable soup.",
+  fruit: "Apple, banana or orange: 1 medium; watermelon: 1 cup; kiwi fruit: 2 fruits; fresh mixed berries: 1 cup; canned peaches in juice: 3/4 cup; frozen fruit: 1 cup; dried fruit: 2 tablespoons; 100% fresh fruit juice: 1 cup.",
+  dairy: "Reduced-fat cheddar: 50g; reduced-fat ricotta: 1/2 cup; low-fat cottage cheese: 3/4 cup; soy milk or low-fat milk: 1 cup; low-fat yoghurt: 2/3 cup; low-fat latte: 1 large cup.",
+  fat: "Extra virgin olive oil: 1 teaspoon; margarine: 2 teaspoons; peanut butter: 1 heaped teaspoon; reduced-fat mayonnaise: 1.5 tablespoons; mashed avocado: 1 tablespoon; almonds: 6 nuts; walnuts: 5 nuts; pistachios: 12 nuts; sesame seeds: 2 teaspoons; chia seeds: 1 tablespoon.",
+  indulgence: "Chocolate: 4 squares; soft jelly lollies: 30g; M&Ms: 20g; cookie: 1 small; muffin: 1 mini or 1/2 medium; custard: 3/4 cup; donut: 1/3; reduced-fat ice-cream: 1/2 cup; croissant: about 1/2; Danish pastry: 30g; chips: 20g; pretzels: 13; flavoured popcorn: 20g; bacon: 50g; ham: 3 slices; sausage: 1 thin sausage; soft drink: 250ml; cordial: 2.5 tablespoons; energy drink: 200-250ml; wine: 150ml; beer: 275ml; spirits: 30ml."
+};
 
 const LEGACY_DEFAULT_GUIDES = {
   protein: "100g red meat, lamb, pork, chicken, fish or tofu, 2 eggs, or 150g of legumes",
@@ -18,7 +28,7 @@ const LEGACY_DEFAULT_GUIDES = {
   indulgence: "4 small squares of chocolate, 150mL wine, 1 scoop ice cream, 1 fun size packet of chips, 1 biscuit, 285ml beer, or 30ml spirits"
 };
 
-const APP_VERSION = "1.2.2";
+const APP_VERSION = "1.3.1";
 const DATA_SCHEMA_VERSION = 2;
 const STORE_KEY = "diet-tracker-v1";
 const CATEGORY_STORE_KEY = "diet-tracker-categories-v1";
@@ -51,7 +61,10 @@ const el = {
   copySearch: document.getElementById("copySearch"),
   copyList: document.getElementById("copyList"),
   weekSummary: document.getElementById("weekSummary"),
+  weekRange: document.getElementById("weekRange"),
   guideList: document.getElementById("guideList"),
+  updateBanner: document.getElementById("updateBanner"),
+  reloadAppButton: document.getElementById("reloadAppButton"),
   toast: document.getElementById("toast"),
   exportCsvButton: document.getElementById("exportCsvButton"),
   exportJsonButton: document.getElementById("exportJsonButton"),
@@ -170,7 +183,8 @@ function normalizeCategories(input, fallbackToDefaults = false) {
 function migrateDefaultGuides(categories) {
   return categories.map((category) => {
     const defaultCategory = DEFAULT_CATEGORIES.find((item) => item.id === category.id);
-    if (!defaultCategory || category.guide !== LEGACY_DEFAULT_GUIDES[category.id]) return category;
+    const oldDefaults = [LEGACY_DEFAULT_GUIDES[category.id], PREVIOUS_DEFAULT_GUIDES[category.id]];
+    if (!defaultCategory || !oldDefaults.includes(category.guide)) return category;
     return { ...category, guide: defaultCategory.guide };
   });
 }
@@ -204,13 +218,13 @@ function formatNumber(value) {
   return Number.isInteger(value) ? String(value) : value.toFixed(1).replace(/\.0$/, "");
 }
 
-function renderProgressCard(cat, value) {
-  const denominator = cat.id === "indulgence" ? Math.max(1, value, 1) : Math.max(cat.target, value, 0.1);
-  const baseValue = cat.id === "indulgence" ? Math.min(value, 1) : Math.min(value, cat.target);
-  const extraValue = Math.max(0, value - (cat.id === "indulgence" ? 1 : cat.target));
+function renderProgressCard(cat, value, target = cat.target) {
+  const denominator = cat.id === "indulgence" ? Math.max(1, value) : Math.max(target, value, 0.1);
+  const baseValue = cat.id === "indulgence" ? Math.min(value, 1) : Math.min(value, target);
+  const extraValue = Math.max(0, value - (cat.id === "indulgence" ? 1 : target));
   const baseWidth = Math.min(100, (baseValue / denominator) * 100);
   const extraWidth = Math.min(100 - baseWidth, (extraValue / denominator) * 100);
-  const targetLabel = cat.id === "indulgence" ? "0" : formatNumber(cat.target);
+  const targetLabel = cat.id === "indulgence" ? "0" : formatNumber(target);
   const extraColor = cat.id === "veg" ? cat.color : "var(--excess)";
   return `
     <article class="progress-card">
@@ -382,10 +396,7 @@ function renderWeek() {
   for (let i = 6; i >= 0; i -= 1) {
     const date = new Date(end);
     date.setDate(end.getDate() - i);
-    const key = dateToKey(date);
-    if ((state.data[key]?.meals || []).length) {
-      dates.push(key);
-    }
+    dates.push(dateToKey(date));
   }
   const totals = Object.fromEntries(CATEGORIES.map((cat) => [cat.id, 0]));
   dates.forEach((date) => {
@@ -394,14 +405,26 @@ function renderWeek() {
       totals[cat.id] += day[cat.id];
     });
   });
-  const dayCount = dates.length || 0;
-  el.weekSummary.innerHTML = dayCount
-    ? CATEGORIES.map((cat) => {
-      const targetTotal = cat.target * dayCount;
-      const targetLabel = cat.id === "indulgence" ? "0" : formatNumber(targetTotal);
-      return `<article class="week-card"><h3>${escapeHtml(cat.name)}</h3><p>${formatNumber(totals[cat.id])}/${targetLabel} over ${dayCount} day${dayCount === 1 ? "" : "s"}</p></article>`;
-    }).join("")
-    : `<article class="week-card"><p>No meal data entered yet.</p></article>`;
+  el.weekRange.textContent = `${formatDate(dates[0], false)} – ${formatDate(dates[dates.length - 1], false)}`;
+  el.weekSummary.innerHTML = CATEGORIES.map((cat) => {
+    const targetTotal = cat.target * 7;
+    return renderProgressCard(cat, totals[cat.id], targetTotal);
+  }).join("");
+}
+
+function renderGuideDetails(guide) {
+  const text = String(guide || "").trim();
+  if (!text) return `<p class="guide-note">Add a unit description in Settings.</p>`;
+  const [servings, ...notes] = text.split(/\n\s*\n/);
+  const items = servings.split(";").map((item) => item.trim()).filter(Boolean);
+  const list = `
+    <p class="guide-equation">1 unit equals:</p>
+    <ul class="guide-items">
+      ${items.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
+    </ul>
+  `;
+  const noteHtml = notes.map((note) => `<p class="guide-note">${escapeHtml(note)}</p>`).join("");
+  return list + noteHtml;
 }
 
 function renderGuide() {
@@ -409,7 +432,7 @@ function renderGuide() {
   el.guideList.innerHTML = CATEGORIES.map((cat) => `
     <article class="guide-card">
       <h3>${escapeHtml(cat.name)}</h3>
-      <p class="guide-description">1 unit = ${escapeHtml(cat.guide || "Add a unit description in Settings.")}</p>
+      ${renderGuideDetails(cat.guide)}
     </article>
   `).join("");
 }
@@ -459,7 +482,7 @@ function saveCategorySettings(event) {
   });
   CATEGORIES = normalizeCategories(updated, true);
   saveCategories();
-  renderSettings();
+  renderToday();
   showToast("Settings saved");
 }
 
@@ -653,6 +676,7 @@ function bindEvents() {
   el.exportJsonButton.addEventListener("click", exportJson);
   el.importJsonButton.addEventListener("click", () => el.importJsonInput.click());
   el.importJsonInput.addEventListener("change", () => readImportFile(el.importJsonInput.files[0]));
+  el.reloadAppButton.addEventListener("click", () => window.location.reload());
   el.settingsForm.addEventListener("submit", saveCategorySettings);
   el.addCategoryButton.addEventListener("click", addCategory);
   el.resetCategoriesButton.addEventListener("click", resetCategories);
@@ -702,8 +726,27 @@ function bindEvents() {
 }
 
 if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register("sw.js").catch(() => {});
+  let updateDetected = false;
+  const hadController = Boolean(navigator.serviceWorker.controller);
+  const showUpdateBanner = () => {
+    if (updateDetected) return;
+    updateDetected = true;
+    el.updateBanner.hidden = false;
+  };
+  navigator.serviceWorker.addEventListener("controllerchange", () => hadController && showUpdateBanner());
+  window.addEventListener("load", async () => {
+    try {
+      const registration = await navigator.serviceWorker.register("sw.js");
+      if (registration.waiting) showUpdateBanner();
+      registration.addEventListener("updatefound", () => {
+        const worker = registration.installing;
+        worker?.addEventListener("statechange", () => {
+          if (worker.state === "installed" && navigator.serviceWorker.controller) showUpdateBanner();
+        });
+      });
+    } catch {
+      // The app remains usable online when service-worker registration is unavailable.
+    }
   });
 }
 
@@ -730,3 +773,7 @@ renderToday();
 /* metadata: GPT-5 Codex; time: 2026-08-24 Australia/Sydney; date: 2026-08-24; prompt: Read the supplied official food-groups PDF, skip its first non-unit page, and expand the Diet Tracker food-unit guide to include every listed food and serving size. */
 
 /* metadata: GPT-5 Codex; time: 2026-08-25 Australia/Sydney; date: 2026-08-25; prompt: Refresh the Diet Tracker PWA app icon backgrounds with a soft pink and teal palette. */
+/* metadata: GPT-5 Codex; time: 2026-09-05 17:00 Australia/Sydney; date: 2026-09-05; prompt: Fix settings changes not appearing on Today or 7 day totals, add weekly progress bars, reorder unit guide phrases quantity-first, and retain the expanded guide coverage. */
+/* metadata: GPT-5 Codex; time: 2026-09-05 17:17 Australia/Sydney; date: 2026-09-05; prompt: Implement the first four recommended UX improvements while leaving the navigation labels and icons unchanged. */
+/* metadata: GPT-5 Codex; time: 2026-09-05 17:17 Australia/Sydney; date: 2026-09-05; prompt: Prevent the installed-app update notice from appearing during a first-time service-worker installation. */
+/* metadata: GPT-5 Codex; time: 2026-09-05 17:33 Australia/Sydney; date: 2026-09-05; prompt: Restore the missing Reload button event handler found during final diff review. */
