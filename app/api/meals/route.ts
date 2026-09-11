@@ -12,7 +12,7 @@ export async function POST(request: Request) {
   const date=body.date; if(!validDate(date)) return errorResponse('Choose a valid date.');
   const name=cleanText(body.name,120); if(!name) return errorResponse('Enter a meal name.');
   const time=/^([01]\d|2[0-3]):[0-5]\d$/.test(String(body.time || '')) ? String(body.time) : new Date().toISOString().slice(11,16);
-  const source=['manual','ai','template'].includes(String(body.source)) ? String(body.source) : 'manual';
+  const source=['manual','ai','template','recipe'].includes(String(body.source)) ? String(body.source) : 'manual';
   const description=cleanText(body.description,2000);
   const nutrients=readNutrients(body.nutrients);
   const confidence=['high','medium','low'].includes(String(body.confidence)) ? String(body.confidence) : null;
@@ -49,3 +49,4 @@ export async function POST(request: Request) {
 
 // metadata: GPT-5.6 Sol; time: 2026-09-11 13:39 Australia/Sydney; date: 2026-09-11; prompt: Convert Diet Tracker to a private signed-in Site with synced data and AI analysis of meal descriptions, meal photos, and recipe photos.
 // metadata: GPT-5.6 Sol; time: 2026-09-11 14:23 Australia/Sydney; date: 2026-09-11; prompt: Harden private Site mutation routes against cross-origin requests before deployment.
+// metadata: GPT-5.6 Sol; time: 2026-09-11 15:23 Australia/Sydney; date: 2026-09-11; prompt: Accept validated recipe-book meal entries as a distinct non-AI source.

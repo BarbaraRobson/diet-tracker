@@ -1,0 +1,3083 @@
+{
+  "_metadata": {
+    "title": "Barbara's Recipe Book",
+    "sourceFile": "barbaras_recipe_book.pdf",
+    "sourceSha256": "ea0736434959fceb71c8a928bef799252572dac60eb483a932baf4d1e91f754e",
+    "sourcePages": 149,
+    "recipeCount": 118,
+    "generatedAt": "2026-09-11T04:27:43.617847+00:00",
+    "generator": "scripts/build-recipe-reference.py",
+    "model": "GPT-5.6 Sol",
+    "prompt": "Add Barbara's Recipe Book as a selectable private meal data source in Diet Tracker."
+  },
+  "recipes": [
+    {
+      "id": "recipe-7-creamy-mango-porridge",
+      "name": "Creamy mango porridge",
+      "category": "breakfast",
+      "page": 7,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 0.0,
+        "grain": 1.0,
+        "veg": 0.0,
+        "fruit": 1.0,
+        "dairy": 2.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1958.0,
+        "proteinG": 27.5,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-8-nutty-banana-overnight-oats",
+      "name": "Nutty banana overnight oats",
+      "category": "breakfast",
+      "page": 8,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 0.0,
+        "grain": 1.0,
+        "veg": 0.0,
+        "fruit": 1.0,
+        "dairy": 2.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1974.0,
+        "proteinG": 29.4,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-9-breakfast-bruschetta-wrap",
+      "name": "Breakfast bruschetta wrap",
+      "category": "breakfast",
+      "page": 9,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.0,
+        "grain": 1.0,
+        "veg": 0.6,
+        "fruit": 1.0,
+        "dairy": 1.1,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 2343.0,
+        "proteinG": 39.1,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-10-tomato-and-ricotta-bruschetta",
+      "name": "Tomato and ricotta bruschetta",
+      "category": "breakfast",
+      "page": 10,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 0.0,
+        "grain": 1.0,
+        "veg": 0.4,
+        "fruit": 1.0,
+        "dairy": 2.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 2156.0,
+        "proteinG": 28.7,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-11-jaffa-overnight-oats",
+      "name": "Jaffa overnight oats",
+      "category": "breakfast",
+      "page": 11,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 0.0,
+        "grain": 1.0,
+        "veg": 0.0,
+        "fruit": 1.0,
+        "dairy": 1.9,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1908.0,
+        "proteinG": 32.1,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-12-cheesy-mushroom-and-egg-wrap",
+      "name": "Cheesy mushroom and egg wrap",
+      "category": "breakfast",
+      "page": 12,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.0,
+        "grain": 1.0,
+        "veg": 0.2,
+        "fruit": 1.0,
+        "dairy": 1.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 2248.0,
+        "proteinG": 34.0,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-13-fruit-nut-muesli-bowl",
+      "name": "Fruit & nut muesli bowl",
+      "category": "breakfast",
+      "page": 13,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 0.0,
+        "grain": 1.0,
+        "veg": 0.0,
+        "fruit": 1.0,
+        "dairy": 2.0,
+        "fat": 1.1,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1934.0,
+        "proteinG": 30.2,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-14-fruit-nut-porridge",
+      "name": "Fruit & nut porridge",
+      "category": "breakfast",
+      "page": 14,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 0.0,
+        "grain": 1.0,
+        "veg": 0.0,
+        "fruit": 1.0,
+        "dairy": 2.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1781.0,
+        "proteinG": 27.4,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-15-basil-scrambled-eggs",
+      "name": "Basil scrambled eggs",
+      "category": "breakfast",
+      "page": 15,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.0,
+        "grain": 1.0,
+        "veg": 0.5,
+        "fruit": 1.0,
+        "dairy": 1.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 2160.0,
+        "proteinG": 37.8,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-16-berry-coconut-porridge",
+      "name": "Berry coconut porridge",
+      "category": "breakfast",
+      "page": 16,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 0.0,
+        "grain": 1.0,
+        "veg": 0.0,
+        "fruit": 1.0,
+        "dairy": 2.0,
+        "fat": 0.9,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1954.0,
+        "proteinG": 28.4,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-17-coconut-bircher-oats",
+      "name": "Coconut bircher oats",
+      "category": "breakfast",
+      "page": 17,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 0.0,
+        "grain": 1.0,
+        "veg": 0.0,
+        "fruit": 1.0,
+        "dairy": 1.9,
+        "fat": 0.9,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1878.0,
+        "proteinG": 31.7,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-18-cinnamon-berry-pancakes",
+      "name": "Cinnamon berry pancakes",
+      "category": "breakfast",
+      "page": 18,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.0,
+        "grain": 1.0,
+        "veg": 0.0,
+        "fruit": 1.0,
+        "dairy": 1.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 2095.0,
+        "proteinG": 35.5,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-19-fruity-toast-with-ricotta-compote",
+      "name": "Fruity toast with ricotta compote",
+      "category": "breakfast",
+      "page": 19,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 0.0,
+        "grain": 1.0,
+        "veg": 0.0,
+        "fruit": 1.0,
+        "dairy": 2.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 2097.0,
+        "proteinG": 29.7,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-20-french-toast-with-pear-ricotta",
+      "name": "French toast with pear & ricotta",
+      "category": "breakfast",
+      "page": 20,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.0,
+        "grain": 1.0,
+        "veg": 0.0,
+        "fruit": 1.0,
+        "dairy": 1.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 2404.0,
+        "proteinG": 31.5,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-21-almond-banana-cereal",
+      "name": "Almond banana cereal",
+      "category": "breakfast",
+      "page": 21,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 0.0,
+        "grain": 0.9,
+        "veg": 0.0,
+        "fruit": 1.0,
+        "dairy": 2.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 2023.0,
+        "proteinG": 30.4,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-22-banana-almond-porridge",
+      "name": "Banana & almond porridge",
+      "category": "breakfast",
+      "page": 22,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 0.0,
+        "grain": 1.0,
+        "veg": 0.0,
+        "fruit": 1.0,
+        "dairy": 2.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 2057.0,
+        "proteinG": 27.9,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-23-breakfast-pita",
+      "name": "Breakfast pita",
+      "category": "breakfast",
+      "page": 23,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.0,
+        "grain": 1.0,
+        "veg": 0.8,
+        "fruit": 1.0,
+        "dairy": 1.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 2293.0,
+        "proteinG": 29.7,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-24-breakfast-bruschetta-with-cottage-cheese-and",
+      "name": "Breakfast bruschetta with cottage cheese and",
+      "category": "breakfast",
+      "page": 24,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 0.0,
+        "grain": 1.0,
+        "veg": 0.0,
+        "fruit": 1.0,
+        "dairy": 2.0,
+        "fat": 0.9,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 2111.0,
+        "proteinG": 39.8,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-25-vanilla-berry-overnight-oats",
+      "name": "Vanilla berry overnight oats",
+      "category": "breakfast",
+      "page": 25,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 0.0,
+        "grain": 1.0,
+        "veg": 0.0,
+        "fruit": 1.0,
+        "dairy": 1.9,
+        "fat": 0.9,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1855.0,
+        "proteinG": 31.4,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-26-poached-eggs-with-avocado-toast",
+      "name": "Poached eggs with avocado toast",
+      "category": "breakfast",
+      "page": 26,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.0,
+        "grain": 1.0,
+        "veg": 0.3,
+        "fruit": 1.0,
+        "dairy": 1.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 2234.0,
+        "proteinG": 30.4,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-27-banana-nut-roll",
+      "name": "Banana nut roll",
+      "category": "breakfast",
+      "page": 27,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 0.0,
+        "grain": 1.0,
+        "veg": 0.0,
+        "fruit": 1.0,
+        "dairy": 2.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 2084.0,
+        "proteinG": 32.1,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-28-berry-nana-cereal",
+      "name": "Berry-nana cereal",
+      "category": "breakfast",
+      "page": 28,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 0.0,
+        "grain": 1.0,
+        "veg": 0.0,
+        "fruit": 1.0,
+        "dairy": 2.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1873.0,
+        "proteinG": 33.4,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-29-paprika-fried-eggs",
+      "name": "Paprika fried eggs",
+      "category": "breakfast",
+      "page": 29,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.0,
+        "grain": 1.0,
+        "veg": 0.4,
+        "fruit": 1.0,
+        "dairy": 1.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1945.0,
+        "proteinG": 38.0,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-30-banana-walnut-porridge",
+      "name": "Banana & walnut porridge",
+      "category": "breakfast",
+      "page": 30,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 0.0,
+        "grain": 1.0,
+        "veg": 0.0,
+        "fruit": 1.0,
+        "dairy": 1.9,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 2010.0,
+        "proteinG": 21.5,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-31-vanilla-overnight-oats-with-pear-toasted",
+      "name": "Vanilla overnight oats with pear & toasted",
+      "category": "breakfast",
+      "page": 31,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 0.0,
+        "grain": 1.0,
+        "veg": 0.0,
+        "fruit": 1.0,
+        "dairy": 2.1,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 2212.0,
+        "proteinG": 19.9,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-33-spring-chicken-rice-soup",
+      "name": "Spring chicken rice soup",
+      "category": "lunch",
+      "page": 33,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.0,
+        "grain": 2.0,
+        "veg": 1.2,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1944.0,
+        "proteinG": 40.7,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-35-mint-feta-salad",
+      "name": "Mint & feta salad",
+      "category": "lunch",
+      "page": 35,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 0.0,
+        "grain": 2.0,
+        "veg": 1.6,
+        "fruit": 0.0,
+        "dairy": 1.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1894.0,
+        "proteinG": 19.3,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-36-tuna-wrap-with-sweet-chilli-mayo",
+      "name": "Tuna wrap with sweet chilli mayo",
+      "category": "lunch",
+      "page": 36,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.0,
+        "grain": 2.0,
+        "veg": 0.9,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1980.0,
+        "proteinG": 41.8,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-37-mex-beef-guacamole-wrap",
+      "name": "Mex beef & guacamole wrap",
+      "category": "lunch",
+      "page": 37,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.0,
+        "grain": 2.0,
+        "veg": 0.9,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1852.0,
+        "proteinG": 42.0,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-38-beef-burrito-bowl",
+      "name": "Beef burrito bowl",
+      "category": "lunch",
+      "page": 38,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.0,
+        "grain": 2.0,
+        "veg": 1.2,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 2102.0,
+        "proteinG": 41.6,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-39-smoked-salmon-salad-wrap",
+      "name": "Smoked salmon salad wrap",
+      "category": "lunch",
+      "page": 39,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.0,
+        "grain": 2.0,
+        "veg": 0.7,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1751.0,
+        "proteinG": 32.7,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-40-mushroom-poke-bowl",
+      "name": "Mushroom poke bowl",
+      "category": "lunch",
+      "page": 40,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 0.0,
+        "grain": 2.0,
+        "veg": 1.3,
+        "fruit": 0.0,
+        "dairy": 1.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1833.0,
+        "proteinG": 24.2,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-41-chicken-guacamole-tortilla",
+      "name": "Chicken guacamole tortilla",
+      "category": "lunch",
+      "page": 41,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.0,
+        "grain": 2.0,
+        "veg": 0.7,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1802.0,
+        "proteinG": 38.6,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-42-mediterranean-tuna-grain-salad",
+      "name": "Mediterranean tuna grain salad",
+      "category": "lunch",
+      "page": 42,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.0,
+        "grain": 2.0,
+        "veg": 2.0,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 2044.0,
+        "proteinG": 32.7,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-44-roasted-capsicum-steak-sandwich",
+      "name": "Roasted capsicum 'steak' sandwich",
+      "category": "lunch",
+      "page": 44,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.0,
+        "grain": 2.0,
+        "veg": 1.4,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1876.0,
+        "proteinG": 44.4,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-45-broccoli-almond-rice-bowl",
+      "name": "Broccoli almond rice bowl",
+      "category": "lunch",
+      "page": 45,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 0.0,
+        "grain": 2.0,
+        "veg": 1.2,
+        "fruit": 0.0,
+        "dairy": 1.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1902.0,
+        "proteinG": 20.3,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-46-basil-chicken-salad",
+      "name": "Basil chicken salad",
+      "category": "lunch",
+      "page": 46,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.0,
+        "grain": 2.0,
+        "veg": 1.2,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1987.0,
+        "proteinG": 37.6,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-47-chilli-tuna-rice-bowl",
+      "name": "Chilli tuna rice bowl",
+      "category": "lunch",
+      "page": 47,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.0,
+        "grain": 2.0,
+        "veg": 1.4,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1953.0,
+        "proteinG": 41.3,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-48-toasted-beef-sandwich",
+      "name": "Toasted beef sandwich",
+      "category": "lunch",
+      "page": 48,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.0,
+        "grain": 2.0,
+        "veg": 1.0,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1922.0,
+        "proteinG": 44.2,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-49-chicken-sesame-rice-bowl",
+      "name": "Chicken sesame rice bowl",
+      "category": "lunch",
+      "page": 49,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.0,
+        "grain": 2.0,
+        "veg": 1.1,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1827.0,
+        "proteinG": 37.0,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-50-open-bruschetta-melt",
+      "name": "Open bruschetta melt",
+      "category": "lunch",
+      "page": 50,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 0.0,
+        "grain": 2.0,
+        "veg": 0.8,
+        "fruit": 0.0,
+        "dairy": 1.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1862.0,
+        "proteinG": 33.3,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-51-bok-choy-fried-rice",
+      "name": "Bok choy 'fried' rice",
+      "category": "lunch",
+      "page": 51,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.0,
+        "grain": 2.0,
+        "veg": 1.5,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1911.0,
+        "proteinG": 22.9,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-52-mexican-buddha-bowl",
+      "name": "Mexican buddha bowl",
+      "category": "lunch",
+      "page": 52,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.0,
+        "grain": 2.0,
+        "veg": 2.5,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 2351.0,
+        "proteinG": 24.1,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-54-simple-soup",
+      "name": "Simple soup",
+      "category": "lunch",
+      "page": 54,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 0.5,
+        "grain": 2.0,
+        "veg": 1.0,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1529.0,
+        "proteinG": 18.5,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-55-spicy-tuna-rice-bowl",
+      "name": "Spicy tuna rice bowl",
+      "category": "lunch",
+      "page": 55,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.0,
+        "grain": 2.0,
+        "veg": 1.2,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1967.0,
+        "proteinG": 40.6,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-56-beef-and-beetroot-salad",
+      "name": "Beef and beetroot salad",
+      "category": "lunch",
+      "page": 56,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.0,
+        "grain": 2.0,
+        "veg": 2.4,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 2088.0,
+        "proteinG": 42.0,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-57-moroccan-egg-toastie",
+      "name": "Moroccan egg toastie",
+      "category": "lunch",
+      "page": 57,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.0,
+        "grain": 2.0,
+        "veg": 1.2,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 2159.0,
+        "proteinG": 25.7,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-58-beetroot-feta-salad",
+      "name": "Beetroot feta salad",
+      "category": "lunch",
+      "page": 58,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 0.0,
+        "grain": 2.0,
+        "veg": 2.2,
+        "fruit": 0.0,
+        "dairy": 1.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1967.0,
+        "proteinG": 20.8,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-59-italian-roast-vegetable-pasta-salad",
+      "name": "Italian roast vegetable pasta salad",
+      "category": "lunch",
+      "page": 59,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 0.0,
+        "grain": 2.0,
+        "veg": 2.5,
+        "fruit": 0.0,
+        "dairy": 1.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1787.0,
+        "proteinG": 20.0,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-60-fish-laksa",
+      "name": "Fish laksa",
+      "category": "lunch",
+      "page": 60,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.0,
+        "grain": 2.0,
+        "veg": 1.6,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.6
+      },
+      "nutrients": {
+        "energyKj": 2178.0,
+        "proteinG": 31.4,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-61-chicken-pasta-salad",
+      "name": "Chicken pasta salad",
+      "category": "lunch",
+      "page": 61,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.0,
+        "grain": 2.0,
+        "veg": 2.5,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1924.0,
+        "proteinG": 39.1,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-62-beef-bean-fattoush-salad",
+      "name": "Beef & bean fattoush salad",
+      "category": "lunch",
+      "page": 62,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.2,
+        "grain": 2.0,
+        "veg": 2.2,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 2089.0,
+        "proteinG": 38.1,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-63-warm-crunchy-chicken-bowl",
+      "name": "Warm crunchy chicken bowl",
+      "category": "lunch",
+      "page": 63,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.0,
+        "grain": 2.0,
+        "veg": 1.0,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 2026.0,
+        "proteinG": 37.2,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-64-roast-beef-toastie-wrap",
+      "name": "Roast beef toastie wrap",
+      "category": "lunch",
+      "page": 64,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.0,
+        "grain": 2.0,
+        "veg": 1.2,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1922.0,
+        "proteinG": 42.2,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-65-pear-walnut-spinach-salad",
+      "name": "Pear, walnut & spinach salad",
+      "category": "lunch",
+      "page": 65,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 0.0,
+        "grain": 0.0,
+        "veg": 0.6,
+        "fruit": 0.5,
+        "dairy": 1.0,
+        "fat": 1.1,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1132.0,
+        "proteinG": 13.7,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-66-feta-poke-bowl",
+      "name": "Feta poke bowl",
+      "category": "lunch",
+      "page": 66,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 0.0,
+        "grain": 2.0,
+        "veg": 1.8,
+        "fruit": 0.0,
+        "dairy": 1.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 2010.0,
+        "proteinG": 20.9,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-67-greek-lemon-chicken-soup",
+      "name": "Greek lemon chicken soup",
+      "category": "lunch",
+      "page": 67,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.0,
+        "grain": 2.0,
+        "veg": 1.0,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1756.0,
+        "proteinG": 26.7,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-68-cumin-spiced-egg-sandwich",
+      "name": "Cumin-spiced egg sandwich",
+      "category": "lunch",
+      "page": 68,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.0,
+        "grain": 2.0,
+        "veg": 1.0,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 2114.0,
+        "proteinG": 25.5,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-69-walnut-beetroot-salad",
+      "name": "Walnut & beetroot salad",
+      "category": "lunch",
+      "page": 69,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 0.0,
+        "grain": 2.0,
+        "veg": 2.3,
+        "fruit": 0.0,
+        "dairy": 1.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 2080.0,
+        "proteinG": 21.1,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-70-tuna-avo-sandwich",
+      "name": "Tuna avo sandwich",
+      "category": "lunch",
+      "page": 70,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.0,
+        "grain": 2.0,
+        "veg": 2.0,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1925.0,
+        "proteinG": 45.8,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-71-sesame-beef-salad",
+      "name": "Sesame beef salad",
+      "category": "lunch",
+      "page": 71,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.0,
+        "grain": 2.0,
+        "veg": 1.6,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 2070.0,
+        "proteinG": 42.2,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-72-basil-chicken-pita-pocket",
+      "name": "Basil chicken pita pocket",
+      "category": "lunch",
+      "page": 72,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.0,
+        "grain": 2.0,
+        "veg": 1.1,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1710.0,
+        "proteinG": 37.5,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-73-roast-vegetable-pizza",
+      "name": "Roast vegetable pizza",
+      "category": "lunch",
+      "page": 73,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 0.0,
+        "grain": 2.0,
+        "veg": 1.5,
+        "fruit": 0.0,
+        "dairy": 1.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1750.0,
+        "proteinG": 24.5,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-74-tuna-and-smashed-avocado-toast",
+      "name": "Tuna and smashed avocado toast",
+      "category": "lunch",
+      "page": 74,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.0,
+        "grain": 2.0,
+        "veg": 1.0,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1807.0,
+        "proteinG": 44.4,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-75-chilli-beef-bowl",
+      "name": "Chilli beef bowl",
+      "category": "lunch",
+      "page": 75,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.0,
+        "grain": 2.0,
+        "veg": 1.3,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 2014.0,
+        "proteinG": 40.5,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-76-toasted-cottage-cheese-bruschetta",
+      "name": "Toasted cottage cheese bruschetta",
+      "category": "lunch",
+      "page": 76,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 0.0,
+        "grain": 2.0,
+        "veg": 0.6,
+        "fruit": 0.0,
+        "dairy": 1.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1820.0,
+        "proteinG": 32.7,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-77-steak-chutney-roll",
+      "name": "Steak & chutney roll",
+      "category": "lunch",
+      "page": 77,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.0,
+        "grain": 2.0,
+        "veg": 0.9,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1880.0,
+        "proteinG": 43.8,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-78-chicken-avocado-rice-bowl",
+      "name": "Chicken & avocado rice bowl",
+      "category": "lunch",
+      "page": 78,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.0,
+        "grain": 2.0,
+        "veg": 1.6,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.1,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 2039.0,
+        "proteinG": 37.4,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-79-tuna-chutney-roll",
+      "name": "Tuna chutney roll",
+      "category": "lunch",
+      "page": 79,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.0,
+        "grain": 2.0,
+        "veg": 2.0,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.1,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 2053.0,
+        "proteinG": 45.0,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-80-cajun-tofu-lunch-burger",
+      "name": "Cajun tofu lunch burger",
+      "category": "lunch",
+      "page": 80,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.0,
+        "grain": 2.0,
+        "veg": 1.1,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1656.0,
+        "proteinG": 23.7,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-81-feta-beetroot-rice-bowl",
+      "name": "Feta & beetroot rice bowl",
+      "category": "lunch",
+      "page": 81,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 0.0,
+        "grain": 2.0,
+        "veg": 2.4,
+        "fruit": 0.0,
+        "dairy": 1.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 2063.0,
+        "proteinG": 19.7,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-82-tofu-poke-bowl",
+      "name": "Tofu Poke Bowl",
+      "category": "lunch",
+      "page": 82,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.2,
+        "grain": 2.0,
+        "veg": 2.1,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.1,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1882.0,
+        "proteinG": 23.1,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-84-tofu-with-vietnamese-coleslaw",
+      "name": "Tofu with Vietnamese coleslaw",
+      "category": "lunch",
+      "page": 84,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.0,
+        "grain": 2.0,
+        "veg": 3.4,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 2010.0,
+        "proteinG": 27.8,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-86-egg-chickpea-salad-bowl",
+      "name": "Egg & chickpea salad bowl",
+      "category": "lunch",
+      "page": 86,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.1,
+        "grain": 2.0,
+        "veg": 1.7,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1979.0,
+        "proteinG": 21.6,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-87-spiced-egg-salad",
+      "name": "Spiced egg salad",
+      "category": "lunch",
+      "page": 87,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.0,
+        "grain": 2.0,
+        "veg": 2.0,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 2217.0,
+        "proteinG": 23.3,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-88-mediterranean-chicken-cannellini-bean-salad",
+      "name": "Mediterranean chicken & cannellini bean salad",
+      "category": "lunch",
+      "page": 88,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.0,
+        "grain": 2.0,
+        "veg": 2.5,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 2049.0,
+        "proteinG": 33.9,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-89-mexican-chicken-salad-bowl",
+      "name": "Mexican chicken salad bowl",
+      "category": "lunch",
+      "page": 89,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.0,
+        "grain": 2.0,
+        "veg": 1.8,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1916.0,
+        "proteinG": 27.7,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-90-egg-avocado-sandwich",
+      "name": "Egg & avocado sandwich",
+      "category": "lunch",
+      "page": 90,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.0,
+        "grain": 2.0,
+        "veg": 1.1,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1859.0,
+        "proteinG": 25.6,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-91-boiled-egg-and-beetroot-hummus-sandwich-gut-health",
+      "name": "Boiled egg and beetroot hummus sandwich (Gut Health)",
+      "category": "lunch",
+      "page": 91,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.6,
+        "grain": 2.0,
+        "veg": 1.8,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 0.8,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 2359.0,
+        "proteinG": 33.0,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-93-minestrone-with-meatballs",
+      "name": "Minestrone with meatballs",
+      "category": "dinner",
+      "page": 93,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.5,
+        "grain": 0.0,
+        "veg": 1.5,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1373.0,
+        "proteinG": 34.8,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-95-sesame-salmon",
+      "name": "Sesame salmon",
+      "category": "dinner",
+      "page": 95,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.5,
+        "grain": 0.0,
+        "veg": 1.2,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1920.0,
+        "proteinG": 34.7,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-96-garlic-ginger-chicken",
+      "name": "Garlic ginger chicken",
+      "category": "dinner",
+      "page": 96,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.5,
+        "grain": 0.0,
+        "veg": 2.3,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1222.0,
+        "proteinG": 41.9,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-97-steak-with-crunchy-garlic-beans",
+      "name": "Steak with crunchy garlic beans",
+      "category": "dinner",
+      "page": 97,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.5,
+        "grain": 0.0,
+        "veg": 1.5,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1316.0,
+        "proteinG": 37.6,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-98-salmon-with-corn-salsa",
+      "name": "Salmon with corn salsa",
+      "category": "dinner",
+      "page": 98,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.5,
+        "grain": 0.0,
+        "veg": 1.8,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1979.0,
+        "proteinG": 34.9,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-99-hearty-vegetable-and-spiced-beef-soup",
+      "name": "Hearty vegetable and spiced beef soup",
+      "category": "dinner",
+      "page": 99,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.5,
+        "grain": 0.0,
+        "veg": 1.7,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1439.0,
+        "proteinG": 38.4,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-100-egg-corn-scramble",
+      "name": "Egg & corn scramble",
+      "category": "dinner",
+      "page": 100,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.5,
+        "grain": 0.0,
+        "veg": 1.6,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1582.0,
+        "proteinG": 25.1,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-101-roasted-capsicum-and-balsamic-chicken",
+      "name": "Roasted capsicum and balsamic chicken",
+      "category": "dinner",
+      "page": 101,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.5,
+        "grain": 0.0,
+        "veg": 1.6,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1292.0,
+        "proteinG": 33.4,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-103-cajun-fish-veggie-stirfry",
+      "name": "Cajun fish & veggie stirfry",
+      "category": "dinner",
+      "page": 103,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.5,
+        "grain": 0.0,
+        "veg": 2.5,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 0.9,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1462.0,
+        "proteinG": 30.1,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-104-cajun-roast-vegetables-chickpea-tofu",
+      "name": "Cajun roast vegetables & chickpea tofu",
+      "category": "dinner",
+      "page": 104,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.5,
+        "grain": 0.0,
+        "veg": 2.3,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1444.0,
+        "proteinG": 22.6,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-106-sweet-chilli-chicken-basil-stir-fry",
+      "name": "Sweet chilli chicken & basil stir-fry",
+      "category": "dinner",
+      "page": 106,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.5,
+        "grain": 0.0,
+        "veg": 1.7,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1288.0,
+        "proteinG": 38.9,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-108-sticky-salmon-with-garlic-greens",
+      "name": "Sticky salmon with garlic greens",
+      "category": "dinner",
+      "page": 108,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.5,
+        "grain": 0.0,
+        "veg": 1.7,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 2086.0,
+        "proteinG": 37.2,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-109-easy-beef-bean-soup",
+      "name": "Easy beef & bean soup",
+      "category": "dinner",
+      "page": 109,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.5,
+        "grain": 0.0,
+        "veg": 1.9,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1376.0,
+        "proteinG": 35.1,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-110-paprika-tofu-and-chimichurri-vegetables",
+      "name": "Paprika tofu and chimichurri vegetables",
+      "category": "dinner",
+      "page": 110,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.5,
+        "grain": 0.0,
+        "veg": 1.5,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1326.0,
+        "proteinG": 26.5,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-111-beef-black-bean-soup",
+      "name": "Beef & black bean soup",
+      "category": "dinner",
+      "page": 111,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.5,
+        "grain": 0.0,
+        "veg": 1.7,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 2.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1607.0,
+        "proteinG": 36.7,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-112-seared-fish-with-pumpkin-mash",
+      "name": "Seared fish with pumpkin mash",
+      "category": "dinner",
+      "page": 112,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.5,
+        "grain": 0.0,
+        "veg": 2.4,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1317.0,
+        "proteinG": 35.7,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-113-seared-minute-steak-with-caponata",
+      "name": "Seared minute steak with caponata",
+      "category": "dinner",
+      "page": 113,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.5,
+        "grain": 0.0,
+        "veg": 3.0,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1326.0,
+        "proteinG": 37.5,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-115-asian-chicken-sprout-soup",
+      "name": "Asian chicken sprout soup",
+      "category": "dinner",
+      "page": 115,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.5,
+        "grain": 0.0,
+        "veg": 1.0,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1127.0,
+        "proteinG": 39.0,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-116-tofu-pumpkin-stir-fry",
+      "name": "Tofu & pumpkin stir-fry",
+      "category": "dinner",
+      "page": 116,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.5,
+        "grain": 0.0,
+        "veg": 2.4,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1427.0,
+        "proteinG": 23.4,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-117-one-tray-salmon-bake",
+      "name": "One tray salmon bake",
+      "category": "dinner",
+      "page": 117,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.5,
+        "grain": 0.0,
+        "veg": 2.8,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 2143.0,
+        "proteinG": 35.7,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-118-baked-salmon-parcels",
+      "name": "Baked salmon parcels",
+      "category": "dinner",
+      "page": 118,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.5,
+        "grain": 0.0,
+        "veg": 2.0,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1966.0,
+        "proteinG": 35.8,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-119-hoi-sin-beef-sesame-stir-fry",
+      "name": "Hoi sin beef & sesame stir-fry",
+      "category": "dinner",
+      "page": 119,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.5,
+        "grain": 0.0,
+        "veg": 2.0,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1731.0,
+        "proteinG": 41.3,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-121-pork-meatballs-with-zucchini-pasta",
+      "name": "Pork meatballs with zucchini 'pasta'",
+      "category": "dinner",
+      "page": 121,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.5,
+        "grain": 0.0,
+        "veg": 4.5,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1482.0,
+        "proteinG": 35.9,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-123-spanish-style-chicken-vegetable-tray-bake",
+      "name": "Spanish-style chicken & vegetable tray bake",
+      "category": "dinner",
+      "page": 123,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.5,
+        "grain": 0.0,
+        "veg": 3.5,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1441.0,
+        "proteinG": 42.2,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-125-beef-bolognese-with-zoodles",
+      "name": "Beef bolognese with zoodles",
+      "category": "dinner",
+      "page": 125,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.5,
+        "grain": 0.0,
+        "veg": 2.0,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1405.0,
+        "proteinG": 40.4,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-127-barbecue-teriyaki-salmon-skewers-vegetables",
+      "name": "Barbecue teriyaki salmon skewers & vegetables",
+      "category": "dinner",
+      "page": 127,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.5,
+        "grain": 0.0,
+        "veg": 2.5,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 2255.0,
+        "proteinG": 40.4,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-128-teriyaki-tofu-stir-fry",
+      "name": "Teriyaki tofu stir fry",
+      "category": "dinner",
+      "page": 128,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.5,
+        "grain": 0.0,
+        "veg": 2.5,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1469.0,
+        "proteinG": 23.6,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-129-tomato-basil-chicken",
+      "name": "Tomato & basil chicken",
+      "category": "dinner",
+      "page": 129,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.5,
+        "grain": 0.0,
+        "veg": 3.8,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1513.0,
+        "proteinG": 44.4,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-130-ginger-soy-beef-stirfry",
+      "name": "Ginger soy beef stirfry",
+      "category": "dinner",
+      "page": 130,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.5,
+        "grain": 0.0,
+        "veg": 1.8,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1411.0,
+        "proteinG": 40.2,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-131-roast-lemon-chicken-and-veg",
+      "name": "Roast lemon chicken and veg",
+      "category": "dinner",
+      "page": 131,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.5,
+        "grain": 0.0,
+        "veg": 2.0,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1104.0,
+        "proteinG": 38.0,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-133-braised-beef-rosemary-and-mushroom-casserole",
+      "name": "Braised beef, rosemary and mushroom casserole",
+      "category": "dinner",
+      "page": 133,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.5,
+        "grain": 0.0,
+        "veg": 2.8,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1856.0,
+        "proteinG": 45.4,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-135-cumin-salmon-with-pumpkin-mash",
+      "name": "Cumin salmon with pumpkin mash",
+      "category": "dinner",
+      "page": 135,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.5,
+        "grain": 0.0,
+        "veg": 2.1,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 2016.0,
+        "proteinG": 35.4,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-136-chicken-mushroom-bunless-burger",
+      "name": "Chicken & mushroom bunless burger",
+      "category": "dinner",
+      "page": 136,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.5,
+        "grain": 0.0,
+        "veg": 2.8,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1929.0,
+        "proteinG": 39.8,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-138-satay-tofu-mushroom-stirfry",
+      "name": "Satay tofu & mushroom stirfry",
+      "category": "dinner",
+      "page": 138,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.5,
+        "grain": 0.0,
+        "veg": 1.8,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1246.0,
+        "proteinG": 27.2,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-139-spanish-chicken-tray-bake",
+      "name": "Spanish chicken tray bake",
+      "category": "dinner",
+      "page": 139,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.5,
+        "grain": 0.0,
+        "veg": 1.8,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 2.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1436.0,
+        "proteinG": 40.6,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-140-chicken-with-quick-pickled-mustard-onion",
+      "name": "Chicken with quick-pickled mustard onion",
+      "category": "dinner",
+      "page": 140,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.5,
+        "grain": 0.0,
+        "veg": 1.3,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 2.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1290.0,
+        "proteinG": 38.8,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-141-spicy-turkey-eggplant-chilli",
+      "name": "Spicy turkey & eggplant chilli",
+      "category": "dinner",
+      "page": 141,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.5,
+        "grain": 0.0,
+        "veg": 2.2,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 2.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1600.0,
+        "proteinG": 37.5,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-142-chicken-meatballs-with-green-beans",
+      "name": "Chicken meatballs with green beans",
+      "category": "dinner",
+      "page": 142,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.5,
+        "grain": 0.0,
+        "veg": 2.6,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1609.0,
+        "proteinG": 35.9,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    },
+    {
+      "id": "recipe-144-pan-seared-fish-with-garlicky-green-beans",
+      "name": "Pan-seared fish with garlicky green beans",
+      "category": "dinner",
+      "page": 144,
+      "servingLabel": "1 serving",
+      "units": {
+        "protein": 1.5,
+        "grain": 0.0,
+        "veg": 1.7,
+        "fruit": 0.0,
+        "dairy": 0.0,
+        "fat": 1.0,
+        "indulgence": 0.0
+      },
+      "nutrients": {
+        "energyKj": 1239.0,
+        "proteinG": 36.0,
+        "carbohydrateG": null,
+        "sugarsG": null,
+        "fatG": null,
+        "saturatedFatG": null,
+        "fibreG": null,
+        "sodiumMg": null
+      }
+    }
+  ]
+}

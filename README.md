@@ -10,6 +10,7 @@ Diet Tracker is a private OpenAI Site for recording CSIRO diet units and nutriti
 - AI estimates that the user reviews before saving
 - Australian Food Composition Database Release 3 matching for identified food components
 - Saved meal calculations that can be reused without another AI request
+- Searchable selection from Barbara's Recipe Book without another AI request
 - CSV and JSON exports
 
 Meal and recipe photos are resized in the browser and stripped of embedded metadata before analysis. The Site sends them to the OpenAI Responses API with storage disabled and does not save the photos in its own database. Nutrition values remain estimates and are not medical advice.
@@ -38,5 +39,8 @@ The production API key must be stored as a secret named `OPENAI_API_KEY` in the 
 
 `data/afcd-reference.json` is a compact reference generated from Food Standards Australia New Zealand's Australian Food Composition Database Release 3 food details and nutrient profiles. Regenerate it with `scripts/build-afcd-reference.py` and the two official spreadsheets supplied as arguments.
 
+`data/recipe-book-reference.json` contains the one-serving meal names, categories, food units, kilojoules and protein extracted from Barbara's Recipe Book. It deliberately excludes the recipe instructions, photographs, account email and copyright footer. Regenerate it with `scripts/build-recipe-reference.py` and the private source PDF supplied as arguments.
+
 <!-- metadata: GPT-5 Codex; time: 2026-06-28 11:15 Australia/Sydney; date: 2026-06-28; prompt: Add a README explaining how to install the app on a phone. -->
 <!-- metadata: GPT-5.6 Sol; time: 2026-09-11 14:14 Australia/Sydney; date: 2026-09-11; prompt: Document the private signed-in Diet Tracker Site, its AI/photo privacy model, validation, deployment and AFCD provenance. -->
+<!-- metadata: GPT-5.6 Sol; time: 2026-09-11 15:29 Australia/Sydney; date: 2026-09-11; prompt: Document Barbara's Recipe Book as a private, minimal selectable data source. -->
