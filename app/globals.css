@@ -22,7 +22,11 @@ button,a { -webkit-tap-highlight-color:transparent; }
 .progress-card { padding:12px 14px; border:1px solid var(--line); border-radius:14px; background:rgba(255,255,255,.86); box-shadow:0 8px 20px rgba(23,49,58,.05); }
 .progress-card>div:first-child { display:flex; justify-content:space-between; gap:12px; font-size:.88rem; }
 .progress-card span { color:var(--muted); font-weight:850; }
-.bar { height:9px; margin-top:9px; border-radius:999px; background:#e5efed; }
+.bar { display:flex; height:9px; margin-top:9px; border-radius:999px; background:#e5efed; overflow:hidden; }
+.bar i { display:block; height:100%; flex-shrink:0; }
+.bar-within { background:#0f766e; }
+.bar-excess { background:#dc2626; }
+.bar-indulgence { background:#8b5cf6; }
 .meal-panel { margin-top:22px; }
 .section-heading { display:flex; justify-content:space-between; align-items:center; gap:12px; }
 .section-heading h2 { margin:0; font-size:1.15rem; }
@@ -133,3 +137,5 @@ button:focus-visible,a:focus-visible,input:focus-visible { outline:3px solid #f0
 .portion-picker,.unit-breakdown{padding:1rem;border:1px solid #a4b5c5;border-radius:12px;margin:1rem 0}.portion-controls{display:flex;gap:1rem;align-items:center}.portion-controls .field{flex:1;min-width:0}.portion-controls input{width:100%}.unit-breakdown summary{cursor:pointer;font-weight:700}.unit-breakdown article{padding:.75rem 0;border-bottom:1px solid #d9e1e8}.unit-breakdown article p{margin:.4rem 0}.unit-breakdown small{font-size:.875rem;line-height:1.5}.guide-list li{margin:.45rem 0}
 
 /* metadata: date: 2026-09-11; model: GPT (Codex; exact version unavailable); prompt: Publish fixes and implement portion multipliers and ingredient unit breakdowns. */
+
+/* metadata: date: 2026-09-11; model: GPT (Codex; exact version unavailable); prompt: Teal target progress, red excess except vegetables, and contrasting purple indulgence bars. */
