@@ -1,5 +1,5 @@
 import { getD1 } from './index';
-import { DEFAULT_CATEGORIES } from '@/lib/defaults';
+import { DEFAULT_CATEGORIES, PREVIOUS_SITE_CATEGORIES } from '@/lib/defaults';
 
 let schemaReady: Promise<void> | null = null;
 
@@ -28,6 +28,12 @@ export async function ensureUserDefaults(userId: string) {
   const db = getD1();
   await db.batch(DEFAULT_CATEGORIES.map((category, index) => db.prepare('INSERT OR IGNORE INTO categories (user_id,id,name,target,guide,sort_order,locked) VALUES (?,?,?,?,?,?,?)')
     .bind(userId, category.id, category.name, category.target, category.guide, index, category.locked ? 1 : 0)));
+  // Upgrade only unchanged default guides, preserving custom guides and targets.
+  await db.batch(DEFAULT_CATEGORIES.map((category) => db.prepare('UPDATE categories SET guide=? WHERE user_id=? AND id=? AND guide=?')
+    .bind(category.guide, userId, category.id, PREVIOUS_SITE_CATEGORIES.find((old) => old.id === category.id)!.guide)));
+
 }
 
 // metadata: GPT-5.6 Sol; time: 2026-09-11 13:39 Australia/Sydney; date: 2026-09-11; prompt: Convert Diet Tracker to a private signed-in Site with synced data and AI analysis of meal descriptions, meal photos, and recipe photos.
+
+// metadata: date: 2026-09-11; model: GPT (Codex; exact model version unavailable); prompt: Restore the detailed supplied CSIRO unit guide, align AI food-group counting, allow decimal units, and suggest UX improvements.

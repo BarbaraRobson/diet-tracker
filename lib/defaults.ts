@@ -1,4 +1,14 @@
 export const DEFAULT_CATEGORIES = [
+  { id: "protein", name: "Meat & Protein", target: 2.5, guide: "100g raw beef fillet, pork fillet, lean minced chicken or beef, trimmed lamb steak, salmon or white fish; 185g drained canned tuna; 100g tempeh or firm tofu; 3/4 cup kidney beans; 1 cup edamame or canned lentils; 2 eggs.", locked: true },
+  { id: "grain", name: "Bread & Cereals", target: 3, guide: "1 slice bread; 1/2 bread roll; 1 mini wrap or tortilla; 4 crispbread crackers; 2 wheat biscuits; 3/4 cup sweet potato; 1 medium potato; 1/4 cup untoasted muesli; 1/2 cup wheat bran cereal; 1/4 cup raw rolled oats; 1/2 cup cooked pasta, quinoa, brown rice or pearl barley.", locked: true },
+  { id: "veg", name: "Vegetables", target: 2.5, guide: "150g mixed salad greens; 1 cup coleslaw mix; 2 cups cauliflower rice, raw broccoli florets, zucchini noodles or raw mushrooms; 3/4 cup cubed pumpkin; 1 cup canned tomatoes or mixed salad vegetables; 1/2 corn cob; 1 cup frozen mixed vegetables.\n\nFree foods: vegetables; condiments; herbs, spices and seasonings; clear soups and vegetable soup.", locked: true },
+  { id: "fruit", name: "Fruit", target: 2, guide: "1 medium apple, banana or orange; 1 cup watermelon; 2 kiwi fruits; 1 cup fresh mixed berries; 3/4 cup canned peaches in juice; 1 cup frozen fruit; 2 tablespoons dried fruit; 1 cup 100% fresh fruit juice.", locked: true },
+  { id: "dairy", name: "Dairy", target: 3, guide: "50g reduced-fat cheddar; 1/2 cup reduced-fat ricotta; 3/4 cup low-fat cottage cheese; 1 cup soy milk or low-fat milk; 2/3 cup low-fat yoghurt; 1 large cup low-fat latte.", locked: true },
+  { id: "fat", name: "Healthy Fats & Oils", target: 3, guide: "1 teaspoon extra virgin olive oil; 2 teaspoons margarine; 1 heaped teaspoon peanut butter; 1.5 tablespoons reduced-fat mayonnaise; 1 tablespoon mashed avocado; 6 almonds; 5 walnuts; 12 pistachios; 2 teaspoons sesame seeds; 1 tablespoon chia seeds.", locked: true },
+  { id: "indulgence", name: "Indulgences", target: 0, guide: "4 squares chocolate; 30g soft jelly lollies; 20g M&Ms; 1 small cookie; 1 mini muffin or 1/2 medium muffin; 3/4 cup custard; 1/3 donut; 1/2 cup reduced-fat ice-cream; about 1/2 croissant; 30g Danish pastry; 20g chips; 13 pretzels; 20g flavoured popcorn; 50g bacon; 3 slices ham; 1 thin sausage; 250ml soft drink; 2.5 tablespoons cordial; 200-250ml energy drink; 150ml wine; 275ml beer; 30ml spirits.", locked: true }
+] as const;
+
+export const PREVIOUS_SITE_CATEGORIES = [
   { id: 'protein', name: 'Meat & Protein', target: 2.5, guide: '100g raw lean meat, chicken, fish, tempeh or firm tofu; 185g drained canned tuna; 3/4 cup kidney beans; 1 cup edamame or lentils; 2 eggs.', locked: true },
   { id: 'grain', name: 'Bread & Cereals', target: 3, guide: '1 slice bread; 1/2 bread roll; 1 mini wrap; 4 crispbread crackers; 2 wheat biscuits; 3/4 cup sweet potato; 1 medium potato; 1/2 cup cooked pasta, quinoa, brown rice or pearl barley.', locked: true },
   { id: 'veg', name: 'Vegetables', target: 2.5, guide: '150g mixed salad greens; 1 cup coleslaw mix; 2 cups cauliflower rice, broccoli, zucchini noodles or mushrooms; 3/4 cup pumpkin; 1 cup canned tomatoes or mixed vegetables.', locked: true },
@@ -12,3 +22,5 @@ export const NUTRIENT_KEYS = ['energyKj', 'proteinG', 'carbohydrateG', 'sugarsG'
 export type NutrientKey = typeof NUTRIENT_KEYS[number];
 
 // metadata: GPT-5.6 Sol; time: 2026-09-11 13:39 Australia/Sydney; date: 2026-09-11; prompt: Convert Diet Tracker to a private signed-in Site with synced data and AI analysis of meal descriptions, meal photos, and recipe photos.
+
+// metadata: date: 2026-09-11; model: GPT (Codex; exact model version unavailable); prompt: Restore the detailed supplied CSIRO unit guide, align AI food-group counting, allow decimal units, and suggest UX improvements.
