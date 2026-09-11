@@ -1,0 +1,116 @@
+@import 'tailwindcss';
+
+:root { color-scheme: light; --ink:#17313a; --muted:#62777e; --teal:#0f766e; --teal-dark:#115e59; --pink:#f7d7dc; --paper:#fffdf9; --line:#dce8e5; }
+* { box-sizing:border-box; }
+body { margin:0; min-height:100vh; background:radial-gradient(circle at 10% 0%,#dff8f3 0,transparent 34rem),linear-gradient(160deg,#fff8ef 0%,#f8fffd 58%,#fff3f4 100%); color:var(--ink); font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+button,input { font:inherit; }
+button,a { -webkit-tap-highlight-color:transparent; }
+.app-shell { width:min(100%,560px); min-height:100vh; margin:auto; padding:max(18px,env(safe-area-inset-top)) 18px max(142px,calc(env(safe-area-inset-bottom) + 118px)); }
+.topbar { display:flex; justify-content:space-between; gap:18px; align-items:center; padding:6px 2px 18px; }
+.topbar h1 { margin:0; font-size:1.65rem; letter-spacing:-.03em; }
+.eyebrow { margin:0 0 3px; color:var(--teal); font-size:.7rem; font-weight:900; letter-spacing:.1em; text-transform:uppercase; }
+.account { max-width:145px; color:var(--ink); text-decoration:none; text-align:right; font-size:.78rem; font-weight:800; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.account span { display:block; color:var(--teal); font-size:.7rem; }
+.date-row { display:grid; grid-template-columns:46px 1fr 46px; gap:10px; align-items:center; margin-bottom:14px; }
+.date-row button,.date-row input { min-height:46px; border:1px solid var(--line); background:rgba(255,255,255,.9); color:var(--ink); }
+.date-row button { border-radius:50%; font-size:1.7rem; }
+.date-row input { border-radius:999px; padding:0 14px; font-weight:850; text-align:center; }
+.energy-card { display:grid; gap:2px; margin-bottom:12px; padding:18px; border:1px solid rgba(15,118,110,.18); border-radius:18px; background:linear-gradient(135deg,#0f766e,#15998d); color:white; box-shadow:0 16px 34px rgba(15,118,110,.2); }
+.energy-card p,.energy-card span { margin:0; opacity:.88; }
+.energy-card strong { font-size:2rem; letter-spacing:-.04em; }
+.progress-list { display:grid; gap:9px; }
+.progress-card { padding:12px 14px; border:1px solid var(--line); border-radius:14px; background:rgba(255,255,255,.86); box-shadow:0 8px 20px rgba(23,49,58,.05); }
+.progress-card>div:first-child { display:flex; justify-content:space-between; gap:12px; font-size:.88rem; }
+.progress-card span { color:var(--muted); font-weight:850; }
+.bar { height:9px; margin-top:9px; border-radius:999px; background:#e5efed; }
+.meal-panel { margin-top:22px; }
+.section-heading { display:flex; justify-content:space-between; align-items:center; gap:12px; }
+.section-heading h2 { margin:0; font-size:1.15rem; }
+.secondary { min-height:40px; padding:0 14px; border:1px solid rgba(15,118,110,.2); border-radius:999px; background:white; color:var(--teal-dark); font-weight:850; }
+.empty { padding:18px; border:1px dashed #b9d2cd; border-radius:14px; background:rgba(255,255,255,.55); color:var(--muted); line-height:1.5; }
+.fab { position:fixed; left:50%; bottom:max(88px,calc(env(safe-area-inset-bottom) + 78px)); z-index:6; transform:translateX(-50%); display:flex; align-items:center; gap:8px; min-height:54px; padding:0 22px; border:0; border-radius:999px; background:linear-gradient(135deg,#eeb6c0,#f5cbd2); color:#642f3a; box-shadow:0 15px 32px rgba(100,47,58,.25); font-weight:900; }
+.fab span { font-size:1.55rem; line-height:1; }
+.bottom-nav { position:fixed; left:50%; bottom:max(10px,env(safe-area-inset-bottom)); z-index:5; transform:translateX(-50%); display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:5px; width:min(536px,calc(100vw - 18px)); padding:8px; border:1px solid var(--line); border-radius:16px; background:rgba(255,255,255,.95); box-shadow:0 18px 40px rgba(23,49,58,.15); backdrop-filter:blur(18px); }
+.bottom-nav button { min-height:48px; padding:4px; border:0; border-radius:10px; background:#f7faf9; color:var(--ink); font-size:.66rem; font-weight:900; }
+.bottom-nav button.active { background:#d5f5ee; color:var(--teal-dark); }
+button:focus-visible,a:focus-visible,input:focus-visible { outline:3px solid #f0a9b6; outline-offset:2px; }
+@media (prefers-reduced-motion:reduce) { * { scroll-behavior:auto!important; transition:none!important; } }
+
+/* metadata: GPT-5.6 Sol; time: 2026-09-11 13:39 Australia/Sydney; date: 2026-09-11; prompt: Convert Diet Tracker to a private signed-in Site with synced data and AI analysis of meal descriptions, meal photos, and recipe photos. */
+
+.alert { display:flex; justify-content:space-between; gap:12px; align-items:flex-start; margin-bottom:12px; padding:12px 14px; border:1px solid #b7ddd5; border-radius:12px; background:#edfcf8; color:#27564e; font-size:.88rem; line-height:1.4; }
+.alert.error { border-color:#efbec6; background:#fff1f3; color:#8a3040; }
+.alert button { border:0; background:transparent; color:inherit; font-size:1.2rem; }
+.nutrition-strip { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px; margin:12px 0 0; }
+.nutrition-strip div { min-width:0; padding:9px 7px; border:1px solid var(--line); border-radius:11px; background:rgba(255,255,255,.72); text-align:center; }
+.nutrition-strip span,.nutrition-strip strong { display:block; overflow:hidden; text-overflow:ellipsis; }
+.nutrition-strip span { color:var(--muted); font-size:.61rem; font-weight:800; }
+.nutrition-strip strong { margin-top:2px; font-size:.72rem; }
+.meal-list { display:grid; gap:10px; margin-top:10px; }
+.meal-card { display:grid; gap:7px; width:100%; padding:14px; border:1px solid var(--line); border-left:5px solid var(--teal); border-radius:14px; background:rgba(255,255,255,.9); color:var(--ink); text-align:left; box-shadow:0 8px 20px rgba(23,49,58,.05); }
+.meal-card>span:first-child { display:flex; justify-content:space-between; gap:12px; }
+.meal-card small,.meal-card>span:nth-child(2) { color:var(--muted); }
+.meal-card>span:nth-child(2) { font-size:.8rem; line-height:1.35; }
+.meal-card b { color:var(--teal-dark); font-size:.82rem; }
+.view-page>h2 { margin:4px 0 8px; }
+.range { margin:0 0 14px; color:var(--muted); text-align:center; font-weight:800; }
+.guide-list,.settings-list { display:grid; gap:10px; margin-top:14px; }
+.guide-list article,.settings-list article,.transfer-card,.privacy-card { padding:15px; border:1px solid var(--line); border-radius:14px; background:rgba(255,255,255,.84); box-shadow:0 8px 20px rgba(23,49,58,.05); }
+.guide-list h3,.privacy-card h3 { margin:0 0 7px; }
+.guide-list p,.privacy-card p { margin:0; color:var(--muted); line-height:1.5; white-space:pre-line; }
+.transfer-card { display:grid; gap:12px; margin-top:14px; }
+.transfer-card p { margin:0; color:var(--muted); }
+.link { display:grid; place-items:center; text-decoration:none; }
+.primary,.danger { min-height:46px; padding:0 17px; border:0; border-radius:999px; font-weight:900; }
+.primary { background:var(--teal); color:white; }
+.primary:disabled { opacity:.55; }
+.danger { background:#fee7ea; color:#a93649; }
+.wide { width:100%; }
+.text-danger { margin-top:10px; border:0; background:transparent; color:#a93649; font-weight:800; }
+.modal-backdrop { position:fixed; inset:0; z-index:20; display:grid; justify-items:center; align-items:end; background:rgba(17,43,48,.34); backdrop-filter:blur(3px); }
+.editor { width:min(100%,600px); max-height:94vh; overflow:auto; padding:18px 18px max(32px,env(safe-area-inset-bottom)); border-radius:24px 24px 0 0; background:var(--paper); box-shadow:0 -20px 50px rgba(23,49,58,.2); }
+.editor-heading { display:flex; align-items:center; gap:12px; margin-bottom:12px; }
+.editor-heading h2 { margin:0; }
+.back { width:44px; height:44px; border:1px solid var(--line); border-radius:50%; background:white; color:var(--ink); font-size:1.8rem; }
+.mode-tabs { display:grid; grid-template-columns:1fr 1fr; gap:6px; margin:8px 0 16px; padding:5px; border-radius:12px; background:#edf4f2; }
+.mode-tabs button { min-height:42px; padding:6px; border:0; border-radius:9px; background:transparent; color:var(--muted); font-size:.78rem; font-weight:900; }
+.mode-tabs button.active { background:white; color:var(--teal-dark); box-shadow:0 3px 10px rgba(23,49,58,.08); }
+.ai-form,.meal-form { display:grid; gap:12px; }
+.ai-intro { padding:14px; border-radius:14px; background:linear-gradient(135deg,#dff8f3,#fff0f2); }
+.ai-intro p { margin:5px 0 0; color:var(--muted); font-size:.88rem; line-height:1.45; }
+.field { display:grid; gap:6px; color:var(--ink); font-size:.8rem; font-weight:900; }
+.field input,.field textarea { width:100%; min-height:46px; padding:10px 12px; border:1px solid var(--line); border-radius:10px; background:white; color:var(--ink); font:inherit; font-weight:650; }
+.field textarea { min-height:84px; resize:vertical; }
+.photo-field { display:flex; justify-content:space-between; gap:12px; align-items:center; padding:13px; border:1px dashed #9fc7bf; border-radius:12px; background:#f7fcfb; }
+.photo-field span,.photo-field small { display:block; }
+.photo-field small { margin-top:3px; color:var(--muted); }
+.photo-field input { max-width:145px; font-size:.72rem; }
+.privacy-note,.form-help { margin:0; color:var(--muted); font-size:.76rem; line-height:1.45; }
+.saved-picker { padding:12px; border:1px solid var(--line); border-radius:12px; background:#f7fbfa; }
+.saved-picker h3,.saved-picker p { margin:0; }
+.saved-picker p { color:var(--muted); font-size:.78rem; }
+.saved-picker>div { display:grid; gap:7px; max-height:180px; overflow:auto; margin-top:9px; }
+.saved-picker button { display:flex; justify-content:space-between; gap:12px; padding:10px; border:1px solid var(--line); border-radius:9px; background:white; color:var(--ink); text-align:left; }
+.saved-picker span { color:var(--teal-dark); font-weight:800; }
+.two-fields { display:grid; grid-template-columns:1.5fr 1fr; gap:10px; }
+.assumptions { padding:12px; border:1px solid #f0d49e; border-radius:12px; background:#fff9e9; color:#6b5224; font-size:.8rem; }
+.assumptions ul { margin:7px 0 0; padding-left:19px; }
+.unit-field { display:flex; justify-content:space-between; gap:10px; align-items:center; padding:10px 12px; border:1px solid var(--line); border-radius:12px; background:white; }
+.unit-field>strong { font-size:.84rem; }
+.unit-field>span { display:grid; grid-template-columns:40px 58px 40px; gap:5px; }
+.unit-field button,.unit-field input { min-height:40px; border:0; border-radius:9px; text-align:center; }
+.unit-field button { background:#d9f6ef; color:var(--teal-dark); font-size:1.15rem; font-weight:900; }
+.unit-field input { width:58px; background:#f2f6f5; font-weight:900; }
+.nutrition-grid { display:grid; grid-template-columns:1fr 1fr; gap:9px; }
+.field.compact>span { display:grid; grid-template-columns:1fr 35px; align-items:center; }
+.field.compact input { border-radius:9px 0 0 9px; }
+.field.compact i { display:grid; place-items:center; min-height:46px; border:1px solid var(--line); border-left:0; border-radius:0 9px 9px 0; background:#f3f7f6; color:var(--muted); font-style:normal; }
+.check { display:flex; gap:9px; align-items:flex-start; padding:12px; border-radius:10px; background:#eef9f6; font-size:.82rem; font-weight:800; }
+.check input { width:20px; height:20px; }
+.form-actions { display:flex; justify-content:flex-end; gap:10px; padding-top:4px; }
+.settings-list article { display:grid; gap:10px; }
+.sticky-save { position:sticky; bottom:82px; z-index:2; margin-top:12px; }
+.privacy-card { margin-top:14px; }
+@media (min-width:700px){.modal-backdrop{align-items:center;padding:24px}.editor{border-radius:24px;max-height:calc(100vh - 48px)}}
+
+/* metadata: GPT-5.6 Sol; time: 2026-09-11 13:56 Australia/Sydney; date: 2026-09-11; prompt: Implement the complete signed-in Diet Tracker Site, including meal and recipe-photo AI analysis and reusable nutrition snapshots. */

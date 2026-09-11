@@ -1,32 +1,42 @@
 # Diet Tracker
 
-A local-first progressive web app for tracking daily diet units.
+Diet Tracker is a private OpenAI Site for recording CSIRO diet units and nutritional information. Records are scoped to the signed-in ChatGPT user and synchronised through the Site's D1 database.
 
-Live app: https://barbararobson.github.io/diet-tracker/
+## Features
 
-## Install on iPhone
+- Daily and seven-day food-unit totals
+- Kilojoules, protein, carbohydrate, sugars, fat, saturated fat, fibre and sodium
+- Meal entry by description, plated-meal photo, recipe photo, or any combination
+- AI estimates that the user reviews before saving
+- Australian Food Composition Database Release 3 matching for identified food components
+- Saved meal calculations that can be reused without another AI request
+- CSV and JSON exports
 
-1. Open Safari on your iPhone.
-2. Go to https://barbararobson.github.io/diet-tracker/
-3. Tap the Share button.
-4. Scroll down and tap Add to Home Screen.
-5. Keep the name as Diet Tracker, or rename it if you prefer.
-6. Tap Add.
-7. Open Diet Tracker from your Home Screen.
+Meal and recipe photos are resized in the browser and stripped of embedded metadata before analysis. The Site sends them to the OpenAI Responses API with storage disabled and does not save the photos in its own database. Nutrition values remain estimates and are not medical advice.
 
-The app stores your meal records locally on your phone. It does not sync data between devices.
+## Local development
 
-## Install on Android
+Requirements: Node.js 22.13 or later and pnpm.
 
-1. Open Chrome on your Android phone.
-2. Go to https://barbararobson.github.io/diet-tracker/
-3. Tap the menu button.
-4. Tap Add to Home screen or Install app.
-5. Confirm the install.
-6. Open Diet Tracker from your Home Screen or app drawer.
+1. Copy `.env.example` to `.env.local` and add a project-scoped `OPENAI_API_KEY`.
+2. Run `pnpm install`.
+3. Run `pnpm run dev`.
+4. Open `http://localhost:3000`.
 
-## Exporting data
+Local development uses the Sites sign-in simulator and a local D1 database. Production authentication, database binding and environment variables are supplied by Sites.
 
-Use the Export CSV button in the app menu to save a copy of your records. On phones, the browser will use the normal download or share flow for your device.
+## Validation and deployment
+
+- `pnpm run lint`
+- `pnpm exec tsc --noEmit`
+- `pnpm run build`
+- `pnpm run db:generate`
+
+The production API key must be stored as a secret named `OPENAI_API_KEY` in the Site environment. Never commit `.env.local`, `.dev.vars`, credentials or meal photographs.
+
+## Data sources
+
+`data/afcd-reference.json` is a compact reference generated from Food Standards Australia New Zealand's Australian Food Composition Database Release 3 food details and nutrient profiles. Regenerate it with `scripts/build-afcd-reference.py` and the two official spreadsheets supplied as arguments.
 
 <!-- metadata: GPT-5 Codex; time: 2026-06-28 11:15 Australia/Sydney; date: 2026-06-28; prompt: Add a README explaining how to install the app on a phone. -->
+<!-- metadata: GPT-5.6 Sol; time: 2026-09-11 14:14 Australia/Sydney; date: 2026-09-11; prompt: Document the private signed-in Diet Tracker Site, its AI/photo privacy model, validation, deployment and AFCD provenance. -->
