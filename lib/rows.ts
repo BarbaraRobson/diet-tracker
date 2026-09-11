@@ -7,7 +7,7 @@ export function nutrientsFromRow(row: Row): Nutrients {
 }
 
 export function mealFromRow(row: Row, units: Record<string,number>): Meal {
-  return { id:String(row.id), date:String(row.meal_date), time:String(row.meal_time), name:String(row.name), description:String(row.description || ''), source:String(row.source), templateId:row.template_id ? String(row.template_id) : null, confidence:row.confidence ? String(row.confidence) : null, assumptions:jsonArray(row.assumptions), units, ...nutrientsFromRow(row) };
+  return { id:String(row.id), components:jsonArray(row.components), date:String(row.meal_date), time:String(row.meal_time), name:String(row.name), description:String(row.description || ''), source:String(row.source), templateId:row.template_id ? String(row.template_id) : null, confidence:row.confidence ? String(row.confidence) : null, assumptions:jsonArray(row.assumptions), units, ...nutrientsFromRow(row) };
 }
 
 export function templateFromRow(row: Row, units: Record<string,number>): MealTemplate {
@@ -18,3 +18,5 @@ function numOrNull(value: unknown) { return value === null || value === undefine
 function jsonArray(value: unknown) { try { const parsed=JSON.parse(String(value || '[]')); return Array.isArray(parsed) ? parsed : []; } catch { return []; } }
 
 // metadata: GPT-5.6 Sol; time: 2026-09-11 13:39 Australia/Sydney; date: 2026-09-11; prompt: Convert Diet Tracker to a private signed-in Site with synced data and AI analysis of meal descriptions, meal photos, and recipe photos.
+
+// metadata: date: 2026-09-11; model: GPT (Codex; exact version unavailable); prompt: Yes, publish the fixes and implement portion multipliers and ingredient-by-ingredient unit breakdowns.

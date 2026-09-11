@@ -36,6 +36,7 @@ export async function POST(request: Request) {
     statements.push(db.prepare('INSERT INTO meals (id,user_id,meal_date,meal_time,name,description,source,template_id,energy_kj,protein_g,carbohydrate_g,sugars_g,fat_g,saturated_fat_g,fibre_g,sodium_mg,confidence,assumptions,created_at,updated_at) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)').bind(id,auth.user.userId,date,time,name,description,source,templateId,...NUTRIENT_KEYS.map((key)=>nutrients[key]),confidence,JSON.stringify(assumptions),now,now));
   }
   statements.push(...units.map(([categoryId,value])=>db.prepare('INSERT INTO meal_units (meal_id,category_id,units) VALUES (?,?,?)').bind(id,categoryId,value)));
+  statements.push(db.prepare('INSERT INTO meal_details (meal_id,components) VALUES (?,?) ON CONFLICT(meal_id) DO UPDATE SET components=excluded.components').bind(id,JSON.stringify(components)));
   let savedTemplateId:string|null=null;
   if(body.saveTemplate && !templateId) {
     savedTemplateId=crypto.randomUUID();
@@ -50,3 +51,5 @@ export async function POST(request: Request) {
 // metadata: GPT-5.6 Sol; time: 2026-09-11 13:39 Australia/Sydney; date: 2026-09-11; prompt: Convert Diet Tracker to a private signed-in Site with synced data and AI analysis of meal descriptions, meal photos, and recipe photos.
 // metadata: GPT-5.6 Sol; time: 2026-09-11 14:23 Australia/Sydney; date: 2026-09-11; prompt: Harden private Site mutation routes against cross-origin requests before deployment.
 // metadata: GPT-5.6 Sol; time: 2026-09-11 15:23 Australia/Sydney; date: 2026-09-11; prompt: Accept validated recipe-book meal entries as a distinct non-AI source.
+
+// metadata: date: 2026-09-11; model: GPT (Codex; exact version unavailable); prompt: Yes, publish the fixes and implement portion multipliers and ingredient-by-ingredient unit breakdowns.

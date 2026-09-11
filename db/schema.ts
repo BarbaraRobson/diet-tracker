@@ -40,3 +40,7 @@ export const aiAnalyses = sqliteTable('ai_analyses', {
 }, (table) => [index('idx_ai_user_created').on(table.userId, table.createdAt)]);
 
 // metadata: GPT-5.6 Sol; time: 2026-09-11 13:39 Australia/Sydney; date: 2026-09-11; prompt: Convert Diet Tracker to a private signed-in Site with synced data and AI analysis of meal descriptions, meal photos, and recipe photos.
+
+export const mealDetails = sqliteTable('meal_details', { mealId: text('meal_id').primaryKey().references(() => meals.id, { onDelete: 'cascade' }), components: text('components').notNull().default('[]') });
+
+// metadata: date: 2026-09-11; model: GPT (Codex; exact version unavailable); prompt: Yes, publish the fixes and implement portion multipliers and ingredient-by-ingredient unit breakdowns.

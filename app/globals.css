@@ -129,3 +129,7 @@ button:focus-visible,a:focus-visible,input:focus-visible { outline:3px solid #f0
 
 /* metadata: GPT-5.6 Sol; time: 2026-09-11 13:56 Australia/Sydney; date: 2026-09-11; prompt: Implement the complete signed-in Diet Tracker Site, including meal and recipe-photo AI analysis and reusable nutrition snapshots. */
 /* metadata: GPT-5.6 Sol; time: 2026-09-11 15:23 Australia/Sydney; date: 2026-09-11; prompt: Add accessible mobile recipe-book search, filters and selection cards. */
+
+.portion-picker,.unit-breakdown{padding:1rem;border:1px solid #a4b5c5;border-radius:12px;margin:1rem 0}.portion-controls{display:flex;gap:1rem;align-items:center}.portion-controls .field{flex:1;min-width:0}.portion-controls input{width:100%}.unit-breakdown summary{cursor:pointer;font-weight:700}.unit-breakdown article{padding:.75rem 0;border-bottom:1px solid #d9e1e8}.unit-breakdown article p{margin:.4rem 0}.unit-breakdown small{font-size:.875rem;line-height:1.5}.guide-list li{margin:.45rem 0}
+
+/* metadata: date: 2026-09-11; model: GPT (Codex; exact version unavailable); prompt: Publish fixes and implement portion multipliers and ingredient unit breakdowns. */
