@@ -39,15 +39,15 @@ export default function TrackerClient({initialUserName}:{initialUserName:string}
   function applyTemplate(template:MealTemplate) { setSelection((value)=>value+1); setDraft({templateId:template.id,name:template.name,date:selectedDate,time:currentTime(),description:template.description,source:'template',units:{...template.units},nutrients:pickNutrition(template),assumptions:[...template.assumptions],components:template.components,confidence:template.confidence,saveTemplate:false}); setMode('manual'); setNotice('Using saved values. No AI analysis is needed.'); setEditorOpen(true); }
   function applyRecipe(recipe:RecipeRecord) { setSelection((value)=>value+1); setDraft({name:recipe.name,date:selectedDate,time:currentTime(),description:`Barbara's Recipe Book, page ${recipe.page} · ${recipe.servingLabel}.`,source:'recipe',units:{...recipe.units},nutrients:{...recipe.nutrients},assumptions:[],components:[],confidence:null,saveTemplate:false}); setMode('manual'); setNotice('Recipe-book values loaded for one serving. No AI analysis is needed.'); }
 
-  async function analyse(form:FormData) {
+  async function analyse(form:FormData,preserveDescription=false) {
     setAnalysing(true); setError(''); setNotice('Preparing photos and analysing the meal…');
     try {
       const outgoing=new FormData(); outgoing.set('description',String(form.get('description')||''));
       for(const key of ['mealPhotos','recipePhotos']) for(const item of form.getAll(key)) if(item instanceof File&&item.size) outgoing.append(key,await privacySafeImage(item),`${key}-${crypto.randomUUID()}.jpg`);
       const response=await fetch('/api/analyze',{method:'POST',body:outgoing}); const payload=await response.json() as AnalysisPayload; if(!response.ok)throw new Error(payload.error||'Analysis failed.');
       setSelection((value)=>value+1);
-      const chosenName=String(form.get('name')||'').trim();
-      setDraft((current)=>({...current,name:chosenName||payload.name,description:payload.description||String(form.get('description')||''),source:'ai',units:payload.units,nutrients:payload.nutrition,assumptions:payload.assumptions||[],components:payload.components||[],confidence:payload.confidence,saveTemplate:true}));
+      const chosenName=String(form.get('name')||'').trim(); const submittedDescription=String(form.get('description')||'');
+      setDraft((current)=>({...current,name:chosenName||payload.name,description:preserveDescription?submittedDescription:(payload.description||submittedDescription),source:'ai',units:payload.units,nutrients:payload.nutrition,assumptions:payload.assumptions||[],components:payload.components||[],confidence:payload.confidence,saveTemplate:preserveDescription?current.saveTemplate:true}));
       const questions=(payload.clarifyingQuestions||[]) as string[]; setNotice(questions.length?`Please review carefully: ${questions.join(' ')}`:'Analysis complete. Review and adjust every value before saving.'); setMode('manual');
     } catch(e){setError(message(e));setNotice('');} finally{setAnalysing(false);}
   }
@@ -56,6 +56,8 @@ export default function TrackerClient({initialUserName}:{initialUserName:string}
     event.preventDefault(); setSaving(true); setError('');
     try { const response=await fetch('/api/meals',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({...draft,nutrients:draft.nutrients})}); const payload=await response.json() as ApiError; if(!response.ok)throw new Error(payload.error||'Could not save the meal.'); setEditorOpen(false); setNotice('Meal saved and synced.'); await load(draft.date); if(draft.date!==selectedDate)setSelectedDate(draft.date); } catch(e){setError(message(e));} finally{setSaving(false);}
   }
+
+  function recalculateDescription(){const form=new FormData();form.set('name',draft.name);form.set('description',draft.description);void analyse(form,true);}
 
   async function deleteMeal(id:string) { if(!confirm('Remove this meal?'))return; const response=await fetch(`/api/meals/${encodeURIComponent(id)}`,{method:'DELETE'}); if(response.ok){setEditorOpen(false);setNotice('Meal removed.');await load();}else setError('Could not remove the meal.'); }
   function changeDay(offset:number){const date=new Date(`${selectedDate}T12:00:00`);date.setDate(date.getDate()+offset);setSelectedDate(localKey(date));}
@@ -85,6 +87,7 @@ export default function TrackerClient({initialUserName}:{initialUserName:string}
         <label className="field">Meal name<input required maxLength={120} value={draft.name} onChange={(e)=>setDraft({...draft,name:e.target.value})}/></label>
         <div className="two-fields"><label className="field">Date<input type="date" required value={draft.date} onChange={(e)=>setDraft({...draft,date:e.target.value})}/></label><label className="field">Time<input type="time" required value={draft.time} onChange={(e)=>setDraft({...draft,time:e.target.value})}/></label></div>
         <label className="field">Description<textarea maxLength={2000} value={draft.description} onChange={(e)=>setDraft({...draft,description:e.target.value})}/></label>
+        {draft.source==='ai'&&<section className="recalculate"><button className="secondary" type="button" disabled={analysing||!draft.description.trim()} onClick={recalculateDescription}>{analysing?'Recalculating…':'Recalculate from description'}</button><p className="form-help">Updates the food units, nutrition and ingredient breakdown from the edited text. The original photos are unavailable because they are not stored.</p></section>}
         {(draft.source==='recipe'||draft.source==='template')&&<PortionPicker key={selection} base={draft} recipe={draft.source==='recipe'} onApply={(portion,factor)=>{setDraft(current=>({...current,...portion,assumptions:[...current.assumptions.filter(note=>!note.startsWith('Portion multiplier:')),`Portion multiplier: ${factor}× the loaded serving. Ingredient calculation notes refer to that original serving.`]}));setScaled(value=>value+1);}}/>}
         <UnitBreakdown components={draft.components} units={draft.units} categories={state?.categories||[]}/>
         {draft.assumptions.length>0&&<div className="assumptions"><strong>AI assumptions to check</strong><ul>{draft.assumptions.map((item,index)=><li key={index}>{item}</li>)}</ul></div>}
@@ -159,6 +162,7 @@ function todayKey(){return localKey(new Date());} function localKey(date:Date){c
 async function privacySafeImage(file:File){const bitmap=await createImageBitmap(file);const scale=Math.min(1,1600/Math.max(bitmap.width,bitmap.height));const canvas=document.createElement('canvas');canvas.width=Math.max(1,Math.round(bitmap.width*scale));canvas.height=Math.max(1,Math.round(bitmap.height*scale));const context=canvas.getContext('2d');if(!context)throw new Error('This photo could not be prepared.');context.drawImage(bitmap,0,0,canvas.width,canvas.height);bitmap.close();const blob=await new Promise<Blob|null>((resolve)=>canvas.toBlob(resolve,'image/jpeg',.84));if(!blob)throw new Error('This photo could not be prepared.');return new File([blob],'diet-photo.jpg',{type:'image/jpeg'});}
 
 // metadata: date: 2026-09-12; model: GPT (Codex; exact version unavailable); prompt: Let AI-added meals be named, manage saved meals, and round serving-scaled nutrition to integers.
+// metadata: date: 2026-09-12; model: GPT (Codex; exact version unavailable); prompt: Recalculate AI meal units and nutrition after its description is edited.
 
 // metadata: GPT-5.6 Sol; time: 2026-09-11 13:56 Australia/Sydney; date: 2026-09-11; prompt: Implement the complete signed-in Diet Tracker Site, including meal and recipe-photo AI analysis and reusable nutrition snapshots.
 // metadata: GPT-5.6 Sol; time: 2026-09-11 14:02 Australia/Sydney; date: 2026-09-11; prompt: Continue implementation after securely saving the dedicated OpenAI API key; validate and prepare the private Site.

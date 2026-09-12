@@ -107,6 +107,9 @@ button:focus-visible,a:focus-visible,input:focus-visible { outline:3px solid #f0
 .saved-editor h4 { margin:4px 0 0; }
 .optional { color:var(--muted); font-size:.72rem; font-weight:650; }
 .inline-error { color:#a72a2a!important; font-weight:750; }
+.recalculate { display:flex; flex-wrap:wrap; align-items:center; gap:10px; padding:10px 12px; border:1px solid #b9d8d2; border-radius:12px; background:#f2fbf9; }
+.recalculate .secondary { flex:0 0 auto; }
+.recalculate .form-help { flex:1 1 220px; }
 .two-fields { display:grid; grid-template-columns:1.5fr 1fr; gap:10px; }
 .assumptions { padding:12px; border:1px solid #f0d49e; border-radius:12px; background:#fff9e9; color:#6b5224; font-size:.8rem; }
 .assumptions ul { margin:7px 0 0; padding-left:19px; }
@@ -151,3 +154,4 @@ button:focus-visible,a:focus-visible,input:focus-visible { outline:3px solid #f0
 
 /* metadata: date: 2026-09-11; model: GPT (Codex; exact version unavailable); prompt: Teal target progress, red excess except vegetables, and contrasting purple indulgence bars. */
 /* metadata: date: 2026-09-12; model: GPT (Codex; exact version unavailable); prompt: Let AI-added meals be named, manage saved meals, and round serving-scaled nutrition to integers. */
+/* metadata: date: 2026-09-12; model: GPT (Codex; exact version unavailable); prompt: Recalculate AI meal units and nutrition after its description is edited. */
