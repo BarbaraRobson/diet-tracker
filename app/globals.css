@@ -93,9 +93,20 @@ button:focus-visible,a:focus-visible,input:focus-visible { outline:3px solid #f0
 .saved-picker { padding:12px; border:1px solid var(--line); border-radius:12px; background:#f7fbfa; }
 .saved-picker h3,.saved-picker p { margin:0; }
 .saved-picker p { color:var(--muted); font-size:.78rem; }
-.saved-picker>div { display:grid; gap:7px; max-height:180px; overflow:auto; margin-top:9px; }
-.saved-picker button { display:flex; justify-content:space-between; gap:12px; padding:10px; border:1px solid var(--line); border-radius:9px; background:white; color:var(--ink); text-align:left; }
+.saved-picker>div { display:grid; gap:7px; max-height:260px; overflow:auto; margin-top:9px; }
+.saved-picker button { padding:10px; border:1px solid var(--line); border-radius:9px; background:white; color:var(--ink); text-align:left; }
 .saved-picker span { color:var(--teal-dark); font-weight:800; }
+.saved-search { margin-top:12px; }
+.saved-row { display:grid; grid-template-columns:minmax(0,1fr) auto auto; gap:6px; }
+.saved-use { display:flex; justify-content:space-between; gap:12px; min-width:0; }
+.saved-use strong { overflow:hidden; text-overflow:ellipsis; }
+.saved-edit { color:var(--teal-dark)!important; font-weight:850; }
+.saved-delete { color:#a72a2a!important; font-weight:850; }
+.saved-editor { display:grid; gap:12px; }
+.saved-editor>div { max-height:none; overflow:visible; margin-top:0; }
+.saved-editor h4 { margin:4px 0 0; }
+.optional { color:var(--muted); font-size:.72rem; font-weight:650; }
+.inline-error { color:#a72a2a!important; font-weight:750; }
 .two-fields { display:grid; grid-template-columns:1.5fr 1fr; gap:10px; }
 .assumptions { padding:12px; border:1px solid #f0d49e; border-radius:12px; background:#fff9e9; color:#6b5224; font-size:.8rem; }
 .assumptions ul { margin:7px 0 0; padding-left:19px; }
@@ -139,3 +150,4 @@ button:focus-visible,a:focus-visible,input:focus-visible { outline:3px solid #f0
 /* metadata: date: 2026-09-11; model: GPT (Codex; exact version unavailable); prompt: Publish fixes and implement portion multipliers and ingredient unit breakdowns. */
 
 /* metadata: date: 2026-09-11; model: GPT (Codex; exact version unavailable); prompt: Teal target progress, red excess except vegetables, and contrasting purple indulgence bars. */
+/* metadata: date: 2026-09-12; model: GPT (Codex; exact version unavailable); prompt: Let AI-added meals be named, manage saved meals, and round serving-scaled nutrition to integers. */

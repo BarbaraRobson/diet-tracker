@@ -17,7 +17,7 @@ export async function GET(request: Request) {
     db.prepare('SELECT id,name,target,guide,sort_order,locked FROM categories WHERE user_id=? ORDER BY sort_order').bind(auth.user.userId).all(),
     db.prepare('SELECT m.*,d.components FROM meals m LEFT JOIN meal_details d ON d.meal_id=m.id WHERE m.user_id=? AND m.meal_date=? ORDER BY m.meal_time,m.created_at').bind(auth.user.userId, selectedDate).all(),
     db.prepare('SELECT mu.meal_id,mu.category_id,mu.units FROM meal_units mu JOIN meals m ON m.id=mu.meal_id WHERE m.user_id=? AND m.meal_date=?').bind(auth.user.userId, selectedDate).all(),
-    db.prepare('SELECT * FROM meal_templates WHERE user_id=? ORDER BY last_used_at DESC LIMIT 30').bind(auth.user.userId).all(),
+    db.prepare('SELECT * FROM meal_templates WHERE user_id=? ORDER BY last_used_at DESC').bind(auth.user.userId).all(),
     db.prepare('SELECT tu.template_id,tu.category_id,tu.units FROM template_units tu JOIN meal_templates t ON t.id=tu.template_id WHERE t.user_id=?').bind(auth.user.userId).all(),
     nutritionTotals(db, auth.user.userId, selectedDate, selectedDate), nutritionTotals(db, auth.user.userId, start, selectedDate),
     db.prepare('SELECT mu.category_id,SUM(mu.units) total FROM meal_units mu JOIN meals m ON m.id=mu.meal_id WHERE m.user_id=? AND m.meal_date BETWEEN ? AND ? GROUP BY mu.category_id').bind(auth.user.userId,start,selectedDate).all(),
@@ -45,3 +45,5 @@ function addDays(key:string,offset:number) { const date=new Date(`${key}T12:00:0
 // metadata: GPT-5.6 Sol; time: 2026-09-11 13:39 Australia/Sydney; date: 2026-09-11; prompt: Convert Diet Tracker to a private signed-in Site with synced data and AI analysis of meal descriptions, meal photos, and recipe photos.
 
 // metadata: date: 2026-09-11; model: GPT (Codex; exact version unavailable); prompt: Yes, publish the fixes and implement portion multipliers and ingredient-by-ingredient unit breakdowns.
+
+// metadata: date: 2026-09-12; model: GPT (Codex; exact version unavailable); prompt: Make every saved meal available to search, edit or delete.
