@@ -15,6 +15,13 @@
       "when": 1789105825750,
       "tag": "0001_panoramic_silk_fever",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1790400649727,
+      "tag": "0002_gorgeous_korvac",
+      "breakpoints": true
     }
   ]
 }

@@ -43,4 +43,11 @@ export const aiAnalyses = sqliteTable('ai_analyses', {
 
 export const mealDetails = sqliteTable('meal_details', { mealId: text('meal_id').primaryKey().references(() => meals.id, { onDelete: 'cascade' }), components: text('components').notNull().default('[]') });
 
+// A day is marked once, even if its automatically added breakfast is later deleted.
+export const dailyStarters = sqliteTable('daily_starters', {
+  userId: text('user_id').notNull(), mealDate: text('meal_date').notNull(), mealId: text('meal_id'),
+}, (table) => [primaryKey({ columns: [table.userId, table.mealDate] })]);
+
+// metadata: date: 2026-09-26; model: GPT-6; prompt: Start each new day with Usual breakfast while allowing its removal, and allow adding multiple saved foods at once.
+
 // metadata: date: 2026-09-11; model: GPT (Codex; exact version unavailable); prompt: Yes, publish the fixes and implement portion multipliers and ingredient-by-ingredient unit breakdowns.

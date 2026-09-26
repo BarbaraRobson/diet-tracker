@@ -3,6 +3,7 @@ import { ensureUserDefaults } from '@/db/ensure';
 import { getD1 } from '@/db/index';
 import { validDate } from '@/lib/validation';
 import { mealFromRow, nutrientsFromRow, templateFromRow } from '@/lib/rows';
+import { ensureUsualBreakfast } from '@/db/day-start';
 
 export const dynamic = 'force-dynamic';
 
@@ -11,9 +12,14 @@ export async function GET(request: Request) {
   const selectedDate = new URL(request.url).searchParams.get('date');
   if (!validDate(selectedDate)) return Response.json({ error:'Invalid date.' }, { status:400 });
   await ensureUserDefaults(auth.user.userId);
+  const browserToday=new URL(request.url).searchParams.get('today');
+  const utcToday=new Date().toISOString().slice(0,10);
+  // The browser supplies its local day; the UTC bound allows Australian time zones around midnight.
+  if(selectedDate===browserToday && selectedDate>='2026-09-26' && Math.abs(Date.parse(`${selectedDate}T00:00:00Z`)-Date.parse(`${utcToday}T00:00:00Z`))<=86400000)
+    await ensureUsualBreakfast(auth.user.userId,selectedDate);
   const db = getD1();
   const start = addDays(selectedDate, -6);
-  const [categoryRows, mealRows, unitRows, templateRows, templateUnitRows, dailyRow, weeklyRow, weeklyUnitRows, dayRows] = await Promise.all([
+  const [categoryRows, mealRows, unitRows, templateRows, templateUnitRows, dailyRow, weeklyRow, weeklyUnitRows, dayRows, starterRow] = await Promise.all([
     db.prepare('SELECT id,name,target,guide,sort_order,locked FROM categories WHERE user_id=? ORDER BY sort_order').bind(auth.user.userId).all(),
     db.prepare('SELECT m.*,d.components FROM meals m LEFT JOIN meal_details d ON d.meal_id=m.id WHERE m.user_id=? AND m.meal_date=? ORDER BY m.meal_time,m.created_at').bind(auth.user.userId, selectedDate).all(),
     db.prepare('SELECT mu.meal_id,mu.category_id,mu.units FROM meal_units mu JOIN meals m ON m.id=mu.meal_id WHERE m.user_id=? AND m.meal_date=?').bind(auth.user.userId, selectedDate).all(),
@@ -22,11 +28,12 @@ export async function GET(request: Request) {
     nutritionTotals(db, auth.user.userId, selectedDate, selectedDate), nutritionTotals(db, auth.user.userId, start, selectedDate),
     db.prepare('SELECT mu.category_id,SUM(mu.units) total FROM meal_units mu JOIN meals m ON m.id=mu.meal_id WHERE m.user_id=? AND m.meal_date BETWEEN ? AND ? GROUP BY mu.category_id').bind(auth.user.userId,start,selectedDate).all(),
     db.prepare('SELECT DISTINCT meal_date FROM meals WHERE user_id=? AND meal_date BETWEEN ? AND ?').bind(auth.user.userId,start,selectedDate).all(),
+    db.prepare('SELECT meal_id FROM daily_starters WHERE user_id=? AND meal_date=?').bind(auth.user.userId,selectedDate).first<{meal_id:string|null}>(),
   ]);
   const mealUnits = groupUnits(unitRows.results, 'meal_id');
   const templateUnits = groupUnits(templateUnitRows.results, 'template_id');
   return Response.json({
-    selectedDate, weeklyStart:start, weeklyEnd:selectedDate, weeklyDaysRecorded:dayRows.results.length,
+    selectedDate, autoBreakfastMealId:starterRow?.meal_id||null, weeklyStart:start, weeklyEnd:selectedDate, weeklyDaysRecorded:dayRows.results.length,
     user:{ displayName:auth.user.displayName },
     categories:categoryRows.results.map((row) => ({ id:String(row.id), name:String(row.name), target:Number(row.target), guide:String(row.guide || ''), sortOrder:Number(row.sort_order), locked:Boolean(row.locked) })),
     meals:mealRows.results.map((row) => mealFromRow(row, mealUnits[String(row.id)] || {})),
@@ -47,3 +54,4 @@ function addDays(key:string,offset:number) { const date=new Date(`${key}T12:00:0
 // metadata: date: 2026-09-11; model: GPT (Codex; exact version unavailable); prompt: Yes, publish the fixes and implement portion multipliers and ingredient-by-ingredient unit breakdowns.
 
 // metadata: date: 2026-09-12; model: GPT (Codex; exact version unavailable); prompt: Make every saved meal available to search, edit or delete.
+// metadata: date: 2026-09-26; model: GPT-6; prompt: Start each new day with Usual breakfast while allowing its removal, and allow adding multiple saved foods at once.

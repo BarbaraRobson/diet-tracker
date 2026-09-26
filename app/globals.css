@@ -291,3 +291,16 @@ button:disabled { cursor:not-allowed; }
 @media (max-width:370px) { .bottom-nav button { font-size:.62rem; } .date-row input { font-size:.76rem; } .meal-actions { width:100%; } .mode-tabs { gap:2px; padding:4px; } }
 
 /* metadata: date: 2026-09-26; model: GPT-6; prompt: Make the diet tracker site look more professional and aesthetically appealing and improve the UX. Make sure you don’t lose any of the user data. */
+
+.saved-row { grid-template-columns:minmax(0,1fr) repeat(3,auto); align-items:stretch; }
+.mode-tabs { grid-template-columns:repeat(4,minmax(0,1fr)); }
+.saved-select { display:flex; align-items:center; gap:10px; min-width:0; padding:10px; border:1px solid var(--line); border-radius:9px; background:white; cursor:pointer; }
+.saved-select input { width:20px; height:20px; flex:none; accent-color:var(--teal); }
+.saved-select span { min-width:0; }
+.saved-select strong,.saved-select small { display:block; overflow:hidden; text-overflow:ellipsis; }
+.saved-select small { color:var(--muted); font-size:.78rem; }
+.saved-add { margin-top:12px; }
+.auto-label { color:var(--teal-dark); font-style:normal; font-weight:750; }
+@media (max-width:450px) { .mode-tabs button { font-size:.72rem; padding:4px 2px; } .saved-row { grid-template-columns:repeat(3,minmax(0,1fr)); } .saved-select { grid-column:1/-1; } .saved-row button { text-align:center; } }
+
+/* metadata: date: 2026-09-26; model: GPT-6; prompt: Start each new day with Usual breakfast while allowing its removal, and allow adding multiple saved foods at once. */
