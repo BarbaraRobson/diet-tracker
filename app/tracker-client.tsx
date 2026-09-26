@@ -63,22 +63,21 @@ export default function TrackerClient({initialUserName}:{initialUserName:string}
   function changeDay(offset:number){const date=new Date(`${selectedDate}T12:00:00`);date.setDate(date.getDate()+offset);setSelectedDate(localKey(date));}
 
   return <main className="app-shell">
-    <header className="topbar"><div><p className="eyebrow">Private and synced</p><h1>Diet Tracker</h1></div><a className="account" href="/signout-with-chatgpt?return_to=%2F">{state?.user.displayName||initialUserName}<span>Sign out</span></a></header>
+    <header className="topbar"><div className="brand"><span className="brand-mark" aria-hidden="true">◒</span><div><p className="eyebrow">Your food journal</p><h1>Diet Tracker</h1></div></div><a className="account" href="/signout-with-chatgpt?return_to=%2F"><span className="account-name">{state?.user.displayName||initialUserName}</span><span>Sign out</span></a></header>
     {error&&<div className="alert error" role="alert">{error}<button onClick={()=>setError('')} aria-label="Dismiss">×</button></div>}
     {notice&&<div className="alert" role="status">{notice}<button onClick={()=>setNotice('')} aria-label="Dismiss">×</button></div>}
     {view==='today'&&<>
-      <section className="date-row" aria-label="Selected date"><button onClick={()=>changeDay(-1)} aria-label="Previous day">‹</button><input type="date" value={selectedDate} onChange={(e)=>setSelectedDate(e.target.value)} aria-label="Choose date"/><button onClick={()=>changeDay(1)} aria-label="Next day">›</button></section>
-      <NutritionHero nutrition={state?.dailyNutrition||emptyNutrition} label="Today’s energy" subtitle={state?.meals.length?`${state.meals.length} meal${state.meals.length===1?'':'s'} recorded`:'No meals recorded yet'}/>
-      <section className="progress-list">{(state?.categories||[]).map((category)=><ProgressCard key={category.id} category={category} value={dailyUnits[category.id]||0}/>)}</section>
-      <NutritionStrip nutrition={state?.dailyNutrition||emptyNutrition}/>
+      <section className="day-toolbar"><div className="date-row" aria-label="Selected date"><button onClick={()=>changeDay(-1)} aria-label="Previous day">‹</button><input type="date" value={selectedDate} onChange={(e)=>setSelectedDate(e.target.value)} aria-label="Choose date"/><button onClick={()=>changeDay(1)} aria-label="Next day">›</button></div><button className="primary add-action" onClick={openNew}><span aria-hidden="true">+</span> Add meal</button></section>
+      <div className="today-layout"><div className="daily-summary"><NutritionHero nutrition={state?.dailyNutrition||emptyNutrition} label={selectedDate===todayKey()?'Today’s energy':`${prettyDate(selectedDate)} energy`} subtitle={state?.meals.length?`${state.meals.length} meal${state.meals.length===1?'':'s'} recorded`:'No meals recorded yet'}/>
+      <section className="progress-section" aria-label="Food group progress"><div className="section-heading"><h2>Food groups</h2><span className="section-note">Units / daily target</span></div><div className="progress-list">{(state?.categories||[]).map((category)=><ProgressCard key={category.id} category={category} value={dailyUnits[category.id]||0}/>)}</div></section>
+      <details className="nutrition-details"><summary>Nutrition details</summary><NutritionStrip nutrition={state?.dailyNutrition||emptyNutrition}/></details></div>
       <section className="meal-panel"><div className="section-heading"><h2>Meals</h2><div className="meal-actions"><button className="secondary" onClick={openRecipes}>Recipe book</button><button className="secondary" onClick={()=>{openNew();setMode('manual');}}>Saved meals</button></div></div>
         {loading?<p className="empty">Loading your synced meals…</p>:state?.meals.length?<div className="meal-list">{state.meals.map((meal)=><button className="meal-card" key={meal.id} onClick={()=>openEdit(meal)}><span><strong>{meal.name}</strong><small>{meal.time}</small></span><span>{formatUnits(meal.units,state.categories)}</span><b>{meal.energyKj===null?'Not calculated':`${round(meal.energyKj)} kJ`}</b></button>)}</div>:<p className="empty">Describe a meal, photograph your plate, photograph a recipe, or enter units manually.</p>}
-      </section>
-      <button className="fab" onClick={openNew}><span>+</span> Add meal</button>
+      </section></div>
     </>}
     {view==='week'&&<WeekView state={state}/>} {view==='guide'&&<GuideView categories={state?.categories||[]}/>} {view==='transfer'&&<TransferView/>} {view==='settings'&&<SettingsView categories={state?.categories||[]} onSaved={()=>load()}/>}
     <nav className="bottom-nav" aria-label="Main menu">{([['today','Today'],['week','7 day totals'],['guide','Unit guide'],['transfer','Import/export'],['settings','Settings']] as Array<[View,string]>).map(([key,label])=><button onClick={()=>setView(key)} className={view===key?'active':''} key={key}>{label}</button>)}</nav>
-    {editorOpen&&<div className="modal-backdrop"><section className="editor" role="dialog" aria-modal="true" aria-labelledby="editor-title"><div className="editor-heading"><button className="back" onClick={()=>setEditorOpen(false)} aria-label="Close">‹</button><div><p className="eyebrow">{draft.id?'Edit entry':'New entry'}</p><h2 id="editor-title">{draft.id?'Edit meal':'Add a meal'}</h2></div></div>
+    {editorOpen&&<div className="modal-backdrop"><section className="editor" role="dialog" aria-modal="true" aria-labelledby="editor-title"><div className="editor-heading"><div><p className="eyebrow">{draft.id?'Edit entry':'New entry'}</p><h2 id="editor-title">{draft.id?'Edit meal':'Add a meal'}</h2></div><button className="back" onClick={()=>setEditorOpen(false)} aria-label="Close">×</button></div>
       {!draft.id&&<div className="mode-tabs"><button className={mode==='ai'?'active':''} onClick={()=>setMode('ai')}>Describe or photograph</button><button className={mode==='recipe'?'active':''} onClick={()=>setMode('recipe')}>Recipe book</button><button className={mode==='manual'?'active':''} onClick={()=>setMode('manual')}>Manual or saved</button></div>}
       {mode==='ai'&&<AiForm analysing={analysing} onAnalyse={analyse}/>}
       {mode==='recipe'&&<RecipePicker onSelect={applyRecipe}/>}
@@ -163,6 +162,7 @@ async function privacySafeImage(file:File){const bitmap=await createImageBitmap(
 
 // metadata: date: 2026-09-12; model: GPT (Codex; exact version unavailable); prompt: Let AI-added meals be named, manage saved meals, and round serving-scaled nutrition to integers.
 // metadata: date: 2026-09-12; model: GPT (Codex; exact version unavailable); prompt: Recalculate AI meal units and nutrition after its description is edited.
+// metadata: date: 2026-09-26; model: GPT-6; prompt: Make the diet tracker site look more professional and aesthetically appealing and improve the UX. Make sure you don’t lose any of the user data.
 
 // metadata: GPT-5.6 Sol; time: 2026-09-11 13:56 Australia/Sydney; date: 2026-09-11; prompt: Implement the complete signed-in Diet Tracker Site, including meal and recipe-photo AI analysis and reusable nutrition snapshots.
 // metadata: GPT-5.6 Sol; time: 2026-09-11 14:02 Australia/Sydney; date: 2026-09-11; prompt: Continue implementation after securely saving the dedicated OpenAI API key; validate and prepare the private Site.

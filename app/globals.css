@@ -155,3 +155,139 @@ button:focus-visible,a:focus-visible,input:focus-visible { outline:3px solid #f0
 /* metadata: date: 2026-09-11; model: GPT (Codex; exact version unavailable); prompt: Teal target progress, red excess except vegetables, and contrasting purple indulgence bars. */
 /* metadata: date: 2026-09-12; model: GPT (Codex; exact version unavailable); prompt: Let AI-added meals be named, manage saved meals, and round serving-scaled nutrition to integers. */
 /* metadata: date: 2026-09-12; model: GPT (Codex; exact version unavailable); prompt: Recalculate AI meal units and nutrition after its description is edited. */
+
+/* Refined journal layout, 26 September 2026. Existing records and data rules are untouched. */
+:root { --ink:#172d38; --muted:#59717d; --teal:#087e79; --teal-dark:#075e5b; --paper:#fff; --line:#d8e4e6; --surface:#f5f9fa; }
+html { scroll-behavior:smooth; }
+body { background:#f3f7f8; color:var(--ink); font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; font-size:1rem; line-height:1.45; }
+button { cursor:pointer; }
+button:disabled { cursor:not-allowed; }
+.app-shell { width:min(100%,1200px); padding:26px 24px 110px; }
+.topbar { padding:0 0 26px; border-bottom:1px solid var(--line); margin-bottom:26px; }
+.brand { display:flex; align-items:center; gap:13px; }
+.brand-mark { display:grid; place-items:center; width:42px; height:42px; border-radius:13px; background:#0b7774; color:white; font-size:1.6rem; line-height:1; transform:rotate(-12deg); }
+.brand-mark::first-letter { transform:rotate(12deg); }
+.topbar h1 { font-size:1.55rem; line-height:1.12; letter-spacing:-.035em; }
+.eyebrow { color:#527983; font-size:.72rem; letter-spacing:.09em; }
+.account { display:flex; flex-direction:column; align-items:flex-end; max-width:170px; font-size:.84rem; font-weight:650; }
+.account-name { display:block; max-width:100%; overflow:hidden; text-overflow:ellipsis; color:var(--ink)!important; font-size:.84rem!important; }
+.account span:last-child { color:var(--teal-dark); font-size:.8rem; font-weight:750; }
+.day-toolbar { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:18px; }
+.date-row { width:min(100%,315px); margin:0; grid-template-columns:42px minmax(0,1fr) 42px; gap:6px; }
+.date-row button,.date-row input { min-height:44px; border-color:var(--line); box-shadow:0 1px 3px rgba(19,49,61,.04); }
+.date-row button { border-radius:11px; line-height:1; }
+.date-row input { border-radius:11px; font-size:.95rem; font-weight:700; }
+.add-action { display:flex; align-items:center; justify-content:center; gap:9px; min-width:146px; box-shadow:0 6px 16px rgba(8,126,121,.18); }
+.add-action span { font-size:1.35rem; font-weight:400; line-height:1; }
+.today-layout { display:grid; grid-template-columns:minmax(0,1.18fr) minmax(310px,.82fr); align-items:start; gap:22px; }
+.daily-summary,.meal-panel { min-width:0; }
+.energy-card { position:relative; gap:4px; min-height:150px; margin:0 0 20px; padding:23px 26px; border:0; border-radius:18px; background:linear-gradient(120deg,#075e61 0%,#0e8580 100%); box-shadow:0 12px 26px rgba(9,95,96,.14); }
+.energy-card p { font-size:.88rem; font-weight:650; }
+.energy-card strong { font-size:clamp(2rem,4vw,2.7rem); line-height:1.12; }
+.energy-card span { font-size:.86rem; }
+.progress-section,.meal-panel,.nutrition-details,.view-page>details { border:1px solid var(--line); border-radius:17px; background:var(--paper); box-shadow:0 3px 14px rgba(31,61,73,.035); }
+.progress-section { padding:20px; }
+.section-heading { align-items:center; gap:14px; }
+.section-heading h2 { font-size:1.13rem; letter-spacing:-.02em; }
+.section-note { color:var(--muted); font-size:.8rem; }
+.progress-list { grid-template-columns:repeat(2,minmax(0,1fr)); gap:9px; margin-top:15px; }
+.progress-card { padding:11px 12px; border-color:#e4ecee; border-radius:11px; background:#f9fbfb; box-shadow:none; }
+.progress-card>div:first-child { align-items:baseline; font-size:.84rem; }
+.progress-card strong { min-width:0; overflow-wrap:anywhere; }
+.progress-card span { flex:none; font-size:.8rem; font-weight:700; }
+.bar { height:7px; margin-top:9px; background:#e4eeef; }
+.bar-within { background:#08877f; }
+.bar-indulgence { background:#7753a8; }
+.nutrition-details { margin-top:12px; padding:0 18px; }
+.nutrition-details summary { padding:14px 0; color:var(--teal-dark); font-size:.88rem; font-weight:750; cursor:pointer; }
+.nutrition-details .nutrition-strip { grid-template-columns:repeat(4,minmax(0,1fr)); margin:0 0 16px; }
+.nutrition-strip div { border-radius:9px; background:var(--surface); }
+.nutrition-strip span { font-size:.72rem; }
+.nutrition-strip strong { font-size:.85rem; }
+.meal-panel { margin:0; padding:20px; }
+.meal-panel .section-heading { align-items:flex-start; flex-wrap:wrap; }
+.meal-actions { justify-content:flex-start; }
+.meal-actions .secondary { min-height:34px; font-size:.78rem; }
+.meal-list { margin-top:16px; }
+.meal-card { position:relative; gap:8px; padding:15px 16px; border:1px solid var(--line); border-radius:12px; background:#fff; box-shadow:none; transition:border-color .15s,box-shadow .15s,transform .15s; }
+.meal-card:hover { border-color:#8bc4bf; box-shadow:0 7px 17px rgba(21,74,76,.08); transform:translateY(-1px); }
+.meal-card strong { font-size:.98rem; }
+.meal-card small { font-size:.8rem; white-space:nowrap; }
+.meal-card>span:nth-child(2) { font-size:.84rem; }
+.meal-card b { font-size:.87rem; }
+.meal-panel .empty { margin:16px 0 0; }
+.empty { border-color:#c9dcde; background:#f8fbfb; font-size:.9rem; }
+.bottom-nav { position:fixed; left:50%; bottom:max(8px,env(safe-area-inset-bottom)); width:min(650px,calc(100vw - 16px)); padding:6px; border-radius:14px; gap:3px; }
+.bottom-nav button { min-height:52px; padding:5px 3px; background:transparent; color:#5b7079; font-size:.76rem; line-height:1.18; font-weight:700; }
+.bottom-nav button.active { background:#e4f4f2; color:#075e5b; }
+.primary { background:#087e79; border-radius:11px; font-weight:750; }
+.primary:hover:not(:disabled) { background:#076c69; }
+.secondary { border-color:#b8d5d3; border-radius:10px; color:var(--teal-dark); font-weight:750; }
+.secondary:hover { background:#eff9f7; }
+.danger { border-radius:10px; }
+.view-page { max-width:850px; }
+.view-page>h2 { font-size:1.45rem; letter-spacing:-.03em; }
+.view-page>details { padding:13px 18px; }
+.view-page>details summary { cursor:pointer; font-weight:750; }
+.guide-list,.settings-list { grid-template-columns:repeat(auto-fit,minmax(270px,1fr)); }
+.guide-list article,.settings-list article,.transfer-card,.privacy-card { background:white; border-radius:14px; box-shadow:none; }
+.guide-list article { line-height:1.5; }
+.guide-list li { margin:.5rem 0; }
+.range { text-align:left; }
+.view-page>.progress-list { margin-bottom:14px; }
+.modal-backdrop { background:rgba(14,34,44,.52); }
+.editor { width:min(100%,680px); padding:24px 26px max(28px,env(safe-area-inset-bottom)); border-radius:20px 20px 0 0; }
+.editor-heading { position:sticky; top:-24px; z-index:3; justify-content:space-between; padding:0 0 15px; background:var(--paper); border-bottom:1px solid var(--line); }
+.editor-heading h2 { font-size:1.45rem; letter-spacing:-.03em; }
+.back { flex:none; font-size:1.5rem; border-radius:11px; }
+.mode-tabs { grid-template-columns:repeat(3,minmax(0,1fr)); background:#edf4f5; }
+.mode-tabs button { font-size:.85rem; line-height:1.2; }
+.ai-intro,.recipe-intro { background:#e9f6f4; border-color:#cee7e3; }
+.field { font-size:.88rem; }
+.field input,.field textarea { border-color:#cbdde0; font-weight:500; font-size:1rem; }
+.photo-field { background:#f8fbfb; }
+.photo-field input { max-width:170px; }
+.form-help,.privacy-note,.saved-picker p,.recipe-count { font-size:.83rem; }
+.saved-picker,.portion-picker,.unit-breakdown { background:#f8fbfb; border-color:var(--line); }
+.unit-field>strong { font-size:.9rem; }
+.unit-field>span { grid-template-columns:40px 62px 40px; }
+.unit-field input { width:62px; }
+.recipe-filters button { font-size:.82rem; }
+.sticky-save { bottom:10px; }
+@media (min-width:1000px) {
+  .app-shell { padding-left:222px; padding-bottom:60px; }
+  .bottom-nav { left:max(24px,calc((100vw - 1200px)/2 + 24px)); top:112px; bottom:auto; transform:none; width:174px; grid-template-columns:1fr; padding:6px; border:0; background:transparent; box-shadow:none; backdrop-filter:none; }
+  .bottom-nav button { min-height:44px; padding:10px 14px; text-align:left; border-radius:10px; font-size:.9rem; }
+  .bottom-nav button.active { background:#dcefed; }
+}
+@media (max-width:900px) { .today-layout { grid-template-columns:1fr; } .meal-panel { order:-1; } }
+@media (max-width:600px) {
+  .app-shell { padding:18px 15px max(100px,calc(env(safe-area-inset-bottom) + 82px)); }
+  .topbar { padding-bottom:17px; margin-bottom:18px; }
+  .brand-mark { width:36px; height:36px; border-radius:10px; font-size:1.35rem; }
+  .topbar h1 { font-size:1.3rem; }
+  .account { max-width:106px; font-size:.75rem; }
+  .account-name { font-size:.75rem!important; }
+  .day-toolbar { gap:9px; }
+  .date-row { width:auto; flex:1; grid-template-columns:34px minmax(0,1fr) 34px; gap:4px; }
+  .date-row button,.date-row input { min-height:44px; }
+  .date-row input { padding:0 5px; font-size:.85rem; }
+  .add-action { min-width:104px; min-height:44px; padding:0 9px; font-size:.83rem; }
+  .today-layout { gap:12px; }
+  .meal-panel,.progress-section { padding:15px; }
+  .energy-card { min-height:0; padding:19px 20px; }
+  .progress-list { gap:7px; }
+  .progress-card { padding:10px; }
+  .progress-card>div:first-child { flex-wrap:wrap; gap:0 8px; font-size:.8rem; }
+  .progress-card span { font-size:.75rem; }
+  .nutrition-details .nutrition-strip { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .bottom-nav button { font-size:.68rem; }
+  .editor { padding:17px 16px max(26px,env(safe-area-inset-bottom)); }
+  .editor-heading { top:-17px; }
+  .mode-tabs button { font-size:.75rem; }
+  .saved-row { grid-template-columns:minmax(0,1fr) auto auto; }
+  .saved-use { flex-direction:column; gap:1px; }
+}
+@media (max-width:370px) { .bottom-nav button { font-size:.62rem; } .date-row input { font-size:.76rem; } .meal-actions { width:100%; } .mode-tabs { gap:2px; padding:4px; } }
+
+/* metadata: date: 2026-09-26; model: GPT-6; prompt: Make the diet tracker site look more professional and aesthetically appealing and improve the UX. Make sure you don’t lose any of the user data. */
