@@ -304,3 +304,8 @@ button:disabled { cursor:not-allowed; }
 @media (max-width:450px) { .mode-tabs button { font-size:.72rem; padding:4px 2px; } .saved-row { grid-template-columns:repeat(3,minmax(0,1fr)); } .saved-select { grid-column:1/-1; } .saved-row button { text-align:center; } }
 
 /* metadata: date: 2026-09-26; model: GPT-6; prompt: Start each new day with Usual breakfast while allowing its removal, and allow adding multiple saved foods at once. */
+
+.recipe-filters { grid-template-columns:repeat(5,minmax(0,1fr)); }
+@media (max-width:500px) { .recipe-filters button { padding:4px 2px; font-size:.72rem; } }
+
+/* metadata: date: 2026-09-27; model: GPT-6; prompt: When adding a meal from a recipe photo, provide a checkbox to add the recipe to the recipe book and save all nutritional information with it. */

@@ -23,6 +23,14 @@ export async function POST(request: Request) {
   const id=existingId || crypto.randomUUID();
   const db=getD1();
   if(existingId) { const owned=await db.prepare('SELECT id FROM meals WHERE id=? AND user_id=?').bind(existingId,auth.user.userId).first(); if(!owned) return errorResponse('Meal not found.',404); }
+  const saveRecipe=body.saveRecipe===true;
+  if(saveRecipe) {
+    if(existingId||templateId||source!=='ai') return errorResponse('Only a new meal analysed from a recipe photo can be added to the recipe book.');
+    const analysisId=cleanText(body.analysisId,80);
+    const analysis=analysisId?await db.prepare('SELECT input_kind,status FROM ai_analyses WHERE id=? AND user_id=?').bind(analysisId,auth.user.userId).first<{input_kind:string;status:string}>():null;
+    if(analysis?.status!=='completed'||!['recipe_photo','meal_and_recipe_photos'].includes(analysis.input_kind))
+      return errorResponse('Analyse a recipe photo before saving it to the recipe book.');
+  }
   const allowedRows=await db.prepare('SELECT id FROM categories WHERE user_id=?').bind(auth.user.userId).all();
   const allowed=new Set(allowedRows.results.map((row)=>String(row.id)));
   const unitSource=body.units && typeof body.units==='object' ? body.units as Record<string,unknown> : {};
@@ -38,14 +46,14 @@ export async function POST(request: Request) {
   statements.push(...units.map(([categoryId,value])=>db.prepare('INSERT INTO meal_units (meal_id,category_id,units) VALUES (?,?,?)').bind(id,categoryId,value)));
   statements.push(db.prepare('INSERT INTO meal_details (meal_id,components) VALUES (?,?) ON CONFLICT(meal_id) DO UPDATE SET components=excluded.components').bind(id,JSON.stringify(components)));
   let savedTemplateId:string|null=null;
-  if(body.saveTemplate && !templateId) {
+  if((body.saveTemplate||saveRecipe) && !templateId) {
     savedTemplateId=crypto.randomUUID();
-    statements.push(db.prepare('INSERT INTO meal_templates (id,user_id,name,description,source,energy_kj,protein_g,carbohydrate_g,sugars_g,fat_g,saturated_fat_g,fibre_g,sodium_mg,confidence,assumptions,components,created_at,updated_at,last_used_at) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)').bind(savedTemplateId,auth.user.userId,name,description,source,...NUTRIENT_KEYS.map((key)=>nutrients[key]),confidence,JSON.stringify(assumptions),JSON.stringify(components),now,now,now));
+    statements.push(db.prepare('INSERT INTO meal_templates (id,user_id,name,description,source,energy_kj,protein_g,carbohydrate_g,sugars_g,fat_g,saturated_fat_g,fibre_g,sodium_mg,confidence,assumptions,components,created_at,updated_at,last_used_at) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)').bind(savedTemplateId,auth.user.userId,name,description,saveRecipe?'recipe_photo':source,...NUTRIENT_KEYS.map((key)=>nutrients[key]),confidence,JSON.stringify(assumptions),JSON.stringify(components),now,now,now));
     statements.push(...units.map(([categoryId,value])=>db.prepare('INSERT INTO template_units (template_id,category_id,units) VALUES (?,?,?)').bind(savedTemplateId,categoryId,value)));
   }
   if(templateId) statements.push(db.prepare('UPDATE meal_templates SET last_used_at=? WHERE id=? AND user_id=?').bind(now,templateId,auth.user.userId));
   await db.batch(statements);
-  return Response.json({ id, templateId:savedTemplateId ?? templateId });
+  return Response.json({ id, templateId:savedTemplateId ?? templateId, recipeId:saveRecipe?savedTemplateId:null });
 }
 
 // metadata: GPT-5.6 Sol; time: 2026-09-11 13:39 Australia/Sydney; date: 2026-09-11; prompt: Convert Diet Tracker to a private signed-in Site with synced data and AI analysis of meal descriptions, meal photos, and recipe photos.
@@ -53,3 +61,4 @@ export async function POST(request: Request) {
 // metadata: GPT-5.6 Sol; time: 2026-09-11 15:23 Australia/Sydney; date: 2026-09-11; prompt: Accept validated recipe-book meal entries as a distinct non-AI source.
 
 // metadata: date: 2026-09-11; model: GPT (Codex; exact version unavailable); prompt: Yes, publish the fixes and implement portion multipliers and ingredient-by-ingredient unit breakdowns.
+// metadata: date: 2026-09-27; model: GPT-6; prompt: When adding a meal from a recipe photo, provide a checkbox to add the recipe to the recipe book and save all nutritional information with it.
