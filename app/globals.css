@@ -328,4 +328,23 @@ button:disabled { cursor:not-allowed; }
 
 /* metadata: date: 2026-09-27; model: GPT-6; prompt: Add editable recipe ingredient review and swipe gestures to remove or double meals. */
 
+.nutrition-strip.guided>div { position:relative; }
+.nutrition-strip.guided>div::after { content:""; position:absolute; left:12px; right:12px; bottom:2px; height:2px; border-radius:999px; background:#aebec3; }
+.nutrition-strip.guided>.nutrition-good::after { background:#288769; }
+.nutrition-strip.guided>.nutrition-near::after { background:#c28a2e; }
+.nutrition-strip.guided>.nutrition-outside::after { background:#c45561; }
+.nutrition-legend { display:flex; flex-wrap:wrap; gap:6px 16px; margin:10px 1px 12px; color:var(--muted); font-size:.78rem; }
+.nutrition-legend span { display:inline-flex; align-items:center; gap:6px; }
+.nutrition-legend i { width:16px; height:2px; border-radius:2px; background:#aebec3; }
+.nutrition-legend .key-good { background:#288769; }
+.nutrition-legend .key-near { background:#c28a2e; }
+.nutrition-legend .key-outside { background:#c45561; }
+.guidance-details { margin-top:8px; color:var(--ink); font-size:.88rem; line-height:1.5; }
+.guidance-details p { margin:10px 0; }
+.guidance-details ul { margin:10px 0; padding-left:20px; }
+.guidance-details li { margin:7px 0; }
+.guidance-sources a { color:var(--teal-dark); text-decoration:underline; text-underline-offset:2px; }
+
+/* metadata: date: 2026-09-27; model: GPT-6; prompt: Add thin, subtle seven-day nutrition guidance lines without enlarging the total boxes. */
+
 /* metadata: date: 2026-09-27; model: GPT-6; prompt: When adding a meal from a recipe photo, provide a checkbox to add the recipe to the recipe book and save all nutritional information with it. */
