@@ -308,4 +308,24 @@ button:disabled { cursor:not-allowed; }
 .recipe-filters { grid-template-columns:repeat(5,minmax(0,1fr)); }
 @media (max-width:500px) { .recipe-filters button { padding:4px 2px; font-size:.72rem; } }
 
+.ingredient-review { display:grid; gap:14px; }
+.ingredient-head { display:grid; grid-template-columns:minmax(90px,30%) 1fr; gap:8px; color:var(--muted); font-size:.85rem; font-weight:700; }
+.ingredient-list { display:grid; gap:8px; }
+.ingredient-swipe,.meal-swipe { position:relative; overflow:hidden; border-radius:12px; touch-action:pan-y; }
+.ingredient-fields { position:relative; z-index:1; display:grid; grid-template-columns:minmax(90px,30%) minmax(0,1fr) 32px; gap:8px; padding:5px; background:#fff; transition:transform .18s ease; }
+.ingredient-fields input { width:100%; min-width:0; padding:11px 9px; border:1px solid var(--line); border-radius:8px; font:inherit; font-size:1rem; }
+.ingredient-fields button { border:0; border-radius:8px; background:#e9f6f4; color:var(--teal-dark); font-size:1.2rem; }
+.ingredient-fields .ingredient-delete { background:transparent; color:var(--muted); }
+.ingredient-remove { position:absolute; inset:0 0 0 auto; display:flex; width:82px; justify-content:center; background:#ad3d49; }
+.ingredient-remove button { border:0; background:transparent; color:#fff; font:inherit; font-weight:700; }
+.ingredient-new { border:1px dashed var(--line); border-radius:10px; }
+.meal-swipe { margin-bottom:8px; }
+.meal-swipe .meal-card { position:relative; z-index:1; margin:0; transition:transform .18s ease; }
+.meal-swipe .meal-card:hover { transform:none; }
+.swipe-actions { position:absolute; inset:0; display:flex; justify-content:space-between; }
+.swipe-actions button { width:96px; border:0; color:white; font:inherit; font-weight:700; background:var(--teal-dark); }
+.swipe-actions button:last-child { background:#ad3d49; }
+
+/* metadata: date: 2026-09-27; model: GPT-6; prompt: Add editable recipe ingredient review and swipe gestures to remove or double meals. */
+
 /* metadata: date: 2026-09-27; model: GPT-6; prompt: When adding a meal from a recipe photo, provide a checkbox to add the recipe to the recipe book and save all nutritional information with it. */

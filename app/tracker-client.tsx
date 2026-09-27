@@ -10,6 +10,7 @@ type View = 'today'|'week'|'guide'|'transfer'|'settings';
 type Draft = { id?:string; templateId?:string|null; name:string; date:string; time:string; description:string; source:string; units:Record<string,number>; nutrients:Nutrients; assumptions:string[]; components:AnalysisComponent[]; confidence:string|null; saveTemplate:boolean; saveRecipe:boolean; recipePhotoAnalysed:boolean; analysisId:string|null };
 type ApiError = { error?:string };
 type AnalysisPayload = ApiError & { analysisId:string; name:string; description?:string; units:Record<string,number>; nutrition:Nutrients; assumptions?:string[]; components?:AnalysisComponent[]; confidence:string|null; clarifyingQuestions?:string[] };
+type RecipeReview = {name:string;yield:string;ingredients:Array<{id:string;quantity:string;name:string}>;saveRecipe:boolean};
 type RecipeRecord = { id:string; name:string; category:'breakfast'|'lunch'|'dinner'; page:number; servingLabel:string; units:Record<string,number>; nutrients:Nutrients };
 const recipes = recipeBook.recipes as RecipeRecord[];
 const nutrientFields:Array<[keyof Nutrients,string,string]> = [['energyKj','Energy','kJ'],['proteinG','Protein','g'],['carbohydrateG','Carbohydrate','g'],['sugarsG','Sugars','g'],['fatG','Fat','g'],['saturatedFatG','Saturated fat','g'],['fibreG','Fibre','g'],['sodiumMg','Sodium','mg']];
@@ -21,6 +22,7 @@ export default function TrackerClient({initialUserName}:{initialUserName:string}
   const [editorOpen,setEditorOpen]=useState(false); const [mode,setMode]=useState<'manual'|'ai'|'recipe'|'saved'>('ai'); const [draft,setDraft]=useState<Draft>(()=>newDraft(todayKey()));
   const [selection,setSelection]=useState(0); const [scaled,setScaled]=useState(0);
   const [analysing,setAnalysing]=useState(false); const [saving,setSaving]=useState(false); const [notice,setNotice]=useState('');
+  const [recipeReview,setRecipeReview]=useState<RecipeReview|null>(null);
 
   async function load(date=selectedDate) { setLoading(true); setError(''); try { const response=await fetch(`/api/state?date=${date}&today=${todayKey()}`,{cache:'no-store'}); const payload=await response.json() as TrackerState&ApiError; if(!response.ok)throw new Error(payload.error||'Could not load the tracker.'); setState(payload); } catch(e){setError(message(e));} finally{setLoading(false);} }
   useEffect(()=>{
@@ -40,7 +42,7 @@ export default function TrackerClient({initialUserName}:{initialUserName:string}
   },[]);
   const dailyUnits=useMemo(()=>sumUnits(state?.meals||[]),[state?.meals]);
 
-  function openNew() { setSelection((value)=>value+1); setDraft(newDraft(selectedDate)); setMode('ai'); setNotice(''); setEditorOpen(true); }
+  function openNew() { setSelection((value)=>value+1); setDraft(newDraft(selectedDate)); setRecipeReview(null); setMode('ai'); setNotice(''); setEditorOpen(true); }
   function openRecipes() { setSelection((value)=>value+1); setDraft(newDraft(selectedDate)); setMode('recipe'); setNotice(''); setEditorOpen(true); }
   function openSaved() { setSelection((value)=>value+1); setDraft(newDraft(selectedDate)); setMode('saved'); setNotice(''); setEditorOpen(true); }
   function openEdit(meal:Meal) { setSelection((value)=>value+1); setDraft({id:meal.id,templateId:meal.templateId,name:meal.name,date:meal.date,time:meal.time,description:meal.description,source:meal.source,units:{...meal.units},nutrients:pickNutrition(meal),assumptions:[...meal.assumptions],components:meal.components||[],confidence:meal.confidence,saveTemplate:false,saveRecipe:false,recipePhotoAnalysed:false,analysisId:null}); setMode('manual'); setNotice(''); setEditorOpen(true); }
@@ -57,10 +59,35 @@ export default function TrackerClient({initialUserName}:{initialUserName:string}
       setSelection((value)=>value+1);
       const chosenName=String(form.get('name')||'').trim(); const submittedDescription=String(form.get('description')||'');
       const recipePhotoAnalysed=form.getAll('recipePhotos').some(item=>item instanceof File&&item.size>0);
-      const saveRecipe=recipePhotoAnalysed&&form.get('saveRecipe')==='on';
-      setDraft((current)=>({...current,name:chosenName||payload.name,description:preserveDescription?submittedDescription:(payload.description||submittedDescription),source:'ai',units:payload.units,nutrients:payload.nutrition,assumptions:payload.assumptions||[],components:payload.components||[],confidence:payload.confidence,saveTemplate:preserveDescription?current.saveTemplate:!saveRecipe,saveRecipe:preserveDescription?current.saveRecipe:saveRecipe,recipePhotoAnalysed:preserveDescription?current.recipePhotoAnalysed:recipePhotoAnalysed,analysisId:preserveDescription?current.analysisId:payload.analysisId}));
+      const saveRecipe=(recipePhotoAnalysed||form.get('reviewedRecipe')==='true')&&form.get('saveRecipe')==='on';
+      setDraft((current)=>({...current,name:chosenName||payload.name,description:preserveDescription?submittedDescription:(payload.description||submittedDescription),source:'ai',units:payload.units,nutrients:payload.nutrition,assumptions:payload.assumptions||[],components:payload.components||[],confidence:payload.confidence,saveTemplate:preserveDescription?current.saveTemplate:!saveRecipe,saveRecipe:preserveDescription?current.saveRecipe:saveRecipe,recipePhotoAnalysed:preserveDescription?current.recipePhotoAnalysed:(recipePhotoAnalysed||form.get('reviewedRecipe')==='true'),analysisId:preserveDescription?current.analysisId:payload.analysisId}));
       const questions=(payload.clarifyingQuestions||[]) as string[]; setNotice(questions.length?`Please review carefully: ${questions.join(' ')}`:'Analysis complete. Review and adjust every value before saving.'); setMode('manual');
-    } catch(e){setError(message(e));setNotice('');} finally{setAnalysing(false);}
+      return true;
+    } catch(e){setError(message(e));setNotice('');return false;} finally{setAnalysing(false);}
+  }
+
+  async function extractRecipe(form:FormData){
+    setAnalysing(true);setError('');setNotice('Reading recipe ingredients…');
+    try{
+      const outgoing=new FormData(); const url=String(form.get('recipeUrl')||'').trim();
+      if(url)outgoing.set('url',url);
+      else for(const item of form.getAll('recipePhotos'))if(item instanceof File&&item.size)outgoing.append('recipePhotos',await privacySafeImage(item),'recipe.jpg');
+      const response=await fetch('/api/recipes/extract',{method:'POST',body:outgoing});
+      const payload=await response.json() as ApiError&{name:string;yield:string;ingredients:Array<{quantity:string;name:string}>};
+      if(!response.ok)throw new Error(payload.error||'Could not read the recipe.');
+      setRecipeReview({name:String(form.get('name')||'').trim()||payload.name,yield:payload.yield,ingredients:payload.ingredients.map(item=>({...item,id:crypto.randomUUID()})),saveRecipe:form.get('saveRecipe')==='on'});
+      setNotice('Check quantities and ingredients, then tap Done to calculate one serving.');
+    }catch(cause){setError(message(cause));setNotice('');}finally{setAnalysing(false);}
+  }
+
+  async function finishRecipeReview(review=recipeReview){
+    if(!review)return;
+    const ingredients=review.ingredients.filter(item=>item.name.trim());
+    if(!ingredients.length){setError('Add at least one ingredient.');return;}
+    if(ingredients.some(item=>!item.quantity.trim())){setError('Add a quantity for every ingredient.');return;}
+    const form=new FormData();form.set('name',review.name);form.set('reviewedRecipe','true');if(review.saveRecipe)form.set('saveRecipe','on');
+    form.set('description',`Recipe: ${review.name}. Yield: ${review.yield||'not stated; estimate one serving'}; ingredients for the full recipe:\n${ingredients.map(item=>`${item.quantity.trim()} ${item.name.trim()}`).join('\n')}`);
+    if(await analyse(form))setRecipeReview(null);
   }
 
   async function saveMeal(event:React.FormEvent) {
@@ -81,6 +108,10 @@ export default function TrackerClient({initialUserName}:{initialUserName:string}
   function recalculateDescription(){const form=new FormData();form.set('name',draft.name);form.set('description',draft.description);void analyse(form,true);}
 
   async function deleteMeal(id:string) { if(!confirm(id===state?.autoBreakfastMealId?'Remove breakfast from this day? It will not be added again today.':'Remove this meal?'))return; const response=await fetch(`/api/meals/${encodeURIComponent(id)}`,{method:'DELETE'}); if(response.ok){setEditorOpen(false);setNotice('Meal removed.');await load();}else setError('Could not remove the meal.'); }
+  async function doubleMeal(meal:Meal){
+    if(saving)return;setSaving(true);setError('');
+    try{const portion=scalePortion({units:meal.units,nutrients:pickNutrition(meal),components:meal.components||[]},2);const response=await fetch('/api/meals',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({id:meal.id,templateId:meal.templateId,name:meal.name,date:meal.date,time:meal.time,description:meal.description,source:meal.source,...portion,assumptions:[...meal.assumptions.filter(item=>!item.startsWith('Portion doubled')),`Portion doubled from the logged entry.`],confidence:meal.confidence})});const payload=await response.json() as ApiError;if(!response.ok)throw new Error(payload.error||'Could not double the meal.');setNotice(`${meal.name} doubled.`);await load();}catch(cause){setError(message(cause));}finally{setSaving(false);}
+  }
   function changeDay(offset:number){const date=new Date(`${selectedDate}T12:00:00`);date.setDate(date.getDate()+offset);setSelectedDate(localKey(date));}
 
   return <main className="app-shell">
@@ -93,14 +124,14 @@ export default function TrackerClient({initialUserName}:{initialUserName:string}
       <section className="progress-section" aria-label="Food group progress"><div className="section-heading"><h2>Food groups</h2><span className="section-note">Units / daily target</span></div><div className="progress-list">{(state?.categories||[]).map((category)=><ProgressCard key={category.id} category={category} value={dailyUnits[category.id]||0}/>)}</div></section>
       <details className="nutrition-details"><summary>Nutrition details</summary><NutritionStrip nutrition={state?.dailyNutrition||emptyNutrition}/></details></div>
       <section className="meal-panel"><div className="section-heading"><h2>Meals</h2><div className="meal-actions"><button className="secondary" onClick={openRecipes}>Recipe book</button><button className="secondary" onClick={openSaved}>Saved meals</button></div></div>
-        {loading?<p className="empty">Loading your synced meals…</p>:state?.meals.length?<div className="meal-list">{state.meals.map((meal)=><button className="meal-card" key={meal.id} onClick={()=>openEdit(meal)}><span><strong>{meal.name}</strong><small>{meal.time}</small></span><span>{meal.id===state.autoBreakfastMealId&&<em className="auto-label">Added automatically · </em>}{formatUnits(meal.units,state.categories)}</span><b>{meal.energyKj===null?'Not calculated':`${round(meal.energyKj)} kJ`}</b></button>)}</div>:<p className="empty">Describe a meal, photograph your plate, photograph a recipe, or enter units manually.</p>}
+        {loading?<p className="empty">Loading your synced meals…</p>:state?.meals.length?<div className="meal-list">{state.meals.map((meal)=><SwipeMeal key={meal.id} meal={meal} disabled={saving} onEdit={()=>openEdit(meal)} onRemove={()=>deleteMeal(meal.id)} onDouble={()=>doubleMeal(meal)} categories={state.categories} auto={meal.id===state.autoBreakfastMealId}/>)}</div>:<p className="empty">Describe a meal, photograph your plate, photograph a recipe, or enter units manually.</p>}
       </section></div>
     </>}
     {view==='week'&&<WeekView state={state}/>} {view==='guide'&&<GuideView categories={state?.categories||[]}/>} {view==='transfer'&&<TransferView/>} {view==='settings'&&<SettingsView categories={state?.categories||[]} onSaved={()=>load()}/>}
     <nav className="bottom-nav" aria-label="Main menu">{([['today','Today'],['week','7 day totals'],['guide','Unit guide'],['transfer','Import/export'],['settings','Settings']] as Array<[View,string]>).map(([key,label])=><button onClick={()=>setView(key)} className={view===key?'active':''} key={key}>{label}</button>)}</nav>
     {editorOpen&&<div className="modal-backdrop"><section className="editor" role="dialog" aria-modal="true" aria-labelledby="editor-title"><div className="editor-heading"><div><p className="eyebrow">{draft.id?'Edit entry':'New entry'}</p><h2 id="editor-title">{draft.id?'Edit meal':'Add a meal'}</h2></div><button className="back" onClick={()=>setEditorOpen(false)} aria-label="Close">×</button></div>
       {!draft.id&&<div className="mode-tabs"><button className={mode==='ai'?'active':''} onClick={()=>setMode('ai')}>Describe or photograph</button><button className={mode==='saved'?'active':''} onClick={()=>setMode('saved')}>Saved meals</button><button className={mode==='recipe'?'active':''} onClick={()=>setMode('recipe')}>Recipe book</button><button className={mode==='manual'?'active':''} onClick={()=>setMode('manual')}>Manual</button></div>}
-      {mode==='ai'&&<AiForm analysing={analysing} onAnalyse={analyse}/>}
+      {mode==='ai'&&(recipeReview?<IngredientReview review={recipeReview} onChange={setRecipeReview} onDone={finishRecipeReview} onBack={()=>setRecipeReview(null)} analysing={analysing}/>:<AiForm analysing={analysing} onAnalyse={analyse} onExtract={extractRecipe}/>)}
       {mode==='recipe'&&<RecipePicker personal={state?.templates.filter(template=>template.source==='recipe_photo')||[]} onSelect={applyRecipe} onPersonal={applyPersonalRecipe}/>}
       {mode==='saved'&&<SavedMealsManager templates={state?.templates||[]} categories={state?.categories||[]} onUse={applyTemplate} onAdd={addSelectedTemplates} onChanged={()=>load()} saving={saving}/>}
       {mode==='manual'&&<form className="meal-form" onSubmit={saveMeal}>
@@ -135,18 +166,46 @@ function UnitBreakdown({components,units,categories}:{components:AnalysisCompone
   return <details className="unit-breakdown" open><summary>Ingredient unit breakdown</summary><p className="form-help">Estimated amounts and CSIRO food-group units. Legumes can contribute to two groups.</p>{available.map((item,index)=><article key={index}><strong>{item.name} · {format(item.grams)} g</strong><p>{formatUnits(item.units||{},categories)}</p><small>{item.unitReason}</small></article>)}{changed&&<p className="form-help" role="status">Your edited meal totals differ from this ingredient estimate. The totals below are what will be saved.</p>}</details>;
 }
 
-function AiForm({analysing,onAnalyse}:{analysing:boolean;onAnalyse:(data:FormData)=>void}) {
+function AiForm({analysing,onAnalyse,onExtract}:{analysing:boolean;onAnalyse:(data:FormData)=>void;onExtract:(data:FormData)=>void}) {
   const [hasRecipePhoto,setHasRecipePhoto]=useState(false);
-  return <form className="ai-form" onSubmit={(event)=>{event.preventDefault();void onAnalyse(new FormData(event.currentTarget));}}>
-    <div className="ai-intro"><strong>AI meal estimate</strong><p>Add any combination of description, plated-meal photos and recipe photos. You will review the result before it is saved.</p></div>
+  const [recipeUrl,setRecipeUrl]=useState('');
+  return <form className="ai-form" onSubmit={(event)=>{event.preventDefault();const data=new FormData(event.currentTarget);void (hasRecipePhoto||recipeUrl.trim()?onExtract(data):onAnalyse(data));}}>
+    <div className="ai-intro"><strong>AI meal estimate</strong><p>Describe a meal, or add a recipe URL or photo. You can correct recipe ingredients before calculation.</p></div>
     <label className="field">Meal name <span className="optional">optional</span><input name="name" maxLength={120} placeholder="For example: chicken curry"/></label>
     <label className="field">Describe what you ate<textarea name="description" maxLength={2500} placeholder="For example: one bowl of chicken curry with about a cup of rice and a spoonful of yoghurt"/></label>
     <label className="photo-field"><span><strong>Meal photo</strong><small>A plate, bowl, drink or packaged food</small></span><input name="mealPhotos" type="file" accept="image/jpeg,image/png,image/webp" capture="environment" multiple/></label>
-    <label className="photo-field"><span><strong>Recipe photo</strong><small>A recipe page, ingredient list, method or nutrition panel</small></span><input name="recipePhotos" type="file" accept="image/jpeg,image/png,image/webp" multiple onChange={event=>setHasRecipePhoto(Boolean(event.currentTarget.files?.length))}/></label>
-    {hasRecipePhoto&&<label className="check"><input type="checkbox" name="saveRecipe"/>Add this recipe to my recipe book</label>}
-    <p className="privacy-note">The reviewed analysis saves the nutrition for the portion you ate. Photos are resized and stripped of embedded metadata before analysis; the images are not stored.</p>
-    <button className="primary wide" disabled={analysing}>{analysing?'Analysing…':'Calculate units and nutrition'}</button>
+    <label className="field">Recipe URL <span className="optional">optional</span><input name="recipeUrl" type="url" placeholder="https://example.com/recipe" value={recipeUrl} onChange={event=>setRecipeUrl(event.target.value)} disabled={hasRecipePhoto}/></label>
+    <label className="photo-field"><span><strong>Recipe photo</strong><small>A recipe page or ingredient list</small></span><input name="recipePhotos" type="file" accept="image/jpeg,image/png,image/webp" multiple disabled={Boolean(recipeUrl.trim())} onChange={event=>setHasRecipePhoto(Boolean(event.currentTarget.files?.length))}/></label>
+    {(hasRecipePhoto||recipeUrl.trim())&&<label className="check"><input type="checkbox" name="saveRecipe"/>Add this recipe to my recipe book</label>}
+    <p className="privacy-note">Recipes use Australian cups (250 mL) and tablespoons (20 mL) unless specified otherwise. Photos are resized and stripped of embedded metadata before analysis; the images are not stored.</p>
+    <button className="primary wide" disabled={analysing}>{analysing?'Working…':hasRecipePhoto||recipeUrl.trim()?'Review ingredients':'Calculate units and nutrition'}</button>
   </form>;
+}
+
+function IngredientReview({review,onChange,onDone,onBack,analysing}:{review:RecipeReview;onChange:(value:RecipeReview)=>void;onDone:(value:RecipeReview)=>void;onBack:()=>void;analysing:boolean}){
+  const [blank,setBlank]=useState({quantity:'',name:''});
+  function update(id:string,key:'quantity'|'name',value:string){onChange({...review,ingredients:review.ingredients.map(item=>item.id===id?{...item,[key]:value}:item)});}
+  function add(){if(!blank.name.trim())return;onChange({...review,ingredients:[...review.ingredients,{id:crypto.randomUUID(),quantity:blank.quantity,name:blank.name}]});setBlank({quantity:'',name:''});}
+  function remove(id:string){onChange({...review,ingredients:review.ingredients.filter(item=>item.id!==id)});}
+  return <section className="ingredient-review"><div className="ai-intro"><strong>Review ingredients</strong><p>Tap a quantity or name to edit. Swipe left to remove an ingredient. Add one in the blank row, then tap Done.</p></div>
+    <label className="field">Recipe name<input value={review.name} maxLength={120} onChange={event=>onChange({...review,name:event.target.value})}/></label>
+    <label className="field">Recipe yield<input value={review.yield} maxLength={120} placeholder="e.g. 4 servings" onChange={event=>onChange({...review,yield:event.target.value})}/></label>
+    <div className="ingredient-head"><span>Quantity</span><span>Ingredient</span></div>
+    <div className="ingredient-list">{review.ingredients.map(item=><IngredientRow key={item.id} item={item} onUpdate={(key,value)=>update(item.id,key,value)} onRemove={()=>remove(item.id)}/>)}
+      <div className="ingredient-fields ingredient-new"><input aria-label="New ingredient quantity" placeholder="Amount" value={blank.quantity} onChange={event=>setBlank({...blank,quantity:event.target.value})}/><input aria-label="New ingredient name" placeholder="Add ingredient" value={blank.name} onChange={event=>setBlank({...blank,name:event.target.value})} onKeyDown={event=>{if(event.key==='Enter'){event.preventDefault();add();}}}/><button type="button" aria-label="Add ingredient" onClick={add} disabled={!blank.name.trim()}>+</button></div>
+    </div><p className="form-help">Australian cup = 250 mL; tablespoon = 20 mL unless the recipe says otherwise. Calculation is for one serving.</p>
+    <div className="form-actions"><button type="button" className="secondary" onClick={onBack}>Back</button><button type="button" className="primary" disabled={analysing||(!review.ingredients.length&&!blank.name.trim())} onClick={()=>onDone(blank.name.trim()?{...review,ingredients:[...review.ingredients,{id:crypto.randomUUID(),...blank}]}:review)}>{analysing?'Calculating…':'Done'}</button></div>
+  </section>;
+}
+
+function IngredientRow({item,onUpdate,onRemove}:{item:{quantity:string;name:string};onUpdate:(key:'quantity'|'name',value:string)=>void;onRemove:()=>void}){
+  const [start,setStart]=useState<{x:number;y:number}|null>(null);
+  return <div className="ingredient-swipe" onTouchStart={event=>setStart({x:event.touches[0].clientX,y:event.touches[0].clientY})} onTouchEnd={event=>{if(!start)return;const dx=event.changedTouches[0].clientX-start.x;const dy=event.changedTouches[0].clientY-start.y;if(dx < -75&&Math.abs(dx)>Math.abs(dy)*1.4)onRemove();setStart(null);}}><div className="ingredient-fields"><input aria-label={`Quantity for ${item.name}`} value={item.quantity} onChange={event=>onUpdate('quantity',event.target.value)}/><input aria-label="Ingredient name" value={item.name} onChange={event=>onUpdate('name',event.target.value)}/><button type="button" className="ingredient-delete" aria-label={`Remove ${item.name}`} onClick={onRemove}>×</button></div></div>;
+}
+
+function SwipeMeal({meal,categories,auto,onEdit,onRemove,onDouble,disabled}:{meal:Meal;categories:Category[];auto:boolean;onEdit:()=>void;onRemove:()=>Promise<void>;onDouble:()=>Promise<void>;disabled:boolean}){
+  const [offset,setOffset]=useState(0);const [start,setStart]=useState<{x:number;y:number}|null>(null);
+  return <div className="meal-swipe" onTouchStart={event=>setStart({x:event.touches[0].clientX,y:event.touches[0].clientY})} onTouchEnd={event=>{if(!start)return;const dx=event.changedTouches[0].clientX-start.x;const dy=event.changedTouches[0].clientY-start.y;if(!disabled&&Math.abs(dx)>90&&Math.abs(dx)>Math.abs(dy)*1.4){setOffset(dx<0?-96:96);void (dx<0?onRemove():onDouble()).finally(()=>setOffset(0));}setStart(null);}}><div className="swipe-actions"><button type="button" disabled={disabled} onClick={()=>{setOffset(0);void onDouble();}}>Double</button><button type="button" disabled={disabled} onClick={()=>{setOffset(0);void onRemove();}}>Remove</button></div><button className="meal-card" style={{transform:`translateX(${offset}px)`}} onClick={()=>offset?setOffset(0):onEdit()}><span><strong>{meal.name}</strong><small>{meal.time}</small></span><span>{auto&&<em className="auto-label">Added automatically · </em>}{formatUnits(meal.units,categories)}</span><b>{meal.energyKj===null?'Not calculated':`${round(meal.energyKj)} kJ`}</b></button></div>;
 }
 
 function SavedMealsManager({templates,categories,onUse,onAdd,onChanged,saving}:{templates:MealTemplate[];categories:Category[];onUse:(template:MealTemplate)=>void;onAdd:(ids:string[])=>Promise<void>;onChanged:()=>void;saving:boolean}){
@@ -229,3 +288,4 @@ async function privacySafeImage(file:File){const bitmap=await createImageBitmap(
 // metadata: date: 2026-09-11; model: GPT (Codex; exact version unavailable); prompt: Yes, publish the fixes and implement portion multipliers and ingredient-by-ingredient unit breakdowns.
 
 // metadata: date: 2026-09-11; model: GPT (Codex; exact version unavailable); prompt: Colour unit bars teal up to target, red only for excess, keep vegetables teal, and give indulgences a contrasting colour.
+// metadata: date: 2026-09-27; model: GPT-6; prompt: Add recipes from URL or photo with editable ingredients before Australian-measure nutrition analysis; swipe left to remove a meal and right to double it.

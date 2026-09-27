@@ -28,8 +28,8 @@ export async function POST(request: Request) {
     if(existingId||templateId||source!=='ai') return errorResponse('Only a new meal analysed from a recipe photo can be added to the recipe book.');
     const analysisId=cleanText(body.analysisId,80);
     const analysis=analysisId?await db.prepare('SELECT input_kind,status FROM ai_analyses WHERE id=? AND user_id=?').bind(analysisId,auth.user.userId).first<{input_kind:string;status:string}>():null;
-    if(analysis?.status!=='completed'||!['recipe_photo','meal_and_recipe_photos'].includes(analysis.input_kind))
-      return errorResponse('Analyse a recipe photo before saving it to the recipe book.');
+    if(analysis?.status!=='completed'||!['recipe_photo','meal_and_recipe_photos','reviewed_recipe'].includes(analysis.input_kind))
+      return errorResponse('Review and analyse a recipe before saving it to the recipe book.');
   }
   const allowedRows=await db.prepare('SELECT id FROM categories WHERE user_id=?').bind(auth.user.userId).all();
   const allowed=new Set(allowedRows.results.map((row)=>String(row.id)));
@@ -62,3 +62,4 @@ export async function POST(request: Request) {
 
 // metadata: date: 2026-09-11; model: GPT (Codex; exact version unavailable); prompt: Yes, publish the fixes and implement portion multipliers and ingredient-by-ingredient unit breakdowns.
 // metadata: date: 2026-09-27; model: GPT-6; prompt: When adding a meal from a recipe photo, provide a checkbox to add the recipe to the recipe book and save all nutritional information with it.
+// metadata: date: 2026-09-27; model: GPT-6; prompt: Save reviewed recipes imported from URL or photo with their complete analysed nutrition.
