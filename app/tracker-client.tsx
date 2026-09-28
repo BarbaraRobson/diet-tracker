@@ -5,6 +5,7 @@ import type { AnalysisComponent, Category, Meal, MealTemplate, Nutrients, Tracke
 import { CSIRO_UNIT_RULES } from '@/lib/unit-rules';
 import { scalePortion, type Portion } from '@/lib/portions';
 import { weeklyNutritionGuidance, type NutritionGuidance } from '@/lib/nutrition-guidance';
+import { copyReviewedRecipeFields } from '@/lib/recipe-measures';
 import recipeBook from '@/data/recipe-book-reference.json';
 
 type View = 'today'|'week'|'guide'|'transfer'|'settings';
@@ -55,6 +56,7 @@ export default function TrackerClient({initialUserName}:{initialUserName:string}
     setAnalysing(true); setError(''); setNotice('Preparing photos and analysing the meal…');
     try {
       const outgoing=new FormData(); outgoing.set('description',String(form.get('description')||''));
+      copyReviewedRecipeFields(form,outgoing);
       for(const key of ['mealPhotos','recipePhotos']) for(const item of form.getAll(key)) if(item instanceof File&&item.size) outgoing.append(key,await privacySafeImage(item),`${key}-${crypto.randomUUID()}.jpg`);
       const response=await fetch('/api/analyze',{method:'POST',body:outgoing}); const payload=await response.json() as AnalysisPayload; if(!response.ok)throw new Error(payload.error||'Analysis failed.');
       setSelection((value)=>value+1);
@@ -86,7 +88,7 @@ export default function TrackerClient({initialUserName}:{initialUserName:string}
     const ingredients=review.ingredients.filter(item=>item.name.trim());
     if(!ingredients.length){setError('Add at least one ingredient.');return;}
     if(ingredients.some(item=>!item.quantity.trim())){setError('Add a quantity for every ingredient.');return;}
-    const form=new FormData();form.set('name',review.name);form.set('reviewedRecipe','true');if(review.saveRecipe)form.set('saveRecipe','on');
+    const form=new FormData();form.set('name',review.name);form.set('reviewedRecipe','true');form.set('recipe',JSON.stringify({name:review.name,yield:review.yield,ingredients}));if(review.saveRecipe)form.set('saveRecipe','on');
     form.set('description',`Recipe: ${review.name}. Yield: ${review.yield||'not stated; estimate one serving'}; ingredients for the full recipe:\n${ingredients.map(item=>`${item.quantity.trim()} ${item.name.trim()}`).join('\n')}`);
     if(await analyse(form))setRecipeReview(null);
   }
@@ -132,10 +134,11 @@ export default function TrackerClient({initialUserName}:{initialUserName:string}
     <nav className="bottom-nav" aria-label="Main menu">{([['today','Today'],['week','7 day totals'],['guide','Unit guide'],['transfer','Import/export'],['settings','Settings']] as Array<[View,string]>).map(([key,label])=><button onClick={()=>setView(key)} className={view===key?'active':''} key={key}>{label}</button>)}</nav>
     {editorOpen&&<div className="modal-backdrop"><section className="editor" role="dialog" aria-modal="true" aria-labelledby="editor-title"><div className="editor-heading"><div><p className="eyebrow">{draft.id?'Edit entry':'New entry'}</p><h2 id="editor-title">{draft.id?'Edit meal':'Add a meal'}</h2></div><button className="back" onClick={()=>setEditorOpen(false)} aria-label="Close">×</button></div>
       {!draft.id&&<div className="mode-tabs"><button className={mode==='ai'?'active':''} onClick={()=>setMode('ai')}>Describe or photograph</button><button className={mode==='saved'?'active':''} onClick={()=>setMode('saved')}>Saved meals</button><button className={mode==='recipe'?'active':''} onClick={()=>setMode('recipe')}>Recipe book</button><button className={mode==='manual'?'active':''} onClick={()=>setMode('manual')}>Manual</button></div>}
-      {mode==='ai'&&(recipeReview?<IngredientReview review={recipeReview} onChange={setRecipeReview} onDone={finishRecipeReview} onBack={()=>setRecipeReview(null)} analysing={analysing}/>:<AiForm analysing={analysing} onAnalyse={analyse} onExtract={extractRecipe}/>)}
+      {mode==='ai'&&(recipeReview?<IngredientReview review={recipeReview} onChange={setRecipeReview} onDone={finishRecipeReview} onBack={()=>setRecipeReview(null)} analysing={analysing} problem={error}/>:<AiForm analysing={analysing} onAnalyse={analyse} onExtract={extractRecipe}/>)}
       {mode==='recipe'&&<RecipePicker personal={state?.templates.filter(template=>template.source==='recipe_photo')||[]} onSelect={applyRecipe} onPersonal={applyPersonalRecipe}/>}
       {mode==='saved'&&<SavedMealsManager templates={state?.templates||[]} categories={state?.categories||[]} onUse={applyTemplate} onAdd={addSelectedTemplates} onChanged={()=>load()} saving={saving}/>}
       {mode==='manual'&&<form className="meal-form" onSubmit={saveMeal}>
+        {error&&<p className="inline-error" role="alert">{error}</p>}
         <label className="field">Meal name<input required maxLength={120} value={draft.name} onChange={(e)=>setDraft({...draft,name:e.target.value})}/></label>
         <div className="two-fields"><label className="field">Date<input type="date" required value={draft.date} onChange={(e)=>setDraft({...draft,date:e.target.value})}/></label><label className="field">Time<input type="time" required value={draft.time} onChange={(e)=>setDraft({...draft,time:e.target.value})}/></label></div>
         <label className="field">Description<textarea maxLength={2000} value={draft.description} onChange={(e)=>setDraft({...draft,description:e.target.value})}/></label>
@@ -183,12 +186,12 @@ function AiForm({analysing,onAnalyse,onExtract}:{analysing:boolean;onAnalyse:(da
   </form>;
 }
 
-function IngredientReview({review,onChange,onDone,onBack,analysing}:{review:RecipeReview;onChange:(value:RecipeReview)=>void;onDone:(value:RecipeReview)=>void;onBack:()=>void;analysing:boolean}){
+function IngredientReview({review,onChange,onDone,onBack,analysing,problem}:{review:RecipeReview;onChange:(value:RecipeReview)=>void;onDone:(value:RecipeReview)=>void;onBack:()=>void;analysing:boolean;problem:string}){
   const [blank,setBlank]=useState({quantity:'',name:''});
   function update(id:string,key:'quantity'|'name',value:string){onChange({...review,ingredients:review.ingredients.map(item=>item.id===id?{...item,[key]:value}:item)});}
   function add(){if(!blank.name.trim())return;onChange({...review,ingredients:[...review.ingredients,{id:crypto.randomUUID(),quantity:blank.quantity,name:blank.name}]});setBlank({quantity:'',name:''});}
   function remove(id:string){onChange({...review,ingredients:review.ingredients.filter(item=>item.id!==id)});}
-  return <section className="ingredient-review"><div className="ai-intro"><strong>Review ingredients</strong><p>Tap a quantity or name to edit. Swipe left to remove an ingredient. Add one in the blank row, then tap Done.</p></div>
+  return <section className="ingredient-review"><div className="ai-intro"><strong>Review ingredients</strong><p>Tap a quantity or name to edit. Swipe left to remove an ingredient. Add one in the blank row, then tap Done.</p></div>{problem&&<p className="inline-error" role="alert">{problem}</p>}
     <label className="field">Recipe name<input value={review.name} maxLength={120} onChange={event=>onChange({...review,name:event.target.value})}/></label>
     <label className="field">Recipe yield<input value={review.yield} maxLength={120} placeholder="e.g. 4 servings" onChange={event=>onChange({...review,yield:event.target.value})}/></label>
     <div className="ingredient-head"><span>Quantity</span><span>Ingredient</span></div>
@@ -291,3 +294,5 @@ async function privacySafeImage(file:File){const bitmap=await createImageBitmap(
 // metadata: date: 2026-09-11; model: GPT (Codex; exact version unavailable); prompt: Colour unit bars teal up to target, red only for excess, keep vegetables teal, and give indulgences a contrasting colour.
 // metadata: date: 2026-09-27; model: GPT-6; prompt: Add recipes from URL or photo with editable ingredients before Australian-measure nutrition analysis; swipe left to remove a meal and right to double it.
 // metadata: date: 2026-09-27; model: GPT-6; prompt: Add subtle fixed green/amber/red seven-day nutritional guideline lines, with active 70 kg protein and macro-ratio checks.
+// metadata: date: 2026-09-28; model: GPT-6; prompt: Fix reviewed recipe saving to the day and recipe book, display save errors within the editor, and pass structured ingredients for deterministic Australian spoon calculations.
+// metadata: date: 2026-09-28; model: GPT-6; prompt: Surface recipe review errors in the editor while accounting for ingredient-specific density.
