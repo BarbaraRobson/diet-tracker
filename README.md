@@ -39,8 +39,9 @@ The production API key must be stored as a secret named `OPENAI_API_KEY` in the 
 
 `data/afcd-reference.json` is a compact reference generated from Food Standards Australia New Zealand's Australian Food Composition Database Release 3 food details and nutrient profiles. Regenerate it with `scripts/build-afcd-reference.py` and the two official spreadsheets supplied as arguments.
 
-`data/recipe-book-reference.json` contains the one-serving meal names, categories, food units, kilojoules and protein extracted from Barbara's Recipe Book. It deliberately excludes the recipe instructions, photographs, account email and copyright footer. Regenerate it with `scripts/build-recipe-reference.py` and the private source PDF supplied as arguments.
+`data/recipe-book-reference.json` contains one-serving meal names, categories and food units from Barbara's Recipe Book. Published kilojoules and protein are retained. Carbohydrate, sugars, fat, saturated fat, fibre and sodium are calculated locally from the original ingredient quantities using AFCD Release 3 and scaled to each recipe's published energy. The file includes calculation provenance and confidence, but deliberately excludes ingredients, methods, photographs, the account email and copyright footer. Regenerate it with `scripts/build-recipe-reference.py SOURCE_PDF OUTPUT_JSON data/afcd-reference.json`.
 
 <!-- metadata: GPT-5 Codex; time: 2026-06-28 11:15 Australia/Sydney; date: 2026-06-28; prompt: Add a README explaining how to install the app on a phone. -->
 <!-- metadata: GPT-5.6 Sol; time: 2026-09-11 14:14 Australia/Sydney; date: 2026-09-11; prompt: Document the private signed-in Diet Tracker Site, its AI/photo privacy model, validation, deployment and AFCD provenance. -->
 <!-- metadata: GPT-5.6 Sol; time: 2026-09-11 15:29 Australia/Sydney; date: 2026-09-11; prompt: Document Barbara's Recipe Book as a private, minimal selectable data source. -->
+<!-- metadata: GPT-6.1 Sol; time: 2026-10-10 Australia/Sydney; date: 2026-10-10; prompt: Update the recipe book to include nutritional info for each recipe, based on the original recipes in the PDF. -->

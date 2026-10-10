@@ -13,7 +13,7 @@ type Draft = { id?:string; templateId?:string|null; name:string; date:string; ti
 type ApiError = { error?:string };
 type AnalysisPayload = ApiError & { analysisId:string; name:string; description?:string; units:Record<string,number>; nutrition:Nutrients; assumptions?:string[]; components?:AnalysisComponent[]; confidence:string|null; clarifyingQuestions?:string[] };
 type RecipeReview = {name:string;yield:string;ingredients:Array<{id:string;quantity:string;name:string}>;saveRecipe:boolean};
-type RecipeRecord = { id:string; name:string; category:'breakfast'|'lunch'|'dinner'; page:number; servingLabel:string; units:Record<string,number>; nutrients:Nutrients };
+type RecipeRecord = { id:string; name:string; category:'breakfast'|'lunch'|'dinner'; page:number; servingLabel:string; units:Record<string,number>; nutrients:Nutrients; nutritionProvenance?:{confidence:'high'|'medium'} };
 const recipes = recipeBook.recipes as RecipeRecord[];
 const nutrientFields:Array<[keyof Nutrients,string,string]> = [['energyKj','Energy','kJ'],['proteinG','Protein','g'],['carbohydrateG','Carbohydrate','g'],['sugarsG','Sugars','g'],['fatG','Fat','g'],['saturatedFatG','Saturated fat','g'],['fibreG','Fibre','g'],['sodiumMg','Sodium','mg']];
 const emptyNutrition: Nutrients = {energyKj:null,proteinG:null,carbohydrateG:null,sugarsG:null,fatG:null,saturatedFatG:null,fibreG:null,sodiumMg:null};
@@ -228,13 +228,13 @@ function RecipePicker({personal,onSelect,onPersonal}:{personal:MealTemplate[];on
   const personalMatches=personal.filter(recipe=>(category==='all'||category==='mine')&&`${recipe.name} ${recipe.description}`.toLowerCase().includes(term));
   const bookMatches=recipes.filter(recipe=>(category==='all'||category===recipe.category)&&recipe.name.toLowerCase().includes(term));
   return <section className="recipe-picker">
-    <div className="recipe-intro"><strong>Recipe book</strong><p>Your photo recipes include all reviewed nutrition and food units for the analysed portion. The published book has kilojoules and protein only.</p></div>
+    <div className="recipe-intro"><strong>Recipe book</strong><p>Book recipes include the published kilojoules and protein plus locally calculated carbohydrate, sugars, fat, saturated fat, fibre and sodium for one serving.</p></div>
     <label className="field">Search recipes<input type="search" value={query} onChange={event=>setQuery(event.target.value)} placeholder="For example: salmon, oats or soup"/></label>
     <div className="recipe-filters" aria-label="Recipe filter">{(['all','mine','breakfast','lunch','dinner'] as const).map(value=><button type="button" key={value} className={category===value?'active':''} onClick={()=>setCategory(value)}>{value==='all'?'All':value==='mine'?'My recipes':value[0].toUpperCase()+value.slice(1)}</button>)}</div>
     <p className="recipe-count">{personalMatches.length+bookMatches.length} recipe{personalMatches.length+bookMatches.length===1?'':'s'}</p>
     <div className="recipe-list">
       {personalMatches.map(recipe=><button type="button" key={recipe.id} onClick={()=>onPersonal(recipe)}><span><strong>{recipe.name}</strong><small>My recipe · analysed portion</small></span><span><b>{recipe.energyKj===null?'—':`${round(recipe.energyKj)} kJ`}</b><small>{recipe.proteinG===null?'—':`${round(recipe.proteinG)} g protein`}</small></span></button>)}
-      {bookMatches.map(recipe=><button type="button" key={recipe.id} onClick={()=>onSelect(recipe)}><span><strong>{recipe.name}</strong><small>{recipe.category} · page {recipe.page}</small></span><span><b>{round(recipe.nutrients.energyKj||0)} kJ</b><small>{format(recipe.nutrients.proteinG||0)} g protein</small></span></button>)}
+      {bookMatches.map(recipe=><button type="button" key={recipe.id} onClick={()=>onSelect(recipe)}><span><strong>{recipe.name}</strong><small>{recipe.category} · page {recipe.page} · estimated nutrition</small></span><span><b>{round(recipe.nutrients.energyKj||0)} kJ</b><small>{format(recipe.nutrients.proteinG||0)} g protein · {format(recipe.nutrients.carbohydrateG||0)} g carbohydrate</small></span></button>)}
     </div>
     {!personalMatches.length&&!bookMatches.length&&<p className="empty">No recipes match your search.</p>}
   </section>;
@@ -278,6 +278,8 @@ async function privacySafeImage(file:File){const bitmap=await createImageBitmap(
 // metadata: date: 2026-09-12; model: GPT (Codex; exact version unavailable); prompt: Let AI-added meals be named, manage saved meals, and round serving-scaled nutrition to integers.
 // metadata: date: 2026-09-12; model: GPT (Codex; exact version unavailable); prompt: Recalculate AI meal units and nutrition after its description is edited.
 // metadata: date: 2026-09-26; model: GPT-6; prompt: Make the diet tracker site look more professional and aesthetically appealing and improve the UX. Make sure you don’t lose any of the user data.
+// metadata: date: 2026-10-10; time: Australia/Sydney; model: GPT-6.1 Sol; prompt: Update the recipe book to include nutritional info for each recipe, based on the original recipes in the PDF.
+// metadata: date: 2026-10-10; time: 20:23 Australia/Sydney; model: GPT-6.1 Sol; prompt: Label recipe-book nutrients as estimates without exposing internal confidence wording in the picker.
 // metadata: date: 2026-09-26; model: GPT-6; prompt: Start each new day with Usual breakfast while allowing its removal, and allow adding multiple saved foods at once.
 // metadata: date: 2026-09-27; model: GPT-6; prompt: When adding a meal from a recipe photo, provide a checkbox to add the recipe to the recipe book and save all nutritional information with it.
 

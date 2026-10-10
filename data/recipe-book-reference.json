@@ -5,10 +5,12 @@
     "sourceSha256": "ea0736434959fceb71c8a928bef799252572dac60eb483a932baf4d1e91f754e",
     "sourcePages": 149,
     "recipeCount": 118,
-    "generatedAt": "2026-09-11T04:27:43.617847+00:00",
+    "generatedAt": "2026-10-10T09:24:22.690305+00:00",
     "generator": "scripts/build-recipe-reference.py",
-    "model": "GPT-5.6 Sol",
-    "prompt": "Add Barbara's Recipe Book as a selectable private meal data source in Diet Tracker."
+    "nutritionSource": "Ingredient quantities in the source PDF and Australian Food Composition Database Release 3",
+    "nutritionMethod": "Published energy and protein retained; other nutrients calculated locally from AFCD matches and scaled to published energy.",
+    "model": "GPT-6.1 Sol",
+    "prompt": "Update the recipe book to include nutritional info for each recipe, based on the original recipes in the PDF."
   },
   "recipes": [
     {
@@ -29,12 +31,24 @@
       "nutrients": {
         "energyKj": 1958.0,
         "proteinG": 27.5,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 66.6,
+        "sugarsG": 57.2,
+        "fatG": 9.7,
+        "saturatedFatG": 5.0,
+        "fibreG": 2.8,
+        "sodiumMg": 381.7
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 7,
+        "matchedIngredientCount": 7,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 3979.1,
+        "rawCalculatedProteinG": 66.0,
+        "energyScale": 0.512,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -55,12 +69,24 @@
       "nutrients": {
         "energyKj": 1974.0,
         "proteinG": 29.4,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 49.2,
+        "sugarsG": 40.1,
+        "fatG": 17.2,
+        "saturatedFatG": 12.9,
+        "fibreG": 3.5,
+        "sodiumMg": 217.1
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 6,
+        "matchedIngredientCount": 6,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 6137.2,
+        "rawCalculatedProteinG": 67.4,
+        "energyScale": 0.293,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -81,12 +107,24 @@
       "nutrients": {
         "energyKj": 2343.0,
         "proteinG": 39.1,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 45.4,
+        "sugarsG": 42.5,
+        "fatG": 24.5,
+        "saturatedFatG": 10.9,
+        "fibreG": 4.9,
+        "sodiumMg": 374.8
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 10,
+        "matchedIngredientCount": 9,
+        "matchedMassPercent": 94.0,
+        "rawCalculatedEnergyKj": 2020.3,
+        "rawCalculatedProteinG": 25.7,
+        "energyScale": 1.078,
+        "unmatchedIngredientCount": 1,
+        "inheritedRecipe": null
       }
     },
     {
@@ -107,12 +145,24 @@
       "nutrients": {
         "energyKj": 2156.0,
         "proteinG": 28.7,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 43.8,
+        "sugarsG": 43.0,
+        "fatG": 25.0,
+        "saturatedFatG": 13.3,
+        "fibreG": 11.7,
+        "sodiumMg": 312.1
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 7,
+        "matchedIngredientCount": 6,
+        "matchedMassPercent": 95.8,
+        "rawCalculatedEnergyKj": 2889.8,
+        "rawCalculatedProteinG": 35.2,
+        "energyScale": 0.769,
+        "unmatchedIngredientCount": 1,
+        "inheritedRecipe": null
       }
     },
     {
@@ -133,12 +183,24 @@
       "nutrients": {
         "energyKj": 1908.0,
         "proteinG": 32.1,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 52.1,
+        "sugarsG": 44.3,
+        "fatG": 12.9,
+        "saturatedFatG": 7.0,
+        "fibreG": 5.8,
+        "sodiumMg": 250.9
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 7,
+        "matchedIngredientCount": 6,
+        "matchedMassPercent": 99.6,
+        "rawCalculatedEnergyKj": 3296.1,
+        "rawCalculatedProteinG": 47.2,
+        "energyScale": 0.552,
+        "unmatchedIngredientCount": 1,
+        "inheritedRecipe": null
       }
     },
     {
@@ -159,12 +221,24 @@
       "nutrients": {
         "energyKj": 2248.0,
         "proteinG": 34.0,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 59.0,
+        "sugarsG": 56.7,
+        "fatG": 18.0,
+        "saturatedFatG": 7.4,
+        "fibreG": 1.8,
+        "sodiumMg": 626.4
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 8,
+        "matchedIngredientCount": 7,
+        "matchedMassPercent": 92.5,
+        "rawCalculatedEnergyKj": 2796.7,
+        "rawCalculatedProteinG": 53.7,
+        "energyScale": 0.867,
+        "unmatchedIngredientCount": 1,
+        "inheritedRecipe": null
       }
     },
     {
@@ -185,12 +259,24 @@
       "nutrients": {
         "energyKj": 1934.0,
         "proteinG": 30.2,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 55.9,
+        "sugarsG": 48.9,
+        "fatG": 12.7,
+        "saturatedFatG": 5.3,
+        "fibreG": 3.4,
+        "sodiumMg": 311.7
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 6,
+        "matchedIngredientCount": 6,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 4330.4,
+        "rawCalculatedProteinG": 65.0,
+        "energyScale": 0.435,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -211,12 +297,24 @@
       "nutrients": {
         "energyKj": 1781.0,
         "proteinG": 27.4,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 54.7,
+        "sugarsG": 48.1,
+        "fatG": 10.4,
+        "saturatedFatG": 4.4,
+        "fibreG": 2.7,
+        "sodiumMg": 328.5
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 6,
+        "matchedIngredientCount": 6,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 3900.3,
+        "rawCalculatedProteinG": 64.4,
+        "energyScale": 0.462,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -237,12 +335,24 @@
       "nutrients": {
         "energyKj": 2160.0,
         "proteinG": 37.8,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 48.1,
+        "sugarsG": 34.2,
+        "fatG": 18.9,
+        "saturatedFatG": 7.3,
+        "fibreG": 4.4,
+        "sodiumMg": 339.1
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 9,
+        "matchedIngredientCount": 9,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 2385.0,
+        "rawCalculatedProteinG": 26.3,
+        "energyScale": 0.797,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -263,12 +373,24 @@
       "nutrients": {
         "energyKj": 1954.0,
         "proteinG": 28.4,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 67.1,
+        "sugarsG": 58.2,
+        "fatG": 8.9,
+        "saturatedFatG": 5.3,
+        "fibreG": 7.0,
+        "sodiumMg": 390.3
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 8,
+        "matchedIngredientCount": 8,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 3827.6,
+        "rawCalculatedProteinG": 65.1,
+        "energyScale": 0.544,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -289,12 +411,24 @@
       "nutrients": {
         "energyKj": 1878.0,
         "proteinG": 31.7,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 50.0,
+        "sugarsG": 42.3,
+        "fatG": 13.2,
+        "saturatedFatG": 7.2,
+        "fibreG": 5.5,
+        "sodiumMg": 247.5
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 8,
+        "matchedIngredientCount": 8,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 3293.3,
+        "rawCalculatedProteinG": 45.6,
+        "energyScale": 0.538,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -315,12 +449,24 @@
       "nutrients": {
         "energyKj": 2095.0,
         "proteinG": 35.5,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 39.5,
+        "sugarsG": 26.3,
+        "fatG": 22.2,
+        "saturatedFatG": 15.1,
+        "fibreG": 6.5,
+        "sodiumMg": 115.3
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 6,
+        "matchedIngredientCount": 6,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 3629.0,
+        "rawCalculatedProteinG": 25.8,
+        "energyScale": 0.48,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -341,12 +487,24 @@
       "nutrients": {
         "energyKj": 2097.0,
         "proteinG": 29.7,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 39.2,
+        "sugarsG": 26.5,
+        "fatG": 25.0,
+        "saturatedFatG": 13.7,
+        "fibreG": 6.3,
+        "sodiumMg": 408.3
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "high",
+        "ingredientCount": 5,
+        "matchedIngredientCount": 5,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 2508.0,
+        "rawCalculatedProteinG": 30.6,
+        "energyScale": 0.819,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -367,12 +525,24 @@
       "nutrients": {
         "energyKj": 2404.0,
         "proteinG": 31.5,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 42.6,
+        "sugarsG": 22.8,
+        "fatG": 30.9,
+        "saturatedFatG": 13.4,
+        "fibreG": 6.7,
+        "sodiumMg": 568.1
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "high",
+        "ingredientCount": 6,
+        "matchedIngredientCount": 6,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 2329.7,
+        "rawCalculatedProteinG": 30.6,
+        "energyScale": 1.063,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -393,12 +563,24 @@
       "nutrients": {
         "energyKj": 2023.0,
         "proteinG": 30.4,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 49.8,
+        "sugarsG": 40.6,
+        "fatG": 17.8,
+        "saturatedFatG": 12.7,
+        "fibreG": 4.3,
+        "sodiumMg": 237.8
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 6,
+        "matchedIngredientCount": 6,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 6273.6,
+        "rawCalculatedProteinG": 66.5,
+        "energyScale": 0.292,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -419,12 +601,24 @@
       "nutrients": {
         "energyKj": 2057.0,
         "proteinG": 27.9,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 52.4,
+        "sugarsG": 42.6,
+        "fatG": 18.7,
+        "saturatedFatG": 13.1,
+        "fibreG": 3.5,
+        "sodiumMg": 226.5
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 6,
+        "matchedIngredientCount": 6,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 6087.8,
+        "rawCalculatedProteinG": 65.9,
+        "energyScale": 0.316,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -445,12 +639,24 @@
       "nutrients": {
         "energyKj": 2293.0,
         "proteinG": 29.7,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 64.7,
+        "sugarsG": 52.8,
+        "fatG": 18.6,
+        "saturatedFatG": 6.8,
+        "fibreG": 16.4,
+        "sodiumMg": 347.6
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 8,
+        "matchedIngredientCount": 8,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 3840.3,
+        "rawCalculatedProteinG": 44.8,
+        "energyScale": 0.622,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -471,12 +677,24 @@
       "nutrients": {
         "energyKj": 2111.0,
         "proteinG": 39.8,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 38.5,
+        "sugarsG": 26.3,
+        "fatG": 21.1,
+        "saturatedFatG": 11.3,
+        "fibreG": 6.2,
+        "sodiumMg": 634.8
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "high",
+        "ingredientCount": 7,
+        "matchedIngredientCount": 7,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 2757.2,
+        "rawCalculatedProteinG": 49.9,
+        "energyScale": 0.786,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -497,12 +715,24 @@
       "nutrients": {
         "energyKj": 1855.0,
         "proteinG": 31.4,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 50.7,
+        "sugarsG": 43.0,
+        "fatG": 12.4,
+        "saturatedFatG": 6.7,
+        "fibreG": 4.6,
+        "sodiumMg": 240.8
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 7,
+        "matchedIngredientCount": 7,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 3283.7,
+        "rawCalculatedProteinG": 45.1,
+        "energyScale": 0.527,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -523,12 +753,24 @@
       "nutrients": {
         "energyKj": 2234.0,
         "proteinG": 30.4,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 56.4,
+        "sugarsG": 42.9,
+        "fatG": 20.5,
+        "saturatedFatG": 7.9,
+        "fibreG": 11.1,
+        "sodiumMg": 376.5
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 7,
+        "matchedIngredientCount": 7,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 3045.8,
+        "rawCalculatedProteinG": 37.5,
+        "energyScale": 0.744,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -549,12 +791,24 @@
       "nutrients": {
         "energyKj": 2084.0,
         "proteinG": 32.1,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 42.7,
+        "sugarsG": 29.6,
+        "fatG": 21.9,
+        "saturatedFatG": 16.8,
+        "fibreG": 4.8,
+        "sodiumMg": 198.2
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 6,
+        "matchedIngredientCount": 6,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 4326.1,
+        "rawCalculatedProteinG": 27.8,
+        "energyScale": 0.403,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -575,12 +829,24 @@
       "nutrients": {
         "energyKj": 1873.0,
         "proteinG": 33.4,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 57.6,
+        "sugarsG": 50.2,
+        "fatG": 8.8,
+        "saturatedFatG": 6.3,
+        "fibreG": 2.8,
+        "sodiumMg": 340.2
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 6,
+        "matchedIngredientCount": 6,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 6684.3,
+        "rawCalculatedProteinG": 104.8,
+        "energyScale": 0.262,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -601,12 +867,24 @@
       "nutrients": {
         "energyKj": 1945.0,
         "proteinG": 38.0,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 35.2,
+        "sugarsG": 23.8,
+        "fatG": 18.9,
+        "saturatedFatG": 7.0,
+        "fibreG": 6.6,
+        "sodiumMg": 358.0
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 9,
+        "matchedIngredientCount": 9,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 2267.4,
+        "rawCalculatedProteinG": 27.3,
+        "energyScale": 0.751,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -627,12 +905,24 @@
       "nutrients": {
         "energyKj": 2010.0,
         "proteinG": 21.5,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 46.7,
+        "sugarsG": 25.6,
+        "fatG": 23.0,
+        "saturatedFatG": 14.9,
+        "fibreG": 5.8,
+        "sodiumMg": 96.1
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 5,
+        "matchedIngredientCount": 5,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 4167.0,
+        "rawCalculatedProteinG": 20.5,
+        "energyScale": 0.439,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -653,12 +943,24 @@
       "nutrients": {
         "energyKj": 2212.0,
         "proteinG": 19.9,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 71.5,
+        "sugarsG": 50.7,
+        "fatG": 17.8,
+        "saturatedFatG": 1.9,
+        "fibreG": 7.2,
+        "sodiumMg": 208.5
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 7,
+        "matchedIngredientCount": 5,
+        "matchedMassPercent": 81.4,
+        "rawCalculatedEnergyKj": 1495.1,
+        "rawCalculatedProteinG": 10.3,
+        "energyScale": 1.459,
+        "unmatchedIngredientCount": 2,
+        "inheritedRecipe": null
       }
     },
     {
@@ -679,12 +981,24 @@
       "nutrients": {
         "energyKj": 1944.0,
         "proteinG": 40.7,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 53.4,
+        "sugarsG": 9.9,
+        "fatG": 9.3,
+        "saturatedFatG": 1.7,
+        "fibreG": 8.0,
+        "sodiumMg": 655.6
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 13,
+        "matchedIngredientCount": 11,
+        "matchedMassPercent": 97.3,
+        "rawCalculatedEnergyKj": 1421.2,
+        "rawCalculatedProteinG": 26.9,
+        "energyScale": 1.364,
+        "unmatchedIngredientCount": 2,
+        "inheritedRecipe": null
       }
     },
     {
@@ -705,12 +1019,24 @@
       "nutrients": {
         "energyKj": 1894.0,
         "proteinG": 19.3,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 64.3,
+        "sugarsG": 5.8,
+        "fatG": 12.8,
+        "saturatedFatG": 5.4,
+        "fibreG": 6.3,
+        "sodiumMg": 391.6
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 10,
+        "matchedIngredientCount": 10,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 2773.8,
+        "rawCalculatedProteinG": 21.3,
+        "energyScale": 0.675,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -731,12 +1057,24 @@
       "nutrients": {
         "energyKj": 1980.0,
         "proteinG": 41.8,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 33.3,
+        "sugarsG": 28.4,
+        "fatG": 19.0,
+        "saturatedFatG": 5.6,
+        "fibreG": 21.5,
+        "sodiumMg": 2321.9
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 10,
+        "matchedIngredientCount": 8,
+        "matchedMassPercent": 80.3,
+        "rawCalculatedEnergyKj": 1130.9,
+        "rawCalculatedProteinG": 40.4,
+        "energyScale": 3.224,
+        "unmatchedIngredientCount": 2,
+        "inheritedRecipe": null
       }
     },
     {
@@ -757,12 +1095,24 @@
       "nutrients": {
         "energyKj": 1852.0,
         "proteinG": 42.0,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 9.6,
+        "sugarsG": 8.5,
+        "fatG": 26.3,
+        "saturatedFatG": 10.9,
+        "fibreG": 10.3,
+        "sodiumMg": 1101.5
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 9,
+        "matchedIngredientCount": 8,
+        "matchedMassPercent": 84.0,
+        "rawCalculatedEnergyKj": 1288.5,
+        "rawCalculatedProteinG": 24.2,
+        "energyScale": 1.391,
+        "unmatchedIngredientCount": 1,
+        "inheritedRecipe": null
       }
     },
     {
@@ -783,12 +1133,24 @@
       "nutrients": {
         "energyKj": 2102.0,
         "proteinG": 41.6,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 53.6,
+        "sugarsG": 4.1,
+        "fatG": 13.1,
+        "saturatedFatG": 4.8,
+        "fibreG": 6.7,
+        "sodiumMg": 560.8
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 9,
+        "matchedIngredientCount": 9,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 3250.7,
+        "rawCalculatedProteinG": 35.1,
+        "energyScale": 0.546,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -809,12 +1171,24 @@
       "nutrients": {
         "energyKj": 1751.0,
         "proteinG": 32.7,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 32.1,
+        "sugarsG": 30.3,
+        "fatG": 17.5,
+        "saturatedFatG": 2.7,
+        "fibreG": 15.5,
+        "sodiumMg": 1174.1
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 8,
+        "matchedIngredientCount": 7,
+        "matchedMassPercent": 84.6,
+        "rawCalculatedEnergyKj": 1883.4,
+        "rawCalculatedProteinG": 34.5,
+        "energyScale": 1.052,
+        "unmatchedIngredientCount": 1,
+        "inheritedRecipe": null
       }
     },
     {
@@ -835,12 +1209,24 @@
       "nutrients": {
         "energyKj": 1833.0,
         "proteinG": 24.2,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 57.6,
+        "sugarsG": 14.2,
+        "fatG": 12.0,
+        "saturatedFatG": 4.6,
+        "fibreG": 9.1,
+        "sodiumMg": 175.2
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 9,
+        "matchedIngredientCount": 9,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 3729.0,
+        "rawCalculatedProteinG": 35.3,
+        "energyScale": 0.482,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -861,12 +1247,24 @@
       "nutrients": {
         "energyKj": 1802.0,
         "proteinG": 38.6,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 43.7,
+        "sugarsG": 41.0,
+        "fatG": 10.9,
+        "saturatedFatG": 1.6,
+        "fibreG": 24.2,
+        "sodiumMg": 221.0
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 9,
+        "matchedIngredientCount": 8,
+        "matchedMassPercent": 83.8,
+        "rawCalculatedEnergyKj": 1485.8,
+        "rawCalculatedProteinG": 32.8,
+        "energyScale": 1.471,
+        "unmatchedIngredientCount": 1,
+        "inheritedRecipe": null
       }
     },
     {
@@ -887,12 +1285,24 @@
       "nutrients": {
         "energyKj": 2044.0,
         "proteinG": 32.7,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 66.8,
+        "sugarsG": 3.8,
+        "fatG": 9.5,
+        "saturatedFatG": 1.3,
+        "fibreG": 16.6,
+        "sodiumMg": 233.0
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 10,
+        "matchedIngredientCount": 10,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 3771.5,
+        "rawCalculatedProteinG": 48.6,
+        "energyScale": 0.554,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -913,12 +1323,24 @@
       "nutrients": {
         "energyKj": 1876.0,
         "proteinG": 44.4,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 29.6,
+        "sugarsG": 6.6,
+        "fatG": 16.7,
+        "saturatedFatG": 6.2,
+        "fibreG": 6.4,
+        "sodiumMg": 850.1
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 7,
+        "matchedIngredientCount": 7,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 2082.2,
+        "rawCalculatedProteinG": 32.1,
+        "energyScale": 0.764,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -939,12 +1361,24 @@
       "nutrients": {
         "energyKj": 1902.0,
         "proteinG": 20.3,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 61.6,
+        "sugarsG": 6.8,
+        "fatG": 13.8,
+        "saturatedFatG": 4.9,
+        "fibreG": 5.6,
+        "sodiumMg": 378.8
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 10,
+        "matchedIngredientCount": 10,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 2879.5,
+        "rawCalculatedProteinG": 21.0,
+        "energyScale": 0.642,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -965,12 +1399,24 @@
       "nutrients": {
         "energyKj": 1987.0,
         "proteinG": 37.6,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 65.4,
+        "sugarsG": 6.4,
+        "fatG": 6.4,
+        "saturatedFatG": 1.1,
+        "fibreG": 6.0,
+        "sodiumMg": 47.9
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 10,
+        "matchedIngredientCount": 10,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 2669.9,
+        "rawCalculatedProteinG": 35.5,
+        "energyScale": 0.682,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -991,12 +1437,24 @@
       "nutrients": {
         "energyKj": 1953.0,
         "proteinG": 41.3,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 59.0,
+        "sugarsG": 4.7,
+        "fatG": 6.7,
+        "saturatedFatG": 1.6,
+        "fibreG": 7.2,
+        "sodiumMg": 386.6
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 9,
+        "matchedIngredientCount": 8,
+        "matchedMassPercent": 97.6,
+        "rawCalculatedEnergyKj": 2952.6,
+        "rawCalculatedProteinG": 50.5,
+        "energyScale": 0.627,
+        "unmatchedIngredientCount": 1,
+        "inheritedRecipe": null
       }
     },
     {
@@ -1017,12 +1475,24 @@
       "nutrients": {
         "energyKj": 1922.0,
         "proteinG": 44.2,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 40.0,
+        "sugarsG": 24.7,
+        "fatG": 13.3,
+        "saturatedFatG": 4.1,
+        "fibreG": 13.7,
+        "sodiumMg": 552.2
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 8,
+        "matchedIngredientCount": 7,
+        "matchedMassPercent": 97.1,
+        "rawCalculatedEnergyKj": 3696.1,
+        "rawCalculatedProteinG": 48.3,
+        "energyScale": 0.452,
+        "unmatchedIngredientCount": 1,
+        "inheritedRecipe": null
       }
     },
     {
@@ -1043,12 +1513,24 @@
       "nutrients": {
         "energyKj": 1827.0,
         "proteinG": 37.0,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 57.5,
+        "sugarsG": 10.4,
+        "fatG": 6.0,
+        "saturatedFatG": 1.0,
+        "fibreG": 7.4,
+        "sodiumMg": 56.0
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 11,
+        "matchedIngredientCount": 11,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 2987.6,
+        "rawCalculatedProteinG": 39.2,
+        "energyScale": 0.546,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -1069,12 +1551,24 @@
       "nutrients": {
         "energyKj": 1862.0,
         "proteinG": 33.3,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 47.1,
+        "sugarsG": 29.9,
+        "fatG": 13.4,
+        "saturatedFatG": 4.4,
+        "fibreG": 14.3,
+        "sodiumMg": 501.4
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 7,
+        "matchedIngredientCount": 7,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 3808.8,
+        "rawCalculatedProteinG": 58.1,
+        "energyScale": 0.516,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -1095,12 +1589,24 @@
       "nutrients": {
         "energyKj": 1911.0,
         "proteinG": 22.9,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 64.0,
+        "sugarsG": 5.1,
+        "fatG": 11.7,
+        "saturatedFatG": 2.5,
+        "fibreG": 6.8,
+        "sodiumMg": 171.5
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 9,
+        "matchedIngredientCount": 9,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 2751.8,
+        "rawCalculatedProteinG": 26.2,
+        "energyScale": 0.684,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -1121,12 +1627,24 @@
       "nutrients": {
         "energyKj": 2351.0,
         "proteinG": 24.1,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 91.6,
+        "sugarsG": 15.0,
+        "fatG": 10.4,
+        "saturatedFatG": 2.1,
+        "fibreG": 10.4,
+        "sodiumMg": 450.3
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "high",
+        "ingredientCount": 12,
+        "matchedIngredientCount": 12,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 2740.7,
+        "rawCalculatedProteinG": 21.4,
+        "energyScale": 0.852,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -1147,12 +1665,24 @@
       "nutrients": {
         "energyKj": 1529.0,
         "proteinG": 18.5,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 55.5,
+        "sugarsG": 39.7,
+        "fatG": 7.3,
+        "saturatedFatG": 1.4,
+        "fibreG": 20.5,
+        "sodiumMg": 253.4
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 16,
+        "matchedIngredientCount": 12,
+        "matchedMassPercent": 97.4,
+        "rawCalculatedEnergyKj": 1128.9,
+        "rawCalculatedProteinG": 12.6,
+        "energyScale": 1.542,
+        "unmatchedIngredientCount": 4,
+        "inheritedRecipe": null
       }
     },
     {
@@ -1173,12 +1703,24 @@
       "nutrients": {
         "energyKj": 1967.0,
         "proteinG": 40.6,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 59.8,
+        "sugarsG": 16.6,
+        "fatG": 7.0,
+        "saturatedFatG": 1.5,
+        "fibreG": 9.8,
+        "sodiumMg": 337.0
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 10,
+        "matchedIngredientCount": 9,
+        "matchedMassPercent": 99.6,
+        "rawCalculatedEnergyKj": 3731.0,
+        "rawCalculatedProteinG": 56.9,
+        "energyScale": 0.497,
+        "unmatchedIngredientCount": 1,
+        "inheritedRecipe": null
       }
     },
     {
@@ -1199,12 +1741,24 @@
       "nutrients": {
         "energyKj": 2088.0,
         "proteinG": 42.0,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 54.2,
+        "sugarsG": 17.7,
+        "fatG": 12.2,
+        "saturatedFatG": 3.9,
+        "fibreG": 9.5,
+        "sodiumMg": 381.9
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 10,
+        "matchedIngredientCount": 10,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 4182.6,
+        "rawCalculatedProteinG": 43.9,
+        "energyScale": 0.424,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -1225,12 +1779,24 @@
       "nutrients": {
         "energyKj": 2159.0,
         "proteinG": 25.7,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 68.1,
+        "sugarsG": 36.4,
+        "fatG": 15.3,
+        "saturatedFatG": 3.0,
+        "fibreG": 17.6,
+        "sodiumMg": 728.0
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "high",
+        "ingredientCount": 9,
+        "matchedIngredientCount": 8,
+        "matchedMassPercent": 99.5,
+        "rawCalculatedEnergyKj": 2569.2,
+        "rawCalculatedProteinG": 31.7,
+        "energyScale": 0.923,
+        "unmatchedIngredientCount": 1,
+        "inheritedRecipe": null
       }
     },
     {
@@ -1251,12 +1817,24 @@
       "nutrients": {
         "energyKj": 1967.0,
         "proteinG": 20.8,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 67.9,
+        "sugarsG": 9.8,
+        "fatG": 12.4,
+        "saturatedFatG": 5.3,
+        "fibreG": 7.7,
+        "sodiumMg": 414.9
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 9,
+        "matchedIngredientCount": 9,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 2896.4,
+        "rawCalculatedProteinG": 23.8,
+        "energyScale": 0.677,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -1277,12 +1855,24 @@
       "nutrients": {
         "energyKj": 1787.0,
         "proteinG": 20.0,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 65.4,
+        "sugarsG": 12.1,
+        "fatG": 9.1,
+        "saturatedFatG": 1.3,
+        "fibreG": 15.9,
+        "sodiumMg": 152.2
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 12,
+        "matchedIngredientCount": 10,
+        "matchedMassPercent": 95.3,
+        "rawCalculatedEnergyKj": 1191.7,
+        "rawCalculatedProteinG": 9.8,
+        "energyScale": 1.527,
+        "unmatchedIngredientCount": 2,
+        "inheritedRecipe": null
       }
     },
     {
@@ -1303,12 +1893,24 @@
       "nutrients": {
         "energyKj": 2178.0,
         "proteinG": 31.4,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 43.0,
+        "sugarsG": 16.1,
+        "fatG": 24.7,
+        "saturatedFatG": 7.7,
+        "fibreG": 7.0,
+        "sodiumMg": 1377.8
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 11,
+        "matchedIngredientCount": 10,
+        "matchedMassPercent": 91.4,
+        "rawCalculatedEnergyKj": 1634.3,
+        "rawCalculatedProteinG": 18.4,
+        "energyScale": 1.311,
+        "unmatchedIngredientCount": 1,
+        "inheritedRecipe": null
       }
     },
     {
@@ -1329,12 +1931,24 @@
       "nutrients": {
         "energyKj": 1924.0,
         "proteinG": 39.1,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 55.6,
+        "sugarsG": 10.2,
+        "fatG": 8.5,
+        "saturatedFatG": 1.3,
+        "fibreG": 16.3,
+        "sodiumMg": 171.6
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "high",
+        "ingredientCount": 4,
+        "matchedIngredientCount": 4,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 2254.0,
+        "rawCalculatedProteinG": 43.3,
+        "energyScale": 0.844,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": "Italian roast vegetable pasta salad"
       }
     },
     {
@@ -1355,12 +1969,24 @@
       "nutrients": {
         "energyKj": 2089.0,
         "proteinG": 38.1,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 55.7,
+        "sugarsG": 34.9,
+        "fatG": 13.4,
+        "saturatedFatG": 4.0,
+        "fibreG": 19.3,
+        "sodiumMg": 661.8
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 10,
+        "matchedIngredientCount": 10,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 3840.2,
+        "rawCalculatedProteinG": 45.0,
+        "energyScale": 0.53,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -1381,12 +2007,24 @@
       "nutrients": {
         "energyKj": 2026.0,
         "proteinG": 37.2,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 68.9,
+        "sugarsG": 7.9,
+        "fatG": 6.0,
+        "saturatedFatG": 1.0,
+        "fibreG": 7.5,
+        "sodiumMg": 180.5
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "high",
+        "ingredientCount": 10,
+        "matchedIngredientCount": 10,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 2657.4,
+        "rawCalculatedProteinG": 34.6,
+        "energyScale": 0.708,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -1407,12 +2045,24 @@
       "nutrients": {
         "energyKj": 1922.0,
         "proteinG": 42.2,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 12.3,
+        "sugarsG": 10.8,
+        "fatG": 26.9,
+        "saturatedFatG": 9.0,
+        "fibreG": 6.1,
+        "sodiumMg": 883.5
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 8,
+        "matchedIngredientCount": 7,
+        "matchedMassPercent": 85.5,
+        "rawCalculatedEnergyKj": 1606.1,
+        "rawCalculatedProteinG": 26.8,
+        "energyScale": 1.086,
+        "unmatchedIngredientCount": 1,
+        "inheritedRecipe": null
       }
     },
     {
@@ -1433,12 +2083,24 @@
       "nutrients": {
         "energyKj": 1132.0,
         "proteinG": 13.7,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 14.9,
+        "sugarsG": 12.3,
+        "fatG": 17.4,
+        "saturatedFatG": 7.9,
+        "fibreG": 5.0,
+        "sodiumMg": 678.7
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "high",
+        "ingredientCount": 6,
+        "matchedIngredientCount": 6,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 1021.3,
+        "rawCalculatedProteinG": 11.7,
+        "energyScale": 1.15,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -1459,12 +2121,24 @@
       "nutrients": {
         "energyKj": 2010.0,
         "proteinG": 20.9,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 67.7,
+        "sugarsG": 8.1,
+        "fatG": 13.6,
+        "saturatedFatG": 5.3,
+        "fibreG": 8.7,
+        "sodiumMg": 405.4
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 11,
+        "matchedIngredientCount": 11,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 2983.1,
+        "rawCalculatedProteinG": 24.2,
+        "energyScale": 0.68,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -1485,12 +2159,24 @@
       "nutrients": {
         "energyKj": 1756.0,
         "proteinG": 26.7,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 60.2,
+        "sugarsG": 3.9,
+        "fatG": 7.5,
+        "saturatedFatG": 1.4,
+        "fibreG": 6.7,
+        "sodiumMg": 87.9
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 10,
+        "matchedIngredientCount": 10,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 2593.8,
+        "rawCalculatedProteinG": 31.1,
+        "energyScale": 0.658,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -1511,12 +2197,24 @@
       "nutrients": {
         "energyKj": 2114.0,
         "proteinG": 25.5,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 62.1,
+        "sugarsG": 20.6,
+        "fatG": 16.9,
+        "saturatedFatG": 3.7,
+        "fibreG": 12.4,
+        "sodiumMg": 936.8
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "high",
+        "ingredientCount": 10,
+        "matchedIngredientCount": 10,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 1826.2,
+        "rawCalculatedProteinG": 24.1,
+        "energyScale": 1.264,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -1537,12 +2235,24 @@
       "nutrients": {
         "energyKj": 2080.0,
         "proteinG": 21.1,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 72.3,
+        "sugarsG": 13.2,
+        "fatG": 13.3,
+        "saturatedFatG": 5.2,
+        "fibreG": 8.6,
+        "sodiumMg": 447.5
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 9,
+        "matchedIngredientCount": 9,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 2994.7,
+        "rawCalculatedProteinG": 23.3,
+        "energyScale": 0.692,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -1563,12 +2273,24 @@
       "nutrients": {
         "energyKj": 1925.0,
         "proteinG": 45.8,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 44.8,
+        "sugarsG": 16.1,
+        "fatG": 10.4,
+        "saturatedFatG": 2.2,
+        "fibreG": 11.7,
+        "sodiumMg": 908.1
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "high",
+        "ingredientCount": 7,
+        "matchedIngredientCount": 7,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 2177.8,
+        "rawCalculatedProteinG": 50.6,
+        "energyScale": 0.935,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -1589,12 +2311,24 @@
       "nutrients": {
         "energyKj": 2070.0,
         "proteinG": 42.2,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 54.1,
+        "sugarsG": 21.6,
+        "fatG": 11.7,
+        "saturatedFatG": 3.5,
+        "fibreG": 12.1,
+        "sodiumMg": 329.5
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 10,
+        "matchedIngredientCount": 10,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 4792.0,
+        "rawCalculatedProteinG": 51.1,
+        "energyScale": 0.373,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -1615,12 +2349,24 @@
       "nutrients": {
         "energyKj": 1710.0,
         "proteinG": 37.5,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 48.3,
+        "sugarsG": 30.4,
+        "fatG": 6.8,
+        "saturatedFatG": 1.0,
+        "fibreG": 16.1,
+        "sodiumMg": 280.8
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 7,
+        "matchedIngredientCount": 7,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 2974.7,
+        "rawCalculatedProteinG": 46.7,
+        "energyScale": 0.56,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -1641,12 +2387,24 @@
       "nutrients": {
         "energyKj": 1750.0,
         "proteinG": 24.5,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 38.4,
+        "sugarsG": 10.2,
+        "fatG": 18.4,
+        "saturatedFatG": 8.3,
+        "fibreG": 6.8,
+        "sodiumMg": 560.8
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "high",
+        "ingredientCount": 9,
+        "matchedIngredientCount": 8,
+        "matchedMassPercent": 99.2,
+        "rawCalculatedEnergyKj": 1867.8,
+        "rawCalculatedProteinG": 22.8,
+        "energyScale": 0.94,
+        "unmatchedIngredientCount": 1,
+        "inheritedRecipe": null
       }
     },
     {
@@ -1667,12 +2425,24 @@
       "nutrients": {
         "energyKj": 1807.0,
         "proteinG": 44.4,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 42.0,
+        "sugarsG": 20.5,
+        "fatG": 9.2,
+        "saturatedFatG": 1.8,
+        "fibreG": 13.1,
+        "sodiumMg": 671.8
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 8,
+        "matchedIngredientCount": 8,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 2750.7,
+        "rawCalculatedProteinG": 56.7,
+        "energyScale": 0.656,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -1693,12 +2463,24 @@
       "nutrients": {
         "energyKj": 2014.0,
         "proteinG": 40.5,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 53.0,
+        "sugarsG": 20.8,
+        "fatG": 11.5,
+        "saturatedFatG": 3.5,
+        "fibreG": 11.2,
+        "sodiumMg": 440.0
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 10,
+        "matchedIngredientCount": 10,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 4729.9,
+        "rawCalculatedProteinG": 49.7,
+        "energyScale": 0.368,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -1719,12 +2501,24 @@
       "nutrients": {
         "energyKj": 1820.0,
         "proteinG": 32.7,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 45.6,
+        "sugarsG": 28.7,
+        "fatG": 13.2,
+        "saturatedFatG": 4.3,
+        "fibreG": 13.8,
+        "sodiumMg": 493.9
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 5,
+        "matchedIngredientCount": 5,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 3771.2,
+        "rawCalculatedProteinG": 57.7,
+        "energyScale": 0.509,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -1745,12 +2539,24 @@
       "nutrients": {
         "energyKj": 1880.0,
         "proteinG": 43.8,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 37.9,
+        "sugarsG": 22.5,
+        "fatG": 13.3,
+        "saturatedFatG": 4.6,
+        "fibreG": 10.2,
+        "sodiumMg": 792.2
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 8,
+        "matchedIngredientCount": 8,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 2919.1,
+        "rawCalculatedProteinG": 39.7,
+        "energyScale": 0.545,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -1771,12 +2577,24 @@
       "nutrients": {
         "energyKj": 2039.0,
         "proteinG": 37.4,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 69.5,
+        "sugarsG": 20.2,
+        "fatG": 6.0,
+        "saturatedFatG": 1.0,
+        "fibreG": 11.7,
+        "sodiumMg": 115.6
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 10,
+        "matchedIngredientCount": 10,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 3389.0,
+        "rawCalculatedProteinG": 42.4,
+        "energyScale": 0.565,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -1797,12 +2615,24 @@
       "nutrients": {
         "energyKj": 2053.0,
         "proteinG": 45.0,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 56.6,
+        "sugarsG": 36.2,
+        "fatG": 8.8,
+        "saturatedFatG": 1.8,
+        "fibreG": 15.0,
+        "sodiumMg": 953.9
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 8,
+        "matchedIngredientCount": 8,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 2976.4,
+        "rawCalculatedProteinG": 57.9,
+        "energyScale": 0.705,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -1823,12 +2653,24 @@
       "nutrients": {
         "energyKj": 1656.0,
         "proteinG": 23.7,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 40.0,
+        "sugarsG": 11.4,
+        "fatG": 15.5,
+        "saturatedFatG": 2.3,
+        "fibreG": 9.1,
+        "sodiumMg": 687.8
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "high",
+        "ingredientCount": 9,
+        "matchedIngredientCount": 8,
+        "matchedMassPercent": 99.4,
+        "rawCalculatedEnergyKj": 1687.0,
+        "rawCalculatedProteinG": 23.7,
+        "energyScale": 1.038,
+        "unmatchedIngredientCount": 1,
+        "inheritedRecipe": null
       }
     },
     {
@@ -1849,12 +2691,24 @@
       "nutrients": {
         "energyKj": 2063.0,
         "proteinG": 19.7,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 74.1,
+        "sugarsG": 13.9,
+        "fatG": 12.6,
+        "saturatedFatG": 5.4,
+        "fibreG": 9.7,
+        "sodiumMg": 449.2
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 9,
+        "matchedIngredientCount": 9,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 2957.0,
+        "rawCalculatedProteinG": 22.1,
+        "energyScale": 0.701,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -1875,12 +2729,24 @@
       "nutrients": {
         "energyKj": 1882.0,
         "proteinG": 23.1,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 63.0,
+        "sugarsG": 4.6,
+        "fatG": 11.3,
+        "saturatedFatG": 1.7,
+        "fibreG": 6.5,
+        "sodiumMg": 416.9
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 12,
+        "matchedIngredientCount": 11,
+        "matchedMassPercent": 92.0,
+        "rawCalculatedEnergyKj": 2721.1,
+        "rawCalculatedProteinG": 23.7,
+        "energyScale": 0.67,
+        "unmatchedIngredientCount": 1,
+        "inheritedRecipe": null
       }
     },
     {
@@ -1901,12 +2767,24 @@
       "nutrients": {
         "energyKj": 2010.0,
         "proteinG": 27.8,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 58.1,
+        "sugarsG": 16.3,
+        "fatG": 14.9,
+        "saturatedFatG": 2.0,
+        "fibreG": 16.6,
+        "sodiumMg": 437.4
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "high",
+        "ingredientCount": 15,
+        "matchedIngredientCount": 14,
+        "matchedMassPercent": 99.2,
+        "rawCalculatedEnergyKj": 2150.3,
+        "rawCalculatedProteinG": 27.3,
+        "energyScale": 1.002,
+        "unmatchedIngredientCount": 1,
+        "inheritedRecipe": null
       }
     },
     {
@@ -1927,12 +2805,24 @@
       "nutrients": {
         "energyKj": 1979.0,
         "proteinG": 21.6,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 73.4,
+        "sugarsG": 16.4,
+        "fatG": 9.9,
+        "saturatedFatG": 1.5,
+        "fibreG": 18.3,
+        "sodiumMg": 98.5
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 10,
+        "matchedIngredientCount": 10,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 4526.1,
+        "rawCalculatedProteinG": 45.7,
+        "energyScale": 0.474,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -1953,12 +2843,24 @@
       "nutrients": {
         "energyKj": 2217.0,
         "proteinG": 23.3,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 79.5,
+        "sugarsG": 12.7,
+        "fatG": 12.7,
+        "saturatedFatG": 2.7,
+        "fibreG": 7.2,
+        "sodiumMg": 217.1
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "high",
+        "ingredientCount": 10,
+        "matchedIngredientCount": 9,
+        "matchedMassPercent": 99.8,
+        "rawCalculatedEnergyKj": 2873.5,
+        "rawCalculatedProteinG": 26.1,
+        "energyScale": 0.773,
+        "unmatchedIngredientCount": 1,
+        "inheritedRecipe": null
       }
     },
     {
@@ -1979,12 +2881,24 @@
       "nutrients": {
         "energyKj": 2049.0,
         "proteinG": 33.9,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 71.3,
+        "sugarsG": 7.9,
+        "fatG": 7.0,
+        "saturatedFatG": 1.2,
+        "fibreG": 7.8,
+        "sodiumMg": 166.2
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 10,
+        "matchedIngredientCount": 10,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 2819.1,
+        "rawCalculatedProteinG": 33.6,
+        "energyScale": 0.688,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -2005,12 +2919,24 @@
       "nutrients": {
         "energyKj": 1916.0,
         "proteinG": 27.7,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 70.7,
+        "sugarsG": 19.0,
+        "fatG": 6.6,
+        "saturatedFatG": 1.0,
+        "fibreG": 12.5,
+        "sodiumMg": 78.9
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 11,
+        "matchedIngredientCount": 11,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 3171.8,
+        "rawCalculatedProteinG": 31.3,
+        "energyScale": 0.593,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -2031,12 +2957,24 @@
       "nutrients": {
         "energyKj": 1859.0,
         "proteinG": 25.6,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 42.1,
+        "sugarsG": 3.0,
+        "fatG": 19.1,
+        "saturatedFatG": 4.1,
+        "fibreG": 8.2,
+        "sodiumMg": 640.0
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 5,
+        "matchedIngredientCount": 4,
+        "matchedMassPercent": 60.2,
+        "rawCalculatedEnergyKj": 1584.0,
+        "rawCalculatedProteinG": 22.7,
+        "energyScale": 1.248,
+        "unmatchedIngredientCount": 1,
+        "inheritedRecipe": null
       }
     },
     {
@@ -2057,12 +2995,24 @@
       "nutrients": {
         "energyKj": 2359.0,
         "proteinG": 33.0,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 69.8,
+        "sugarsG": 33.1,
+        "fatG": 16.5,
+        "saturatedFatG": 2.5,
+        "fibreG": 29.9,
+        "sodiumMg": 406.7
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 10,
+        "matchedIngredientCount": 10,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 4785.5,
+        "rawCalculatedProteinG": 61.4,
+        "energyScale": 0.552,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -2083,12 +3033,24 @@
       "nutrients": {
         "energyKj": 1373.0,
         "proteinG": 34.8,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 28.8,
+        "sugarsG": 27.6,
+        "fatG": 7.9,
+        "saturatedFatG": 1.7,
+        "fibreG": 12.2,
+        "sodiumMg": 196.7
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 11,
+        "matchedIngredientCount": 10,
+        "matchedMassPercent": 99.9,
+        "rawCalculatedEnergyKj": 3279.5,
+        "rawCalculatedProteinG": 57.7,
+        "energyScale": 0.391,
+        "unmatchedIngredientCount": 1,
+        "inheritedRecipe": null
       }
     },
     {
@@ -2109,12 +3071,24 @@
       "nutrients": {
         "energyKj": 1920.0,
         "proteinG": 34.7,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 9.3,
+        "sugarsG": 6.9,
+        "fatG": 31.7,
+        "saturatedFatG": 6.8,
+        "fibreG": 4.0,
+        "sodiumMg": 705.6
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 11,
+        "matchedIngredientCount": 9,
+        "matchedMassPercent": 79.5,
+        "rawCalculatedEnergyKj": 1852.1,
+        "rawCalculatedProteinG": 33.6,
+        "energyScale": 1.063,
+        "unmatchedIngredientCount": 2,
+        "inheritedRecipe": null
       }
     },
     {
@@ -2135,12 +3109,24 @@
       "nutrients": {
         "energyKj": 1222.0,
         "proteinG": 41.9,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 12.0,
+        "sugarsG": 5.3,
+        "fatG": 8.3,
+        "saturatedFatG": 1.4,
+        "fibreG": 10.8,
+        "sodiumMg": 117.3
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "high",
+        "ingredientCount": 9,
+        "matchedIngredientCount": 9,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 1208.1,
+        "rawCalculatedProteinG": 42.7,
+        "energyScale": 1.244,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -2161,12 +3147,24 @@
       "nutrients": {
         "energyKj": 1316.0,
         "proteinG": 37.6,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 10.1,
+        "sugarsG": 7.0,
+        "fatG": 13.7,
+        "saturatedFatG": 4.0,
+        "fibreG": 6.8,
+        "sodiumMg": 110.9
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "high",
+        "ingredientCount": 9,
+        "matchedIngredientCount": 9,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 1308.7,
+        "rawCalculatedProteinG": 37.8,
+        "energyScale": 1.095,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -2187,12 +3185,24 @@
       "nutrients": {
         "energyKj": 1979.0,
         "proteinG": 34.9,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 20.7,
+        "sugarsG": 17.3,
+        "fatG": 27.9,
+        "saturatedFatG": 5.8,
+        "fibreG": 10.8,
+        "sodiumMg": 76.8
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "high",
+        "ingredientCount": 8,
+        "matchedIngredientCount": 8,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 2375.6,
+        "rawCalculatedProteinG": 38.9,
+        "energyScale": 0.859,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -2213,12 +3223,24 @@
       "nutrients": {
         "energyKj": 1439.0,
         "proteinG": 38.4,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 10.3,
+        "sugarsG": 9.9,
+        "fatG": 16.5,
+        "saturatedFatG": 6.0,
+        "fibreG": 6.2,
+        "sodiumMg": 321.2
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 11,
+        "matchedIngredientCount": 8,
+        "matchedMassPercent": 90.5,
+        "rawCalculatedEnergyKj": 1008.3,
+        "rawCalculatedProteinG": 35.2,
+        "energyScale": 2.045,
+        "unmatchedIngredientCount": 3,
+        "inheritedRecipe": null
       }
     },
     {
@@ -2239,12 +3261,24 @@
       "nutrients": {
         "energyKj": 1582.0,
         "proteinG": 25.1,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 15.3,
+        "sugarsG": 6.7,
+        "fatG": 24.2,
+        "saturatedFatG": 5.8,
+        "fibreG": 6.2,
+        "sodiumMg": 333.0
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "high",
+        "ingredientCount": 6,
+        "matchedIngredientCount": 6,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 1374.6,
+        "rawCalculatedProteinG": 24.1,
+        "energyScale": 1.243,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -2265,12 +3299,24 @@
       "nutrients": {
         "energyKj": 1292.0,
         "proteinG": 33.4,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 13.7,
+        "sugarsG": 13.0,
+        "fatG": 13.3,
+        "saturatedFatG": 2.8,
+        "fibreG": 9.4,
+        "sodiumMg": 183.1
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "high",
+        "ingredientCount": 11,
+        "matchedIngredientCount": 11,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 1183.6,
+        "rawCalculatedProteinG": 34.1,
+        "energyScale": 1.381,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -2291,12 +3337,24 @@
       "nutrients": {
         "energyKj": 1462.0,
         "proteinG": 30.1,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 36.2,
+        "sugarsG": 8.8,
+        "fatG": 9.1,
+        "saturatedFatG": 1.0,
+        "fibreG": 13.3,
+        "sodiumMg": 279.5
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 12,
+        "matchedIngredientCount": 11,
+        "matchedMassPercent": 99.6,
+        "rawCalculatedEnergyKj": 2423.1,
+        "rawCalculatedProteinG": 31.6,
+        "energyScale": 0.562,
+        "unmatchedIngredientCount": 1,
+        "inheritedRecipe": null
       }
     },
     {
@@ -2317,12 +3375,24 @@
       "nutrients": {
         "energyKj": 1444.0,
         "proteinG": 22.6,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 35.9,
+        "sugarsG": 7.0,
+        "fatG": 12.1,
+        "saturatedFatG": 1.5,
+        "fibreG": 22.6,
+        "sodiumMg": 29.6
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 10,
+        "matchedIngredientCount": 8,
+        "matchedMassPercent": 89.3,
+        "rawCalculatedEnergyKj": 2560.7,
+        "rawCalculatedProteinG": 37.7,
+        "energyScale": 0.655,
+        "unmatchedIngredientCount": 2,
+        "inheritedRecipe": null
       }
     },
     {
@@ -2343,12 +3413,24 @@
       "nutrients": {
         "energyKj": 1288.0,
         "proteinG": 38.9,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 11.7,
+        "sugarsG": 10.9,
+        "fatG": 11.5,
+        "saturatedFatG": 1.9,
+        "fibreG": 7.7,
+        "sodiumMg": 177.5
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 9,
+        "matchedIngredientCount": 8,
+        "matchedMassPercent": 94.3,
+        "rawCalculatedEnergyKj": 1077.4,
+        "rawCalculatedProteinG": 38.2,
+        "energyScale": 1.59,
+        "unmatchedIngredientCount": 1,
+        "inheritedRecipe": null
       }
     },
     {
@@ -2369,12 +3451,24 @@
       "nutrients": {
         "energyKj": 2086.0,
         "proteinG": 37.2,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 7.8,
+        "sugarsG": 5.1,
+        "fatG": 35.7,
+        "saturatedFatG": 7.6,
+        "fibreG": 7.3,
+        "sodiumMg": 85.6
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 9,
+        "matchedIngredientCount": 8,
+        "matchedMassPercent": 94.1,
+        "rawCalculatedEnergyKj": 1898.0,
+        "rawCalculatedProteinG": 36.9,
+        "energyScale": 1.183,
+        "unmatchedIngredientCount": 1,
+        "inheritedRecipe": null
       }
     },
     {
@@ -2395,12 +3489,24 @@
       "nutrients": {
         "energyKj": 1376.0,
         "proteinG": 35.1,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 29.3,
+        "sugarsG": 4.7,
+        "fatG": 7.6,
+        "saturatedFatG": 1.7,
+        "fibreG": 20.1,
+        "sodiumMg": 846.4
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 8,
+        "matchedIngredientCount": 8,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 2029.5,
+        "rawCalculatedProteinG": 47.2,
+        "energyScale": 0.78,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -2421,12 +3527,24 @@
       "nutrients": {
         "energyKj": 1326.0,
         "proteinG": 26.5,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 22.9,
+        "sugarsG": 3.7,
+        "fatG": 13.1,
+        "saturatedFatG": 2.0,
+        "fibreG": 14.5,
+        "sodiumMg": 55.9
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 13,
+        "matchedIngredientCount": 13,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 2236.6,
+        "rawCalculatedProteinG": 39.4,
+        "energyScale": 0.677,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -2447,12 +3565,24 @@
       "nutrients": {
         "energyKj": 1607.0,
         "proteinG": 36.7,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 14.9,
+        "sugarsG": 9.8,
+        "fatG": 19.7,
+        "saturatedFatG": 4.3,
+        "fibreG": 7.2,
+        "sodiumMg": 1637.3
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "high",
+        "ingredientCount": 10,
+        "matchedIngredientCount": 10,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 1385.7,
+        "rawCalculatedProteinG": 40.8,
+        "energyScale": 1.496,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -2473,12 +3603,24 @@
       "nutrients": {
         "energyKj": 1317.0,
         "proteinG": 35.7,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 23.5,
+        "sugarsG": 6.9,
+        "fatG": 8.4,
+        "saturatedFatG": 1.0,
+        "fibreG": 3.7,
+        "sodiumMg": 318.4
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 6,
+        "matchedIngredientCount": 6,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 1763.3,
+        "rawCalculatedProteinG": 23.6,
+        "energyScale": 0.539,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -2499,12 +3641,24 @@
       "nutrients": {
         "energyKj": 1326.0,
         "proteinG": 37.5,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 18.5,
+        "sugarsG": 17.7,
+        "fatG": 10.1,
+        "saturatedFatG": 2.2,
+        "fibreG": 10.6,
+        "sodiumMg": 147.0
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "high",
+        "ingredientCount": 11,
+        "matchedIngredientCount": 11,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 1473.3,
+        "rawCalculatedProteinG": 37.6,
+        "energyScale": 0.987,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -2525,12 +3679,24 @@
       "nutrients": {
         "energyKj": 1127.0,
         "proteinG": 39.0,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 8.6,
+        "sugarsG": 7.6,
+        "fatG": 8.6,
+        "saturatedFatG": 1.5,
+        "fibreG": 5.8,
+        "sodiumMg": 599.9
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "high",
+        "ingredientCount": 14,
+        "matchedIngredientCount": 13,
+        "matchedMassPercent": 99.2,
+        "rawCalculatedEnergyKj": 1005.3,
+        "rawCalculatedProteinG": 37.8,
+        "energyScale": 1.413,
+        "unmatchedIngredientCount": 1,
+        "inheritedRecipe": null
       }
     },
     {
@@ -2551,12 +3717,24 @@
       "nutrients": {
         "energyKj": 1427.0,
         "proteinG": 23.4,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 15.3,
+        "sugarsG": 13.9,
+        "fatG": 20.8,
+        "saturatedFatG": 3.5,
+        "fibreG": 7.9,
+        "sodiumMg": 116.5
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "high",
+        "ingredientCount": 8,
+        "matchedIngredientCount": 8,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 1424.6,
+        "rawCalculatedProteinG": 23.1,
+        "energyScale": 1.057,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -2577,12 +3755,24 @@
       "nutrients": {
         "energyKj": 2143.0,
         "proteinG": 35.7,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 20.1,
+        "sugarsG": 17.9,
+        "fatG": 32.3,
+        "saturatedFatG": 6.9,
+        "fibreG": 8.3,
+        "sodiumMg": 111.7
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "high",
+        "ingredientCount": 11,
+        "matchedIngredientCount": 10,
+        "matchedMassPercent": 99.6,
+        "rawCalculatedEnergyKj": 2089.8,
+        "rawCalculatedProteinG": 35.4,
+        "energyScale": 1.079,
+        "unmatchedIngredientCount": 1,
+        "inheritedRecipe": null
       }
     },
     {
@@ -2603,12 +3793,24 @@
       "nutrients": {
         "energyKj": 1966.0,
         "proteinG": 35.8,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 11.4,
+        "sugarsG": 10.0,
+        "fatG": 31.4,
+        "saturatedFatG": 6.7,
+        "fibreG": 9.2,
+        "sodiumMg": 73.2
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "high",
+        "ingredientCount": 9,
+        "matchedIngredientCount": 9,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 1999.7,
+        "rawCalculatedProteinG": 35.9,
+        "energyScale": 1.046,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -2629,12 +3831,24 @@
       "nutrients": {
         "energyKj": 1731.0,
         "proteinG": 41.3,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 26.4,
+        "sugarsG": 22.9,
+        "fatG": 15.7,
+        "saturatedFatG": 4.3,
+        "fibreG": 13.9,
+        "sodiumMg": 531.7
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "high",
+        "ingredientCount": 10,
+        "matchedIngredientCount": 10,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 1688.4,
+        "rawCalculatedProteinG": 40.9,
+        "energyScale": 1.136,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -2655,12 +3869,24 @@
       "nutrients": {
         "energyKj": 1482.0,
         "proteinG": 35.9,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 13.4,
+        "sugarsG": 12.9,
+        "fatG": 17.4,
+        "saturatedFatG": 5.3,
+        "fibreG": 6.7,
+        "sodiumMg": 112.9
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "high",
+        "ingredientCount": 11,
+        "matchedIngredientCount": 10,
+        "matchedMassPercent": 99.7,
+        "rawCalculatedEnergyKj": 1722.7,
+        "rawCalculatedProteinG": 36.0,
+        "energyScale": 0.834,
+        "unmatchedIngredientCount": 1,
+        "inheritedRecipe": null
       }
     },
     {
@@ -2681,12 +3907,24 @@
       "nutrients": {
         "energyKj": 1441.0,
         "proteinG": 42.2,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 19.6,
+        "sugarsG": 17.4,
+        "fatG": 10.5,
+        "saturatedFatG": 1.7,
+        "fibreG": 19.6,
+        "sodiumMg": 160.3
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 11,
+        "matchedIngredientCount": 10,
+        "matchedMassPercent": 90.9,
+        "rawCalculatedEnergyKj": 1318.7,
+        "rawCalculatedProteinG": 41.2,
+        "energyScale": 1.426,
+        "unmatchedIngredientCount": 1,
+        "inheritedRecipe": null
       }
     },
     {
@@ -2707,12 +3945,24 @@
       "nutrients": {
         "energyKj": 1405.0,
         "proteinG": 40.4,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 26.7,
+        "sugarsG": 25.5,
+        "fatG": 7.1,
+        "saturatedFatG": 1.5,
+        "fibreG": 11.5,
+        "sodiumMg": 89.9
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 11,
+        "matchedIngredientCount": 10,
+        "matchedMassPercent": 99.8,
+        "rawCalculatedEnergyKj": 3427.0,
+        "rawCalculatedProteinG": 61.0,
+        "energyScale": 0.346,
+        "unmatchedIngredientCount": 1,
+        "inheritedRecipe": null
       }
     },
     {
@@ -2733,12 +3983,24 @@
       "nutrients": {
         "energyKj": 2255.0,
         "proteinG": 40.4,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 21.6,
+        "sugarsG": 20.7,
+        "fatG": 32.5,
+        "saturatedFatG": 6.8,
+        "fibreG": 9.0,
+        "sodiumMg": 75.1
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 10,
+        "matchedIngredientCount": 8,
+        "matchedMassPercent": 94.0,
+        "rawCalculatedEnergyKj": 2142.0,
+        "rawCalculatedProteinG": 37.2,
+        "energyScale": 1.082,
+        "unmatchedIngredientCount": 2,
+        "inheritedRecipe": null
       }
     },
     {
@@ -2759,12 +4021,24 @@
       "nutrients": {
         "energyKj": 1469.0,
         "proteinG": 23.6,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 14.1,
+        "sugarsG": 13.4,
+        "fatG": 22.4,
+        "saturatedFatG": 3.0,
+        "fibreG": 7.9,
+        "sodiumMg": 56.4
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 10,
+        "matchedIngredientCount": 9,
+        "matchedMassPercent": 91.9,
+        "rawCalculatedEnergyKj": 1320.4,
+        "rawCalculatedProteinG": 23.7,
+        "energyScale": 1.285,
+        "unmatchedIngredientCount": 1,
+        "inheritedRecipe": null
       }
     },
     {
@@ -2785,12 +4059,24 @@
       "nutrients": {
         "energyKj": 1513.0,
         "proteinG": 44.4,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 32.5,
+        "sugarsG": 31.0,
+        "fatG": 5.6,
+        "saturatedFatG": 0.7,
+        "fibreG": 13.9,
+        "sodiumMg": 85.3
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 11,
+        "matchedIngredientCount": 10,
+        "matchedMassPercent": 99.8,
+        "rawCalculatedEnergyKj": 5505.4,
+        "rawCalculatedProteinG": 83.3,
+        "energyScale": 0.218,
+        "unmatchedIngredientCount": 1,
+        "inheritedRecipe": null
       }
     },
     {
@@ -2811,12 +4097,24 @@
       "nutrients": {
         "energyKj": 1411.0,
         "proteinG": 40.2,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 11.2,
+        "sugarsG": 9.0,
+        "fatG": 14.5,
+        "saturatedFatG": 4.1,
+        "fibreG": 8.0,
+        "sodiumMg": 759.2
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "high",
+        "ingredientCount": 9,
+        "matchedIngredientCount": 9,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 1407.1,
+        "rawCalculatedProteinG": 39.7,
+        "energyScale": 1.089,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -2837,12 +4135,24 @@
       "nutrients": {
         "energyKj": 1104.0,
         "proteinG": 38.0,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 9.0,
+        "sugarsG": 7.4,
+        "fatG": 8.3,
+        "saturatedFatG": 1.5,
+        "fibreG": 8.4,
+        "sodiumMg": 247.0
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "high",
+        "ingredientCount": 11,
+        "matchedIngredientCount": 11,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 1077.4,
+        "rawCalculatedProteinG": 38.2,
+        "energyScale": 1.225,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -2863,12 +4173,24 @@
       "nutrients": {
         "energyKj": 1856.0,
         "proteinG": 45.4,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 19.7,
+        "sugarsG": 16.9,
+        "fatG": 20.3,
+        "saturatedFatG": 5.1,
+        "fibreG": 17.2,
+        "sodiumMg": 675.4
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 14,
+        "matchedIngredientCount": 12,
+        "matchedMassPercent": 76.5,
+        "rawCalculatedEnergyKj": 1204.9,
+        "rawCalculatedProteinG": 34.5,
+        "energyScale": 1.967,
+        "unmatchedIngredientCount": 2,
+        "inheritedRecipe": null
       }
     },
     {
@@ -2889,12 +4211,24 @@
       "nutrients": {
         "energyKj": 2016.0,
         "proteinG": 35.4,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 13.2,
+        "sugarsG": 10.5,
+        "fatG": 32.2,
+        "saturatedFatG": 6.8,
+        "fibreG": 5.3,
+        "sodiumMg": 65.9
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "high",
+        "ingredientCount": 6,
+        "matchedIngredientCount": 6,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 1959.3,
+        "rawCalculatedProteinG": 35.1,
+        "energyScale": 1.06,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -2915,12 +4249,24 @@
       "nutrients": {
         "energyKj": 1929.0,
         "proteinG": 39.8,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 38.4,
+        "sugarsG": 35.5,
+        "fatG": 16.2,
+        "saturatedFatG": 3.1,
+        "fibreG": 12.6,
+        "sodiumMg": 467.7
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "high",
+        "ingredientCount": 13,
+        "matchedIngredientCount": 13,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 1653.4,
+        "rawCalculatedProteinG": 41.3,
+        "energyScale": 1.4,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -2941,12 +4287,24 @@
       "nutrients": {
         "energyKj": 1246.0,
         "proteinG": 27.2,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 8.7,
+        "sugarsG": 5.8,
+        "fatG": 17.2,
+        "saturatedFatG": 2.5,
+        "fibreG": 8.3,
+        "sodiumMg": 1238.0
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "high",
+        "ingredientCount": 9,
+        "matchedIngredientCount": 9,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 1339.8,
+        "rawCalculatedProteinG": 27.4,
+        "energyScale": 0.999,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -2967,12 +4325,24 @@
       "nutrients": {
         "energyKj": 1436.0,
         "proteinG": 40.6,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 12.7,
+        "sugarsG": 11.5,
+        "fatG": 14.3,
+        "saturatedFatG": 2.2,
+        "fibreG": 14.2,
+        "sodiumMg": 139.9
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "high",
+        "ingredientCount": 9,
+        "matchedIngredientCount": 9,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 1412.2,
+        "rawCalculatedProteinG": 40.3,
+        "energyScale": 1.176,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -2993,12 +4363,24 @@
       "nutrients": {
         "energyKj": 1290.0,
         "proteinG": 38.8,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 7.1,
+        "sugarsG": 6.2,
+        "fatG": 13.8,
+        "saturatedFatG": 2.4,
+        "fibreG": 5.8,
+        "sodiumMg": 120.7
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "high",
+        "ingredientCount": 8,
+        "matchedIngredientCount": 7,
+        "matchedMassPercent": 97.0,
+        "rawCalculatedEnergyKj": 1205.4,
+        "rawCalculatedProteinG": 37.9,
+        "energyScale": 1.304,
+        "unmatchedIngredientCount": 1,
+        "inheritedRecipe": null
       }
     },
     {
@@ -3019,12 +4401,24 @@
       "nutrients": {
         "energyKj": 1600.0,
         "proteinG": 37.5,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 35.6,
+        "sugarsG": 34.3,
+        "fatG": 9.7,
+        "saturatedFatG": 1.3,
+        "fibreG": 14.8,
+        "sodiumMg": 70.7
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 10,
+        "matchedIngredientCount": 8,
+        "matchedMassPercent": 70.6,
+        "rawCalculatedEnergyKj": 2264.0,
+        "rawCalculatedProteinG": 19.7,
+        "energyScale": 0.569,
+        "unmatchedIngredientCount": 2,
+        "inheritedRecipe": null
       }
     },
     {
@@ -3045,12 +4439,24 @@
       "nutrients": {
         "energyKj": 1609.0,
         "proteinG": 35.9,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 41.3,
+        "sugarsG": 30.5,
+        "fatG": 8.0,
+        "saturatedFatG": 1.5,
+        "fibreG": 31.0,
+        "sodiumMg": 199.9
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 10,
+        "matchedIngredientCount": 10,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 1087.7,
+        "rawCalculatedProteinG": 16.5,
+        "energyScale": 1.564,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     },
     {
@@ -3071,12 +4477,24 @@
       "nutrients": {
         "energyKj": 1239.0,
         "proteinG": 36.0,
-        "carbohydrateG": null,
-        "sugarsG": null,
-        "fatG": null,
-        "saturatedFatG": null,
-        "fibreG": null,
-        "sodiumMg": null
+        "carbohydrateG": 19.8,
+        "sugarsG": 4.2,
+        "fatG": 7.8,
+        "saturatedFatG": 1.0,
+        "fibreG": 6.6,
+        "sodiumMg": 295.6
+      },
+      "nutritionProvenance": {
+        "method": "Ingredient quantities from the source PDF matched locally to AFCD Release 3; missing nutrients scaled to the recipe's published energy.",
+        "confidence": "medium",
+        "ingredientCount": 6,
+        "matchedIngredientCount": 6,
+        "matchedMassPercent": 100.0,
+        "rawCalculatedEnergyKj": 1716.3,
+        "rawCalculatedProteinG": 23.3,
+        "energyScale": 0.511,
+        "unmatchedIngredientCount": 0,
+        "inheritedRecipe": null
       }
     }
   ]
